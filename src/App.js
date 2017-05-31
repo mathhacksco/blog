@@ -1,56 +1,37 @@
 
 import React, { Component } from 'react';
-import UpArrow from 'react-icons/lib/md/keyboard-arrow-up';
-import { Link as ScrollLink } from 'react-scroll';
-import FaSun from 'react-icons/lib/fa/sun-o';
-import FaMoon from 'react-icons/lib/fa/moon-o';
-import classnames from 'classnames';
-
-import { Welcome, FreelanceProjects, HobbyProjects, Education,
-         Hobbies, Contact, PageNavigation, Footer } from '~/components';
+import moment from 'moment';
 import './app.styles.scss';
 
 class App extends Component {
 
-    state = {
-      isDarkMode: false
-    }
+  state = {
+    posts: []
+  }
 
-    setLightMode() {
-      this.setState({ isDarkMode: false });
-    }
+  componentDidMount() {
+    fetch('http://dockerhost/wp-json/wp/v2/posts')
+      .then(res => res.json())
+      .then(posts => {
+        this.setState({ posts: posts });
+      });
+  }
 
-    setDarkMode() {
-      this.setState({ isDarkMode: true });
-    }
-
-    render() {
-        return (
-            <div className={this.state.isDarkMode && "dark-mode"}>
-                <div className="darkmodeContainer">
-                  <div className={classnames('tab', this.state.showThemeMenu && 'showThemeMenu')}>
-                    <FaSun className={classnames('icon', !this.state.isDarkMode && 'active')}
-                           onClick={this.setLightMode.bind(this)}/>
-                    <FaMoon className={classnames('icon', this.state.isDarkMode && 'active')}
-                            onClick={this.setDarkMode.bind(this)}/>
-                  </div>
-                </div>
-                <PageNavigation/>
-                <Welcome/>
-                <FreelanceProjects/>
-                <HobbyProjects/>
-                <Education/>
-                <Hobbies/>
-                <Contact/>
-                <Footer/>
-                <ScrollLink to="top" smooth={true} duration={800}>
-                    <div className="floatingButton">
-                        <UpArrow className="up"/>
-                    </div>
-                </ScrollLink>
-            </div>
-        );
-    }
+  render() {
+    return (
+        <div>
+          {this.state.posts.map(post => {
+            return (
+              <div key={post.id}>
+                <h1>{post.title.rendered}</h1>
+                <h2>{moment.utc(post.date_gmt).fromNow()}</h2>
+                <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}/>
+              </div>
+            );
+          })}
+        </div>
+    );
+  }
 }
 
 export default App;
