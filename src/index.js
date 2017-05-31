@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Promise from 'bluebird';
-import App from './App';
+import Routes from './Routes';
 
 Promise.config({
     cancellation: true,
@@ -12,4 +12,4 @@ Promise.config({
 });
 
 
-render(<App/>, document.getElementById('react-main'));
+render(<Routes/>, document.getElementById('react-main'));
