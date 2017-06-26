@@ -11,5 +11,5 @@ export default function Routes() {
         <Route path="/posts/:id" component={PostPage}/>
       </Route>
     </Router>
-  )
+  );
 }
