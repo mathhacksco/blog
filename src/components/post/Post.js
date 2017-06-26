@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import './Post.styles.scss';
 
 class Post extends Component {
@@ -8,6 +9,10 @@ class Post extends Component {
   static propTypes = {
     post: PropTypes.object.isRequired,
     tags: PropTypes.arrayOf(PropTypes.object).isRequired
+  }
+
+  static defaultProps = {
+    tags: []
   }
 
   render() {
@@ -21,7 +26,11 @@ class Post extends Component {
   }
 
   renderTags() {
-    return this.props.tags.map(tag => <div>{tag.name}</div>);
+    return this.props.tags.map(tag => (
+      <Link to={`/tags/${tag.id}`}>
+        <div>{tag.name}</div>
+      </Link>
+    ));
   }
 }
 
