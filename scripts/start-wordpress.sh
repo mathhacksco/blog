@@ -1,39 +1,39 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Starts a local wordpress setup inside docker containers
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#                        _
-#                       | |
-# __      _____  _ __ __| |_ __  _ __ ___  ___ ___
-# \ \ /\ / / _ \| '__/ _` | '_ \| '__/ _ \/ __/ __|
-#  \ V  V / (_) | | | (_| | |_) | | |  __/\__ \__ \
-#   \_/\_/ \___/|_|  \__,_| .__/|_|  \___||___/___/
-#                         | |
-#                         |_|
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-docker-machine create iheartmath-wordpress-machine --driver virtualbox
-docker-machine start iheartmath-wordpress-machine
-eval $(docker-machine env iheartmath-wordpress-machine)
+cat ./header.txt
+echo "\n"
 
-MYSQL_ROOT_PASSWORD=password
+# load configuration from .env file
+source ./.env
+
+if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
+  echo "MYSQL_ROOT_PASSWORD must be set"
+  exit
+fi
+
+docker-machine create mathhacks-wordpress-machine --driver virtualbox
+docker-machine start mathhacks-wordpress-machine
+eval $(docker-machine env mathhacks-wordpress-machine)
 
 docker pull mysql:5.7.8
-docker stop iheartmath-wordpress-db
-docker rm iheartmath-wordpress-db
+docker stop mathhacks-wordpress-db
+docker rm mathhacks-wordpress-db
 docker run \
   -itd \
-  --name=iheartmath-wordpress-db \
+  --name=mathhacks-wordpress-db \
   -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD \
   -v /mnt/sda1/var/mysql_data:/var/lib/mysql \
   -p 3306:3306 \
   mysql:5.7.8
 
 docker pull wordpress
-docker stop iheartmath-wordpress
-docker rm iheartmath-wordpress
+docker stop mathhacks-wordpress
+docker rm mathhacks-wordpress
 docker run \
   -itd \
-  --name=iheartmath-wordpress \
-  --link iheartmath-wordpress-db:mysql \
+  --name=mathhacks-wordpress \
+  --link mathhacks-wordpress-db:mysql \
   -p 80:80 \
   wordpress
