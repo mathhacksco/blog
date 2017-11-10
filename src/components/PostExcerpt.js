@@ -1,10 +1,10 @@
-
+/* @flow */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import moment from 'moment';
 
-class PostExcerpt extends Component {
+export default class PostExcerpt extends Component {
 
   static propTypes = {
     post: PropTypes.object.isRequired
@@ -22,5 +22,3 @@ class PostExcerpt extends Component {
     );
   }
 }
-
-export default PostExcerpt;

@@ -4,7 +4,9 @@
         "react"
     ],
     "globals": {
-        "Promise": false
+        "Promise": false,
+        "Class": true,
+        
     },
     "rules": {
         "import/named": 0,

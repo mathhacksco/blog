@@ -1,6 +1,10 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+
+import Typography from './components/typography/Typography';
+
+// $FlowFixMe
 import './app.styles.scss';
 
 type Props = {
@@ -11,7 +15,7 @@ type State = {};
 
 type DefaultProps = {};
 
-class App extends Component<DefaultProps, Props, State> {
+export default class App extends Component<DefaultProps, Props, State> {
 
   props: Props;
   static defaultProps: DefaultProps = {};
@@ -20,6 +24,7 @@ class App extends Component<DefaultProps, Props, State> {
   render() {
     return (
       <div>
+        <Typography/>
         <Link to="/">
           <div>wordpress test</div>
         </Link>
@@ -28,5 +33,3 @@ class App extends Component<DefaultProps, Props, State> {
     );
   }
 }
-
-export default App;
