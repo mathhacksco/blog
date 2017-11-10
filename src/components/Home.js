@@ -8,7 +8,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://dockerhost/wp-json/wp/v2/posts')
+    fetch(`${process.env.WORDPRESS_API_URI}/posts`)
       .then(res => res.json())
       .then(posts => {
         this.setState({ posts: posts });

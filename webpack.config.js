@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const DotenvPlugin = require('webpack-dotenv-plugin');
 
 const isTest = process.env.NODE_ENV == 'test';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -131,7 +132,10 @@ module.exports = {
             excludeChunks: [],
             chunksSortMode: 'dependency'
         }),
-        // (!isTest) && new webpack.optimize.CommonsChunkPlugin('common'),
+        new DotenvPlugin({
+          sample: './.env',
+          path: './.env'
+        }),
 
         (isDev && !isTest) && new webpack.HotModuleReplacementPlugin(),
 
