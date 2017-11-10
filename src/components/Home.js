@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import PostExcerpt from './PostExcerpt';
+import Typography from 'typography';
+import TypographyThemeMoraga from 'typography-theme-moraga';
+import { TypographyStyle, GoogleFont } from 'react-typography'
 
-class Home extends Component {
+// TODO create a provider for typography.js
+
+const typography = new Typography(TypographyThemeMoraga);
+
+export default class Home extends Component {
 
   state = {
     posts: []
@@ -17,6 +24,10 @@ class Home extends Component {
 
   render() {
     return (
+      <div>
+        <TypographyStyle typography={typography}>
+          <GoogleFont typography={typography}/>
+        </TypographyStyle>
         <div>
           {this.state.posts.map(post => {
             return (
@@ -26,8 +37,7 @@ class Home extends Component {
             );
           })}
         </div>
+      </div>
     );
   }
 }
-
-export default Home;
