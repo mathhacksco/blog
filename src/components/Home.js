@@ -2,9 +2,12 @@
 import React, { Component } from 'react';
 
 import PostExcerpt from './post-excerpt/PostExcerpt';
-import ContentMinWidth from './layout/content-min-width/ContentMinWidth';
+import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
+import RowLayout from './layout/row-layout/RowLayout';
 import Map from './map/Map';
+import Take from './take/Take';
+import Slice from './slice/Slice';
 
 type Props = {
   children?: ?Node | ?Node[];
@@ -37,12 +40,29 @@ export default class Home extends Component<DefaultProps, Props, State> {
   render() {
     return (
       <HorizontallyCentered>
-        <ContentMinWidth>
-          <Map
+        <ContentMaxWidth>
+          <Take
+            n={3}
             array={this.state.posts}
-            map={post => <PostExcerpt id={post.id} post={post}/>}
+            render={taken => (
+              <Map
+                container={RowLayout}
+                array={taken}
+                render={post => <PostExcerpt id={post.id} post={post}/>}
+              />
+            )}
           />
-        </ContentMinWidth>
+          <Slice
+            start={3}
+            array={this.state.posts}
+            render={sliced => (
+              <Map
+                array={sliced}
+                render={post => <PostExcerpt id={post.id} post={post}/>}
+              />
+            )}
+          />
+        </ContentMaxWidth>
       </HorizontallyCentered>
     );
   }

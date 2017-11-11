@@ -1,15 +1,17 @@
 /* @flow */
 import React, { Element } from 'react';
+import take from 'lodash/take';
 
-type MapProps<T> = {
+type TakeProps<T> = {
+  n: number;
   array: T[];
-  render: T => ?Element<*>;
+  render: T[] => ?Element<*>;
   container?: ReactClass<*>;
 };
 
 // eslint-disable-next-line object-curly-spacing
-export default function Map<T>({ array, render, container }: MapProps<T>) {
-  const contents = array.map(render);
+export default function Take<T>({ n, array, render, container }: TakeProps<T>) {
+  const contents = render(take(array, n));
   if (!container) {
     return (
       <div>

@@ -5,7 +5,8 @@
     ],
     "globals": {
         "Promise": false,
-        "Class": true
+        "Class": true,
+        "ReactClass": true
     },
     "rules": {
         "import/namespace": 0,

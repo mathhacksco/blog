@@ -1,13 +1,15 @@
 /* @flow */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import moment from 'moment';
 
-import type { Post } from '../../types';
+// $FlowFixMe
+import './PostExcerpt.styles.scss';
+
+import type { PostObject } from '../../types/wordpress';
 
 type Props = {
-  post: Post;
+  post: PostObject;
 };
 
 type DefaultProps = {};
@@ -22,11 +24,11 @@ export default class PostExcerpt extends Component<DefaultProps, Props, State> {
 
   render() {
     return (
-      <div>
-        <Link to={`posts/${this.props.post.id}`}>
+      <div className="post-excerpt">
+        <Link to={`posts/${this.props.post.id}`} className="title-link">
           <h1>{this.props.post.title.rendered}</h1>
         </Link>
-        <h2>{moment.utc(this.props.post.date_gmt).fromNow()}</h2>
+        <h4>{moment.utc(this.props.post.date_gmt).fromNow()}</h4>
         <div dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
       </div>
     );

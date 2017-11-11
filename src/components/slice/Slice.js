@@ -1,15 +1,18 @@
 /* @flow */
 import React, { Element } from 'react';
+import slice from 'lodash/slice';
 
-type MapProps<T> = {
+type Props<T> = {
+  start: number;
+  end?: number;
   array: T[];
-  render: T => ?Element<*>;
+  render: T[] => ?Element<*>;
   container?: ReactClass<*>;
 };
 
 // eslint-disable-next-line object-curly-spacing
-export default function Map<T>({ array, render, container }: MapProps<T>) {
-  const contents = array.map(render);
+export default function Slice<T>({ start, end, array, render, container }: Props<T>) {
+  const contents = render(slice(array, start, end));
   if (!container) {
     return (
       <div>
