@@ -5,6 +5,15 @@
 cat ./header.txt
 echo "\n"
 
+# Check dependencies
+dependencies=('docker' 'docker-machine')
+for dep in "${dependencies[@]}"; do
+  if ! [ -x "$(command -v $dep)" ]; then
+    echo "Error: $dep not installed." >&2
+    exit 1
+  fi
+done
+
 # load configuration from .env file
 source ./.env
 
