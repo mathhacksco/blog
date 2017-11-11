@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 
-import PostExcerpt from './PostExcerpt';
+import PostExcerpt from './post-excerpt/PostExcerpt';
 import ContentMinWidth from './layout/content-min-width/ContentMinWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import Map from './map/Map';

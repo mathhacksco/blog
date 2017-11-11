@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Promise from 'bluebird';
-import { fetchTag } from '../../actions/tags';
-import { fetchPostsByTag } from '../../actions/posts';
-import PostExcerpt from '../PostExcerpt';
+// import Promise from 'bluebird';
+// import { fetchTag } from '../../actions/tags';
+// import { fetchPostsByTag } from '../../actions/posts';
+// import PostExcerpt from '../PostExcerpt';
 import './TagPage.styles.scss';
 
 class TagPage extends Component {
@@ -14,18 +14,18 @@ class TagPage extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.routeParams.id;
-    this.setState({ isFetchingTag: true });
-    Promise.join(
-      fetchTag(id),
-      fetchPostsByTag(id)
-    )
-      .spread((tag, posts) => {
-        this.setState({ tag: tag, posts: posts });
-      })
-      .finally(() => {
-        this.setState({ isFetchingTag: false });
-      });
+    // const id = this.props.routeParams.id;
+    // this.setState({ isFetchingTag: true });
+    // Promise.join(
+    //   fetchTag(id),
+    //   fetchPostsByTag(id)
+    // )
+    //   .spread((tag, posts) => {
+    //     this.setState({ tag: tag, posts: posts });
+    //   })
+    //   .finally(() => {
+    //     this.setState({ isFetchingTag: false });
+    //   });
   }
 
   render() {

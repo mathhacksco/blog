@@ -4,11 +4,21 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import moment from 'moment';
 
-export default class PostExcerpt extends Component {
+import type { Post } from '../../types';
 
-  static propTypes = {
-    post: PropTypes.object.isRequired
-  }
+type Props = {
+  post: Post;
+};
+
+type DefaultProps = {};
+
+type State = {};
+
+export default class PostExcerpt extends Component<DefaultProps, Props, State> {
+
+  props: Props;
+  state: State = {};
+  static defaultProps: DefaultProps = {};
 
   render() {
     return (

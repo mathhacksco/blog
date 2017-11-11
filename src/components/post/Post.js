@@ -18,9 +18,14 @@ class Post extends Component {
   render() {
     return (
       <div className="postContainer">
-        <h1 className="postTitle">{this.props.post.title.rendered}</h1>
+        <h1 className="postTitle">
+          {this.props.post.title.rendered}
+        </h1>
         {this.renderTags()}
-        <div className="postContent" dangerouslySetInnerHTML={{ __html: this.props.post.content.rendered }}/>
+        <div
+          className="postContent"
+          dangerouslySetInnerHTML={{ __html: this.props.post.content.rendered }}
+        />
       </div>
     );
   }

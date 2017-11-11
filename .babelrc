@@ -4,10 +4,14 @@
         ["transform-es2015-modules-commonjs", { "loose": true }],
         "add-module-exports",
         "transform-decorators-legacy",
-        "transform-react-inline-elements"
+        "transform-react-inline-elements",
+        ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+        }]
     ],
     "ignore": [
-        "/node_modules/",
+        "/node_modules/"
     ],
     "env": {
         "development": {

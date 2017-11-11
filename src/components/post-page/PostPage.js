@@ -1,31 +1,61 @@
+/* @flow */
 import React, { Component } from 'react';
-import { fetchPost } from '../../actions/posts';
-import { fetchTags } from '../../actions/tags';
+import { autobind } from 'core-decorators';
+import { connect } from 'react-redux';
+
+import { fetchPost } from '../../redux/actionCreators/posts';
 import Post from '../post/Post';
+
+import type { State as AppState, Dispatch } from '../../types/redux';
+import type { Id, RouteParams } from '../../types/general';
+
+// $FlowFixMe
 import './PostPage.styles.scss';
 
-class PostPage extends Component {
+type OwnProps = {
+  routeParams: RouteParams;
+};
 
-  state = {
-    post: null,
-    tags: [],
-    isFetchingPost: false
-  }
+type StateProps = {
+
+};
+
+type DispatchProps = {
+  fetchPost: Id => Promise<void>;
+};
+
+type Props = OwnProps & StateProps & DispatchProps;
+
+type DefaultProps = {
+
+};
+
+type State = {
+
+};
+
+function mapStateToProps(state: AppState): StateProps {
+  return {};
+}
+
+function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
+  return {
+    fetchPost: (id: Id) => dispatch(fetchPost(id))
+  };
+}
+
+// $FlowFixMe
+@connect(mapStateToProps, mapDispatchToProps)
+@autobind
+class PostPage extends Component<DefaultProps, Props, State> {
+
+  props: Props;
+  state = {};
+  static defaultProps: DefaultProps = {};
 
   componentDidMount() {
-    this.setState({ isFetchingPost: true });
     const id = this.props.routeParams.id;
-    fetchPost(id)
-      .then(post => {
-        this.setState({ post: post });
-        return fetchTags(post.tags);
-      })
-      .then(tags => {
-        this.setState({ tags: tags });
-      })
-      .finally(() => {
-        this.setState({ isFetchingPost: false });
-      });
+    this.props.fetchPost(id);
   }
 
   render() {
@@ -41,7 +71,7 @@ class PostPage extends Component {
     }
     return (
         <div className="postPage">
-          <Post post={this.state.post} tags={this.state.tags}/>
+          <Post post={this.state.post} tags={[]}/>
         </div>
     );
   }
