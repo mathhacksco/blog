@@ -14,6 +14,9 @@
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
 
+; Ignore some issues in the typography module
+.*/node_modules/typography/src/index.js
+
 [include]
 
 [libs]
