@@ -1,6 +1,5 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import Typography from './components/typography/Typography';
 
@@ -25,9 +24,6 @@ export default class App extends Component<DefaultProps, Props, State> {
     return (
       <div>
         <Typography/>
-        <Link to="/">
-          <div>wordpress test</div>
-        </Link>
         {this.props.children}
       </div>
     );

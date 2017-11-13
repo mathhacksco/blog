@@ -1,15 +1,16 @@
 /* @flow */
 import React, { Element } from 'react';
+import times from 'lodash/times';
 
-type MapProps<T> = {
-  array: T[];
+type Props<T> = {
+  n: number;
   render: T => ?Element<*>;
   container?: ReactClass<*>;
 };
 
 // eslint-disable-next-line object-curly-spacing
-export default function Map<T>({ array, render, container }: MapProps<T>) {
-  const contents = array.map(render);
+export default function Times<T>({ n, render, container }: Props<T>) {
+  const contents = times(n).map(render);
   if (!container) {
     return (
       <div>
