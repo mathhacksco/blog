@@ -15,7 +15,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "bluebird": "^3.4.1",
-    "classnames": "2.2.5",
+    "classnames": "^2.2.5",
     "core-decorators": "^0.15.0",
     "immutable": "^3.8.1",
     "invariant": "2.2.1",

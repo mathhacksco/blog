@@ -13,6 +13,8 @@ type ContentRect = {
 };
 
 type Props = {
+  id?: string;
+  className?: string;
   measureRef?: ?(() => void);
   contentRect: ContentRect;
   render: ContentRectEntry => ?Element<*>;
@@ -33,7 +35,11 @@ export default class MeasureContentRect extends Component<DefaultProps, Props, S
 
   render() {
     return (
-      <div ref={this.props.measureRef}>
+      <div
+        ref={this.props.measureRef}
+        id={this.props.id}
+        className={this.props.className}
+      >
         {this.props.render(this.props.contentRect.entry)}
       </div>
     );

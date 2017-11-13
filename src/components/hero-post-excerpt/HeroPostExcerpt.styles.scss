@@ -1,7 +1,7 @@
 .hero-post-excerpt {
   display: flex;
   flex: 1;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 20px;
   padding-right: 20px;
 
@@ -9,9 +9,13 @@
     background-color: #FEEFEA;
     display: flex;
     flex: 1;
-    min-height: 250px;
-    max-height: 250px;
     margin-bottom: 20px;
+  }
+
+  .half {
+    display: flex;
+    flex: 1;
+    padding: 15px;
   }
 
   .title-link {
