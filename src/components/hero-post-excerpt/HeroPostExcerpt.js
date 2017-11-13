@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 
+import MeasureContentRect from '../layout/measure-content-rect/MeasureContentRect';
+
 // $FlowFixMe
 import './HeroPostExcerpt.styles.scss';
 
@@ -27,6 +29,7 @@ export default class HeroPostExcerpt extends Component<DefaultProps, Props, Stat
       <div className="hero-post-excerpt">
         <MeasureContentRect
           render={rect => (
+            // $FlowFixMe
             <div style={{ height: rect.width }} className="image"/>
           )}
         />
@@ -35,25 +38,6 @@ export default class HeroPostExcerpt extends Component<DefaultProps, Props, Stat
         </Link>
         <h5>{moment.utc(this.props.post.date_gmt).fromNow()}</h5>
         <div dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
-      </div>
-    );
-  }
-}
-
-import { withContentRect } from 'react-measure';
-
-// $FlowFixMe
-@withContentRect('bound')
-class MeasureContentRect extends Component {
-
-  componentDidMount() {
-    // start anim loop and check calculated styles
-  }
-
-  render() {
-    return (
-      <div ref={this.props.measureRef}>
-        {this.props.render(this.props.contentRect.entry)}
       </div>
     );
   }
