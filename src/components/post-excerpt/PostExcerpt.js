@@ -26,10 +26,13 @@ export default class PostExcerpt extends Component<DefaultProps, Props, State> {
     return (
       <div className="post-excerpt">
         <Link to={`posts/${this.props.post.id}`} className="title-link">
-          <h1>{this.props.post.title.rendered}</h1>
+          <h2 dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
         </Link>
         <h4>{moment.utc(this.props.post.date_gmt).fromNow()}</h4>
         <div dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
+        <Link to={`posts/${this.props.post.id}`} className="title-link">
+          <h4>Read the post</h4>
+        </Link>
       </div>
     );
   }
