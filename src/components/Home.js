@@ -6,6 +6,7 @@ import { fetchPosts } from '../redux/actionCreators/posts';
 import { getPosts } from '../redux/selectors/posts';
 import PostExcerpt from './post-excerpt/PostExcerpt';
 import HeroPostExcerpt from './hero-post-excerpt/HeroPostExcerpt';
+import Paragraph from './paragraph/Paragraph';
 import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
@@ -75,10 +76,9 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             start={1}
             end={4}
             array={this.props.posts.toArray()}
-            container={({ children }) => <div className="homepage-row-2">{children}</div>}
             render={sliced => (
               <Map
-                container={RowLayout}
+                container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
                 array={sliced}
                 render={post => <PostExcerpt id={post.id} post={post}/>}
               />
@@ -90,16 +90,16 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             end={6}
             array={this.props.posts.toArray()}
             render={sliced => (
-              <RowLayout>
-                <p>
-                  Some text about learning math. Talk about how the channel will help explain difficult math concepts.
-                </p>
-                <Map
-                  container={RowLayout}
-                  array={sliced}
-                  render={post => <PostExcerpt id={post.id} post={post}/>}
-                />
-              </RowLayout>
+              <Map
+                container={({ children }) => (
+                  <RowLayout className="homepage-row-2">
+                    <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/>
+                    {children}
+                  </RowLayout>
+                )}
+                array={sliced}
+                render={post => <PostExcerpt id={post.id} post={post}/>}
+              />
             )}
           />
           <Slice
@@ -108,7 +108,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             array={this.props.posts.toArray()}
             render={sliced => (
               <Map
-                container={RowLayout}
+                container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
                 array={sliced}
                 render={post => <PostExcerpt id={post.id} post={post}/>}
               />
