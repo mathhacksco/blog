@@ -1,6 +1,9 @@
 /* @flow */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { fetchPosts } from '../redux/actionCreators/posts';
+import { getPosts } from '../redux/selectors/posts';
 import PostExcerpt from './post-excerpt/PostExcerpt';
 import HeroPostExcerpt from './hero-post-excerpt/HeroPostExcerpt';
 import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
@@ -11,32 +14,48 @@ import Slice from './iterators/slice/Slice';
 import Nth from './iterators/nth/Nth';
 import First from './iterators/first/First';
 
-type Props = {
+import type State from '../models/State';
+import type PostCollection from '../models/PostCollection';
+import type { Dispatch } from '../types/redux';
+
+type OwnProps = {
   children?: ?Node | ?Node[];
 };
 
-type State = {
-  posts: any[];
+type StateProps = {
+  posts: PostCollection;
 };
+
+type DispatchProps = {
+  fetchPosts: () => Promise<void>;
+};
+
+type Props = OwnProps & StateProps & DispatchProps;
 
 type DefaultProps = {};
 
-export default class Home extends Component<DefaultProps, Props, State> {
+function mapStateToProps(state: State): StateProps {
+  return {
+    posts: getPosts(state)
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
+  return {
+    fetchPosts: () => dispatch(fetchPosts())
+  };
+}
+
+// $FlowFixMe
+@connect(mapStateToProps, mapDispatchToProps)
+export default class Home extends Component<DefaultProps, Props, {}> {
 
   props: Props;
   static defaultProps: DefaultProps = {};
-  state: State = {
-    posts: []
-  }
+  state = {}
 
   componentDidMount() {
-    // TODO
-    // $FlowFixMe
-    fetch(`${process.env.WORDPRESS_API_URI}/posts`)
-      .then(res => res.json())
-      .then(posts => {
-        this.setState({ posts: posts });
-      });
+    this.props.fetchPosts();
   }
 
   render() {
@@ -44,7 +63,7 @@ export default class Home extends Component<DefaultProps, Props, State> {
       <HorizontallyCentered>
         <ContentMaxWidth>
           <First
-            array={this.state.posts}
+            array={this.props.posts.toArray()}
             render={post => (
               <HeroPostExcerpt id={post.id} post={post}/>
             )}
@@ -52,7 +71,7 @@ export default class Home extends Component<DefaultProps, Props, State> {
           <Slice
             start={1}
             end={4}
-            array={this.state.posts}
+            array={this.props.posts.toArray()}
             render={sliced => (
               <Map
                 container={RowLayout}
@@ -65,7 +84,7 @@ export default class Home extends Component<DefaultProps, Props, State> {
           <Slice
             start={4}
             end={6}
-            array={this.state.posts}
+            array={this.props.posts.toArray()}
             render={sliced => (
               <RowLayout>
                 <p>
@@ -82,7 +101,7 @@ export default class Home extends Component<DefaultProps, Props, State> {
           <Slice
             start={6}
             end={8}
-            array={this.state.posts}
+            array={this.props.posts.toArray()}
             render={sliced => (
               <Map
                 container={RowLayout}
@@ -94,7 +113,7 @@ export default class Home extends Component<DefaultProps, Props, State> {
           <SocialLinks/>
           <Nth
             n={8}
-            array={this.state.posts}
+            array={this.props.posts.toArray()}
             render={post => (
               <HeroPostExcerpt id={post.id} post={post}/>
             )}
