@@ -6,10 +6,10 @@ import moment from 'moment';
 // $FlowFixMe
 import './PostExcerpt.styles.scss';
 
-import type { PostObject } from '../../types/wordpress';
+import type Post from '../../models/Post';
 
 type Props = {
-  post: PostObject;
+  post: Post;
 };
 
 type DefaultProps = {};
@@ -28,10 +28,10 @@ export default class PostExcerpt extends Component<DefaultProps, Props, State> {
         <Link to={`posts/${this.props.post.id}`} className="title-link">
           <h2 dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
         </Link>
-        <h4>{moment.utc(this.props.post.date_gmt).fromNow()}</h4>
-        <div dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
-        <Link to={`posts/${this.props.post.id}`} className="title-link">
-          <h4>Read the post</h4>
+        <p className="timestamp">{moment.utc(this.props.post.dateGMT).fromNow()}</p>
+        <div className="excerpt" dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
+        <Link to={`posts/${this.props.post.id}`} className="more-link">
+          <h5>Read the post</h5>
         </Link>
       </div>
     );

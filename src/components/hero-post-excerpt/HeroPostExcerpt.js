@@ -9,10 +9,10 @@ import ColumnLayout from '../layout/column-layout/ColumnLayout';
 // $FlowFixMe
 import './HeroPostExcerpt.styles.scss';
 
-import type { PostObject } from '../../types/wordpress';
+import type Post from '../../models/Post';
 
 type Props = {
-  post: PostObject;
+  post: Post;
 };
 
 type DefaultProps = {};
@@ -43,7 +43,7 @@ export default class HeroPostExcerpt extends Component<DefaultProps, Props, Stat
           </Link>
           <p className="timestamp">{moment.utc(this.props.post.dateGMT).fromNow()}</p>
           <p dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
-          <Link to={`posts/${this.props.post.id}`} className="title-link">
+          <Link to={`posts/${this.props.post.id}`} className="more-link">
             <h5>Read the post</h5>
           </Link>
         </ColumnLayout>

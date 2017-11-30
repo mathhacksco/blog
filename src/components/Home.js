@@ -14,6 +14,9 @@ import Slice from './iterators/slice/Slice';
 import Nth from './iterators/nth/Nth';
 import First from './iterators/first/First';
 
+// $FlowFixMe
+import './Home.styles.scss';
+
 import type State from '../models/State';
 import type PostCollection from '../models/PostCollection';
 import type { Dispatch } from '../types/redux';
@@ -72,6 +75,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             start={1}
             end={4}
             array={this.props.posts.toArray()}
+            container={({ children }) => <div className="homepage-row-2">{children}</div>}
             render={sliced => (
               <Map
                 container={RowLayout}
