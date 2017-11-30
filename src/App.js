@@ -32,6 +32,17 @@ export default class App extends Component<DefaultProps, Props, State> {
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
           <link rel="canonical" href="http://mysite.com/example" />
           <title>Mathhacks</title>
+          <style>{`
+              html, body, main {
+                  margin: 0;
+                  width: 100%;
+              }
+      
+              * {
+                  box-sizing: border-box;
+              }
+            `}
+          </style>
         </Helmet>
         {/* TODO render Typography on the server and combine with Sass files */}
         <Typography/>

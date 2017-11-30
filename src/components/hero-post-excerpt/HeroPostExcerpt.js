@@ -41,10 +41,10 @@ export default class HeroPostExcerpt extends Component<DefaultProps, Props, Stat
               <span dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
             </h2>
           </Link>
-          <h5 className="timestamp">{moment.utc(this.props.post.date_gmt).fromNow()}</h5>
+          <p className="timestamp">{moment.utc(this.props.post.date_gmt).fromNow()}</p>
           <p dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
           <Link to={`posts/${this.props.post.id}`} className="title-link">
-            <h4>Read the post</h4>
+            <h5>Read the post</h5>
           </Link>
         </ColumnLayout>
       </div>

@@ -20,6 +20,7 @@
   }
 
   .title-link {
+    margin-top: 3px;
     text-decoration: none;
     &:hover, &:active, &:focus {
       text-decoration: none;
@@ -31,31 +32,21 @@
     font-weight: bold;
     border-radius: 2px;
     color: #3C4851;
-    // padding: 5px 0;
     background-color: #FEEFEA;
     box-shadow: 7px 0 0 #FEEFEA, -7px 0 0 #FEEFEA;
-
-    span {
-      border-bottom: 1px solid transparent;
-    }
 
     &:hover, &:active, &:focus {
       box-shadow: 7px 0 0 #00F7AA, -7px 0 0 #00F7AA;
       background-color: #00F7AA;
       color: #3E3C4C;
       text-decoration: none;
-
-      span {
-        border-bottom: 1px solid #3E3C4C;
-      }
     }
   }
 
   .timestamp {
     margin-bottom: 5px;
-    text-transform: uppercase;
+    margin-top: 5px;
     color: #B1B1B2;
-    font-family: sans-serif;
   }
 
   .more-link {
