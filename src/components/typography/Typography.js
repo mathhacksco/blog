@@ -1,13 +1,17 @@
 /* @flow */
-import React from 'react';
+import React, { Component } from 'react';
 import { TypographyStyle, GoogleFont } from 'react-typography';
 
 import typography from '../../utils/typography';
 
-export default function Typography() {
-  return (
-    <TypographyStyle typography={typography}>
-      <GoogleFont typography={typography}/>
-    </TypographyStyle>
-  );
+
+export default class Typography extends Component {
+  render() {
+    return (
+      <div>
+        <GoogleFont typography={typography}/>
+        <TypographyStyle typography={typography}/>
+      </div>
+    );
+  }
 }
