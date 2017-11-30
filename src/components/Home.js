@@ -115,13 +115,15 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             )}
           />
           <SocialLinks/>
-          <Nth
-            n={8}
-            array={this.props.posts.toArray()}
-            render={post => (
-              <HeroPostExcerpt id={post.id} post={post}/>
-            )}
-          />
+          <RowLayout className="homepage-row-2">
+            <Nth
+              n={8}
+              array={this.props.posts.toArray()}
+              render={post => (
+                <HeroPostExcerpt id={post.id} post={post}/>
+              )}
+            />
+          </RowLayout>
         </ContentMaxWidth>
       </HorizontallyCentered>
     );
@@ -131,22 +133,30 @@ export default class Home extends Component<DefaultProps, Props, {}> {
 
 function SocialLinks() {
   return (
-    <RowLayout>
-      <TwitterLink/>
-      <InstagramLink/>
+    <RowLayout className="social-links">
+      <div className="half">
+        <TwitterLink/>
+      </div>
+      <div className="half">
+        <InstagramLink/>
+      </div>
     </RowLayout>
   );
 }
 
 function TwitterLink() {
   return (
-    <a href={"https://twitter.com/BrettEBerry"}>Twitter</a>
+    <a className="social-link" href={"https://twitter.com/BrettEBerry"}>
+      <h1>Twitter</h1>
+    </a>
   );
 }
 
 function InstagramLink() {
   return (
-    <a href={"https://www.instagram.com/bretteberry/"}>Instagram</a>
+    <a className="social-link" href={"https://www.instagram.com/bretteberry/"}>
+      <h1>Instagram</h1>
+    </a>
   );
 }
 
