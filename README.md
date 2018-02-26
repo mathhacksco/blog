@@ -18,11 +18,10 @@ The front end run separately from the backend, using the WordPress API to fetch 
 Start the front end with NPM.
 
 ```bash
-npm run build
-npm start
+npm run develop
 ```
 
 
 Copyright and License
 ============
-Code and documentation copyright 2017 Brett Berry. Code released under the MIT license. Docs released under Creative Commons.
+Code and documentation copyright 2018 Brett Berry. Code released under the MIT license. Docs released under Creative Commons.

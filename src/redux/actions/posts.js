@@ -6,20 +6,24 @@ import type { PostObject } from '../../types/wordpress';
 
 // $FlowFixMe
 const WORDPRESS_API_URI: string = process.env.WORDPRESS_API_URI;
+const WORDPRESS_API_PREFIX: string = process.env.WORDPRESS_API_PREFIX;
 
 export const fetchPosts = async (): PostObject[] => {
-  const res = await getRequest({ url: `${WORDPRESS_API_URI}/posts` });
+  const query = { rest_route: `${WORDPRESS_API_PREFIX}/posts` };
+  const res = await getRequest({ url: WORDPRESS_API_URI, query });
   const json = await res.json();
   // $FlowFixMe
   return json;
 };
 
 export const fetchPost = async (id: Id) => {
-  const res = await getRequest({ url: `${WORDPRESS_API_URI}/posts/${id}` });
+  const query = { rest_route: `${WORDPRESS_API_PREFIX}/posts/${id}` };
+  const res = await getRequest({ url: WORDPRESS_API_URI, query });
   return await res.json();
 };
 
 export const fetchPostsWithTag = async (tag: string) => {
-  const res = await getRequest({ url: `${WORDPRESS_API_URI}/posts?tags=${tag}` });
+  const query = { rest_route: `${WORDPRESS_API_PREFIX}/posts?tags=${tag}` };
+  const res = await getRequest({ url: WORDPRESS_API_URI });
   return await res.json();
 };
