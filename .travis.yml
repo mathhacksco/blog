@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  
+
 
 before_script:
   - npm install
@@ -16,6 +16,7 @@ notifications:
 
 deploy:
   provider: script
-  script: bash ./scripts/deploy-prod.sh
-  # on:
-  #   branch: master
+  script: ./scripts/deploy-prod.sh
+  on:
+    # branch: master
+    all_branches: true
