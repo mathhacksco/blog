@@ -1,7 +1,8 @@
+sudo: true
 language: node_js
 
-node_js:
-
+services:
+  - docker
 
 before_script:
   - npm install
