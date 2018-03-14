@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+deploy:
+  provider: script
+  script: bash ./scripts/deploy-prod.sh
+  on:
+    branch: master
