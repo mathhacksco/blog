@@ -70,12 +70,6 @@ module.exports = {
     },
     module: {
         loaders: [
-            // TODO
-            // {
-            //     test: /\.js$/,
-            //     loader: 'source-map-loader',
-            //     enforce: 'pre'
-            // },
             {
                 test: /\.jsx?$/,
                 loaders: _.compact([ (isDev && !isTest) && 'react-hot', 'babel']),
@@ -87,7 +81,7 @@ module.exports = {
                 loader: 'json'
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+                test: /\.(eot|ttf|woff|woff2|otf)$/,
                 loader: 'file?name=[name].[ext]'
             },
             {
@@ -113,6 +107,10 @@ module.exports = {
             {
                 test: /(\.scss)$/,
                 loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+            },
+            {
+                test: /(\.svg)$/,
+                loader: 'svg-inline-loader'
             }
         ]
     },

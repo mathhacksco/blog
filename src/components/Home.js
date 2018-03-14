@@ -14,6 +14,8 @@ import Map from './iterators/map/Map';
 import Slice from './iterators/slice/Slice';
 import Nth from './iterators/nth/Nth';
 import First from './iterators/first/First';
+import Header from './header/Header';
+import Footer from './footer/Footer';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -63,11 +65,13 @@ export default class Home extends Component<DefaultProps, Props, {}> {
   }
 
   render() {
+    const posts = this.props.posts.toArray();
     return (
       <HorizontallyCentered>
         <ContentMaxWidth>
+          <Header/>
           <First
-            array={this.props.posts.toArray()}
+            array={posts}
             render={post => (
               <HeroPostExcerpt id={post.id} post={post}/>
             )}
@@ -75,7 +79,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
           <Slice
             start={1}
             end={4}
-            array={this.props.posts.toArray()}
+            array={posts}
             render={sliced => (
               <Map
                 container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
@@ -88,7 +92,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
           <Slice
             start={4}
             end={6}
-            array={this.props.posts.toArray()}
+            array={posts}
             render={sliced => (
               <Map
                 container={({ children }) => (
@@ -105,7 +109,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
           <Slice
             start={6}
             end={8}
-            array={this.props.posts.toArray()}
+            array={posts}
             render={sliced => (
               <Map
                 container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
@@ -118,12 +122,13 @@ export default class Home extends Component<DefaultProps, Props, {}> {
           <RowLayout className="homepage-row-2">
             <Nth
               n={8}
-              array={this.props.posts.toArray()}
+              array={posts}
               render={post => (
                 <HeroPostExcerpt id={post.id} post={post}/>
               )}
             />
           </RowLayout>
+          <Footer/>
         </ContentMaxWidth>
       </HorizontallyCentered>
     );
