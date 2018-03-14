@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build -t mathhacksco/blog ./deploy/Dockerfile
+docker build -t mathhacksco/blog ./deploy
 docker run mathhacksco/blog
