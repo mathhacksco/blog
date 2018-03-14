@@ -1,35 +1,33 @@
+'use strict';
 
 const webpackConfig = require('./webpack.config.js');
 
-module.exports = function(config) {
-    config.set({
-        browsers: ['Chrome', 'PhantomJS'],
-        frameworks: ['jasmine'],
-        basePath: '',
-        autoWatch: false,
-        files: [
-            { pattern: 'tests/**/*.js' }
-        ],
-        preprocessors: {
-            'src/**/*.js': ['webpack', 'sourcemap'],
-            'tests/**/*.js': ['webpack', 'sourcemap']
-        },
-        webpack: webpackConfig,
-        client: {
-            captureConsole: true
-        },
-        reporters: ['dots'],
-        singleRun: true,
-        webpackMiddleware: {
-            noInfo: true
-        },
-        plugins: [
-            'karma-webpack',
-            'karma-jasmine',
-            'karma-sourcemap-loader',
-            'karma-chrome-launcher',
-            'karma-phantomjs-launcher'
-        ],
-        browserNoActivityTimeout: 60000
-    });
+module.exports = (config) => {
+  config.set({
+    browsers: ['PhantomJS'],
+    frameworks: ['jasmine'],
+    basePath: '',
+    autoWatch: false,
+    files: [
+      'node_modules/babel-polyfill/browser.js',
+      { pattern: 'tests/**/*.js' }
+    ],
+    client: {
+      captureConsole: true
+    },
+    preprocessors: {
+      'src/**/*.js': ['webpack'],
+      'tests/**/*.js': ['webpack']
+    },
+    reporters: ['dots'],
+    singleRun: true,
+    webpack: {
+      ...webpackConfig,
+      entry: null
+    },
+    webpackMiddleware: {
+      noInfo: true
+    },
+    browserNoActivityTimeout: 60000
+  });
 };
