@@ -1,0 +1,21 @@
+---
+- name: apt update
+  apt: update_cache=yes
+
+- name: check that nginx was installed
+  apt: name=nginx state=present
+
+- name: Create conf.d directory
+  file: path=/etc/nginx/conf.d state=directory
+
+- name: Create sites-enabled directory
+  file: path=/etc/nginx/sites-enabled state=directory
+
+- name: Create logs directory
+  file: path=/etc/nginx/logs state=directory
+
+- name: Create nginx.conf file from template
+  template:
+    src: "{{ role_path }}/files/nginx.conf"
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx

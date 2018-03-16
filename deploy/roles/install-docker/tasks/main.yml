@@ -13,7 +13,7 @@
 
 - lineinfile: dest="/etc/apt/sources.list.d/docker.list" line="{{ item }}"
   with_items:
-    - "deb https://apt.dockerproject.org/repo ubuntu-{{ ubuntu_version }} main"
+    - "deb https://apt.dockerproject.org/repo ubuntu-{{ ubuntu_version_name }} main"
 
 - name: apt update
   apt: update_cache=yes
