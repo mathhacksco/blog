@@ -1,4 +1,5 @@
 ---
+build_mysql_container: true
 mysql_root_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           39346164373666373764306634626365656436643161393865616362633439323037356465333738
