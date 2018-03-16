@@ -8,4 +8,5 @@
     build_mysql_container: false
   roles:
     - { role: './roles/mysql' }
+    - { role: './roles/awscli' }
     - { role: './roles/backup' }
