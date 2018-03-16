@@ -20,5 +20,4 @@ deploy:
   provider: script
   script: ./scripts/deploy-prod.sh
   on:
-    # branch: master
-    all_branches: true
+    branch: master
