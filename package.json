@@ -1,7 +1,7 @@
 {
-  "name": "web-boilerplate",
+  "name": "mathhacksco-blog",
   "version": "0.0.1",
-  "description": "Web Boilerplate",
+  "description": "Mathhacks.co blog",
   "main": "lib/index.js",
   "scripts": {
     "build:production": "NODE_ENV=production node_modules/.bin/webpack",
@@ -9,7 +9,9 @@
     "start": "node dev-server.js",
     "test": "karma start --single-run --browsers PhantomJS",
     "check": "./scripts/check.sh",
-    "develop": "npm run build && npm run start"
+    "develop": "npm run build && npm run start",
+    "flow": "flow",
+    "eslint": "eslint './src/**/*.js' index.js"
   },
   "author": "Jon Brennecke",
   "license": "MIT",

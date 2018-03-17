@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // $FlowFixMe
 import './Header.styles.scss';
+// $FlowFixMe
 import Logo from './logo.svg';
 
 type Props = {};

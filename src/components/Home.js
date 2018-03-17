@@ -11,6 +11,7 @@ import Paragraph from './paragraph/Paragraph';
 import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
+import Navigation from './navigation/Navigation';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 
@@ -66,6 +67,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
     return (
       <HorizontallyCentered>
         <ContentMaxWidth>
+          <Navigation/>
           <Header/>
           <First
             array={posts}
