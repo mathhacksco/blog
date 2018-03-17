@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Map, Slice, Nth, First } from 'react-iterators';
+import { Map, Slice, Nth, First } from 'react-iterators';
 
 import { fetchPosts } from '../redux/actionCreators/posts';
 import { getPosts } from '../redux/selectors/posts';

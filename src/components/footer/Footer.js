@@ -1,10 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import moment from 'moment';
-
-import MeasureContentRect from '../layout/measure-content-rect/MeasureContentRect';
-import ColumnLayout from '../layout/column-layout/ColumnLayout';
 
 // $FlowFixMe
 import './Footer.styles.scss';

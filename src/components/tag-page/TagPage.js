@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Promise from 'bluebird';
 // import { fetchTag } from '../../actions/tags';
 // import { fetchPostsByTag } from '../../actions/posts';
-// import PostExcerpt from '../PostExcerpt';
+import PostExcerpt from '../post-excerpt/PostExcerpt';
 import './TagPage.styles.scss';
 
 class TagPage extends Component {
