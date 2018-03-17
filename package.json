@@ -30,6 +30,7 @@
     "react-addons-shallow-compare": "15.3.1",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.3",
+    "react-iterators": "1.0.1",
     "react-measure": "^2.0.2",
     "react-redux": "^5.0.6",
     "react-router": "2.8.1",

@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import { Map, Slice, Nth, First } from 'react-iterators';
 
 import { fetchPosts } from '../redux/actionCreators/posts';
 import { getPosts } from '../redux/selectors/posts';
@@ -10,10 +11,6 @@ import Paragraph from './paragraph/Paragraph';
 import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
-import Map from './iterators/map/Map';
-import Slice from './iterators/slice/Slice';
-import Nth from './iterators/nth/Nth';
-import First from './iterators/first/First';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 
