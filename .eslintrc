@@ -121,7 +121,7 @@
         "func-names": 0,
         "func-style": [ 0, "expression" ],
         "key-spacing": [ 2, { "beforeColon": false, "afterColon": true }],
-        "linebreak-style": [ 2, "unix" ],
+        "linebreak-style": 0,
         "lines-around-comment": [ 2, {
           "beforeBlockComment": false,
           "afterBlockComment": false,
