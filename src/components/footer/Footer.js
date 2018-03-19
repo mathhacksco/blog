@@ -1,5 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 // $FlowFixMe
@@ -24,7 +25,9 @@ export default class Footer extends Component<DefaultProps, Props, State> {
     return (
       <footer className="footer">
         <p>
-          Copyright {COPYRIGHT_YEAR}, {COPYRIGHT_HOLDER}
+          <span>Copyright {COPYRIGHT_YEAR}, </span>
+          <Link to="/about" className="author-link">{COPYRIGHT_HOLDER}</Link>
+          <span>, All Rights Reserved</span>
         </p>
       </footer>
     );

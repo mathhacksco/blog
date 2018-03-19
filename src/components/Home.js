@@ -12,7 +12,6 @@ import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
 import Navigation from './navigation/Navigation';
-import Header from './header/Header';
 import Footer from './footer/Footer';
 
 // $FlowFixMe
@@ -68,8 +67,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
       <HorizontallyCentered>
         <ContentMaxWidth>
           <Navigation/>
-          <Header/>
-          <First
+          {/* <First
             array={posts}
             render={post => (
               <HeroPostExcerpt id={post.id} post={post}/>
@@ -86,9 +84,8 @@ export default class Home extends Component<DefaultProps, Props, {}> {
                 render={post => <PostExcerpt id={post.id} post={post}/>}
               />
             )}
-          />
-          {/* <NewsletterSignup/> */}
-          <Slice
+          /> */}
+          {/* <Slice
             start={4}
             end={6}
             array={posts}
@@ -127,7 +124,8 @@ export default class Home extends Component<DefaultProps, Props, {}> {
               )}
             />
           </RowLayout>
-          <Footer/>
+          */}
+          <Footer/> 
         </ContentMaxWidth>
       </HorizontallyCentered>
     );
@@ -163,12 +161,3 @@ function InstagramLink() {
     </a>
   );
 }
-
-// function NewsletterSignup() {
-//   return (
-//     <ColumnLayout>
-//       <input/>
-//       <OutlineButton/>
-//     </ColumnLayout>
-//   );
-// }

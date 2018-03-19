@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../logo/Logo';
 
 // $FlowFixMe
 import './Navigation.styles.scss';
@@ -29,11 +30,17 @@ export default class Navigation extends Component<DefaultProps, Props, State> {
         <Link to="/blog" className="nav-link">
           Blog
         </Link>
+        {/* <Link to="/" className="nav-link"> */}
+          <Logo/>
+        {/* </Link> */}
         <Link to="/about" className="nav-link">
           About
         </Link>
         <Link to="/contact" className="nav-link">
           Contact
+        </Link>
+        <Link to="/" className="nav-link">
+          Get Started
         </Link>
       </nav>
     );

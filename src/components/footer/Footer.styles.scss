@@ -1,0 +1,23 @@
+$dark-grey: #3C4851;
+
+.footer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  color: $dark-grey;
+
+  p {
+    text-align: center;
+  }
+
+  .author-link {
+    line-height: 0.75;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom-color: $dark-grey;
+      border-bottom-style: dotted;
+      border-bottom-width: 2px;
+    }
+  }
+}
