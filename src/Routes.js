@@ -10,6 +10,7 @@ import Home from './components/Home';
 import PostPage from './components/post-page/PostPage';
 import PostsPage from './components/posts-page/PostsPage';
 import TagPage from './components/tag-page/TagPage';
+import AboutPage from './components/about-page/AboutPage';
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
       <Route path="/">
         <App>
           <Route path="/" exact component={Home}/>
+          <Route path="/about" exact component={AboutPage}/>
           <Route path="/posts" component={PostsPage}/>
           <Route path="/posts/:id" component={PostPage}/>
           <Route path="/tags/:id" component={TagPage}/>

@@ -9,5 +9,20 @@ export type PostObject = {
   excerpt: {
     rendered: string;
   };
+  content: {
+    rendered: string;
+  };
+  date_gmt: string;
+};
+
+export type PageObject = {
+  id: Id;
+  slug: string;
+  title: {
+    rendered: string;
+  };
+  excerpt: {
+    rendered: string;
+  };
   date_gmt: string;
 };
