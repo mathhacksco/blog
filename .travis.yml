@@ -20,4 +20,4 @@ deploy:
   provider: script
   script: ./scripts/deploy-prod.sh
   on:
-    branch: master
+    branch: jonbrennecke/frontend-deploy
