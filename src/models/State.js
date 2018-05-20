@@ -7,6 +7,7 @@ import type Post from './Post';
 import type { PostObject } from '../types/wordpress';
 
 type PostCollectionConvertible = PostObject[] | Post[] | PostCollection;
+type PostConvertible = PostObject | Post;
 
 export default class State extends Model {
 
@@ -23,5 +24,9 @@ export default class State extends Model {
 
   setPosts(posts: PostCollectionConvertible): State {
     return this.set('posts', posts);
+  }
+
+  addPost(post: PostConvertible): State {
+    return this.set('posts', this._posts.push(post));
   }
 }

@@ -7,11 +7,7 @@ import { fetchPosts } from '../redux/actionCreators/posts';
 import { getPosts } from '../redux/selectors/posts';
 import PostExcerpt from './post-excerpt/PostExcerpt';
 import HeroPostExcerpt from './hero-post-excerpt/HeroPostExcerpt';
-import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
-import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
-import Navigation from './navigation/Navigation';
-import Footer from './footer/Footer';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -63,69 +59,65 @@ export default class Home extends Component<DefaultProps, Props, {}> {
   render() {
     const posts = this.props.posts.toArray();
     return (
-      <HorizontallyCentered>
-        <ContentMaxWidth>
-          <Navigation/>
-          <First
+      <div>
+        <First
+          array={posts}
+          render={post => (
+            <HeroPostExcerpt key={post.id} id={post.id} post={post}/>
+          )}
+        />
+        <Slice
+          start={1}
+          end={4}
+          array={posts}
+          render={sliced => (
+            <Map
+              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
+              array={sliced}
+              render={post => <PostExcerpt key={post.id} id={post.id} post={post}/>}
+            />
+          )}
+        />
+        <Slice
+          start={4}
+          end={6}
+          array={posts}
+          render={sliced => (
+            <Map
+              container={({ children }) => (
+                <RowLayout className="homepage-row-2">
+                  {/* <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/> */}
+                  {children}
+                </RowLayout>
+              )}
+              array={sliced}
+              render={post => <PostExcerpt id={post.id} post={post}/>}
+            />
+          )}
+        />
+        <Slice
+          start={6}
+          end={8}
+          array={posts}
+          render={sliced => (
+            <Map
+              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
+              array={sliced}
+              render={post => <PostExcerpt id={post.id} post={post}/>}
+            />
+          )}
+        />
+        {/* <SocialLinks/> */}
+        <RowLayout className="homepage-row-2">
+          <Nth
+            n={8}
             array={posts}
             render={post => (
-              <HeroPostExcerpt key={post.id} id={post.id} post={post}/>
+              <HeroPostExcerpt id={post.id} post={post}/>
             )}
           />
-          <Slice
-            start={1}
-            end={4}
-            array={posts}
-            render={sliced => (
-              <Map
-                container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
-                array={sliced}
-                render={post => <PostExcerpt key={post.id} id={post.id} post={post}/>}
-              />
-            )}
-          />
-          <Slice
-            start={4}
-            end={6}
-            array={posts}
-            render={sliced => (
-              <Map
-                container={({ children }) => (
-                  <RowLayout className="homepage-row-2">
-                    {/* <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/> */}
-                    {children}
-                  </RowLayout>
-                )}
-                array={sliced}
-                render={post => <PostExcerpt id={post.id} post={post}/>}
-              />
-            )}
-          />
-          <Slice
-            start={6}
-            end={8}
-            array={posts}
-            render={sliced => (
-              <Map
-                container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
-                array={sliced}
-                render={post => <PostExcerpt id={post.id} post={post}/>}
-              />
-            )}
-          />
-          {/* <SocialLinks/> */}
-          <RowLayout className="homepage-row-2">
-            <Nth
-              n={8}
-              array={posts}
-              render={post => (
-                <HeroPostExcerpt id={post.id} post={post}/>
-              )}
-            />
-          </RowLayout>
-          <Footer/>
-        </ContentMaxWidth>
-      </HorizontallyCentered>
+        </RowLayout>
+      </div>
     );
   }
 }

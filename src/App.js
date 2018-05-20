@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
+import ContentMaxWidth from './components/layout/content-max-width/ContentMaxWidth';
+import HorizontallyCentered from './components/layout/horizontally-centered/HorizontallyCentered';
+import Navigation from './components/navigation/Navigation';
+import Footer from './components/footer/Footer';
 import Typography from './components/typography/Typography';
 import store from './redux/store';
 
@@ -48,7 +52,13 @@ export default class App extends Component<DefaultProps, Props, State> {
             </style>
           </Helmet>
           <Typography/>
-          {this.props.children}
+          <HorizontallyCentered>
+            <ContentMaxWidth>
+              <Navigation/>
+              {this.props.children}
+            </ContentMaxWidth>
+          </HorizontallyCentered>
+          <Footer/>
         </div>
       </Provider>
     );

@@ -2,12 +2,15 @@
 import React, { Component } from 'react';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
+import toNumber from 'lodash/toNumber';
 
 import { fetchPost } from '../../redux/actionCreators/posts';
+import { getPosts } from '../../redux/selectors/posts';
 import Post from '../post/Post';
 
 import type { State as AppState, Dispatch } from '../../types/redux';
 import type { Id, RouteParams } from '../../types/general';
+import type PostCollection from '../../models/PostCollection';
 
 // $FlowFixMe
 import './PostPage.styles.scss';
@@ -17,7 +20,7 @@ type OwnProps = {
 };
 
 type StateProps = {
-
+  posts: PostCollection,
 };
 
 type DispatchProps = {
@@ -35,7 +38,9 @@ type State = {
 };
 
 function mapStateToProps(state: AppState): StateProps {
-  return {};
+  return {
+    posts: getPosts(state)
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
@@ -54,7 +59,7 @@ class PostPage extends Component<DefaultProps, Props, State> {
   static defaultProps: DefaultProps = {};
 
   componentDidMount() {
-    const id = this.props.routeParams.id;
+    const id = this.props.match.params.id;
     this.props.fetchPost(id);
   }
 
@@ -66,14 +71,12 @@ class PostPage extends Component<DefaultProps, Props, State> {
         </div>
       );
     }
-    if (!this.state.post) {
+    const id = toNumber(this.props.match.params.id);
+    const post = this.props.posts.findById(id);
+    if (!post) {
       return null;
     }
-    return (
-        <div className="postPage">
-          <Post post={this.state.post} tags={[]}/>
-        </div>
-    );
+    return <Post post={post} tags={[]}/>;
   }
 }
 

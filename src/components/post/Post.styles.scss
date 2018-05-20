@@ -1,6 +1,5 @@
 $font-family: "Montserrat", sans-serif;
 $text-family: "Martel", sans-serif;
-$purple: #79589f;
 $text-color: #383e40;
 
 .postContainer {
@@ -12,7 +11,10 @@ $text-color: #383e40;
 
 .postTitle {
   font-family: $font-family;
-  color: $purple;
+  display: inline;
+  font-weight: bold;
+  border-radius: 2px;
+  color: #3C4851;
 }
 
 .postDate {
@@ -26,49 +28,6 @@ $text-color: #383e40;
 
 .postContent {
   line-height: 1.85;
-
-  h1, h2, h3, h4, h5 {
-    font-family: $font-family;
-    color: $purple;
-    font-weight: 600;
-  }
-
-  h2 {
-    font-size: 30px;
-    padding-top: 25px;
-  }
-
-  h3 {
-    font-size: 40px;
-    padding-top: 20px;
-    margin: 0;
-  }
-
-  h4 {
-    font-size: 30px;
-    padding-top: 20px;
-    margin: 0;
-  }
-
-  p {
-    font-family: $text-family;
-    color: $text-color;
-    font-size: 19px;
-    font-weight: 300;
-    margin-bottom: 35px;
-  }
-
-  figure {
-    display: flex;
-    justify-content: center;
-  }
-
-  li {
-    font-family: $text-family;
-    color: $text-color;
-    font-size: 19px;
-    font-weight: 300;
-  }
 }
 
 body {
