@@ -9,19 +9,20 @@
     state: present
 
 - name: synchronize source folder
-  # synchronize:
-  #   src: "{{ role_path }}/../../"
-  #   dest: ~/frontend
   copy:
     src: "{{ role_path }}/../../"
     dest: ~/frontend
     remote: yes
 
 - name: install node modules
-  command: npm install
+  command: bash -lc "npm install"
+  args:
+    chdir: ~/frontend
 
 - name: build production javascript/html/css bundles
-  command: npm run build:production
+  command: bash -lc "npm run build:production"
+  args:
+    chdir: ~/frontend
 
 - name: sync backup to s3
   command: aws s3 cp ~/mysql_backup_{{ backup_timestamp }}.sql.tgz s3://{{ aws_public_bucket }} --force --acl public-read
