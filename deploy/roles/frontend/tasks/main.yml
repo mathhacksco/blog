@@ -9,9 +9,13 @@
     state: present
 
 - name: synchronize source folder
-  synchronize:
+  # synchronize:
+  #   src: "{{ role_path }}/../../"
+  #   dest: ~/frontend
+  copy:
     src: "{{ role_path }}/../../"
     dest: ~/frontend
+    remote: yes
 
 - name: install node modules
   command: npm install
