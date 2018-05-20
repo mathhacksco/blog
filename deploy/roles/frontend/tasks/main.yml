@@ -1,4 +1,15 @@
 ---
+- name: install homebrew
+  # NOTE: output is redirected to /dev/null since homebrew will prompt if stdin is not a TTY
+  shell: echo "{{ ansible_sudo_pass }}" | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+  args:
+    creates: /usr/local/bin/brew
+
+- name: ensure homebrew is updated 
+  homebrew:
+    state: latest
+    update_homebrew: yes
+
 - name: install node
   homebrew:
     name: node
