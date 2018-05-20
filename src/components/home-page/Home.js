@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Slice, Nth, First } from 'react-iterators';
 
-import { fetchPosts } from '../redux/actionCreators/posts';
-import { getPosts } from '../redux/selectors/posts';
-import PostExcerpt from './post-excerpt/PostExcerpt';
-import HeroPostExcerpt from './hero-post-excerpt/HeroPostExcerpt';
-import RowLayout from './layout/row-layout/RowLayout';
+import { fetchPosts } from '../../redux/actionCreators/posts';
+import { getPosts } from '../../redux/selectors/posts';
+import PostExcerpt from '../post-excerpt/PostExcerpt';
+import HeroPostExcerpt from '../hero-post-excerpt/HeroPostExcerpt';
+import RowLayout from '../layout/row-layout/RowLayout';
 
 // $FlowFixMe
 import './Home.styles.scss';
 
-import type State from '../models/State';
-import type PostCollection from '../models/PostCollection';
-import type { Dispatch } from '../types/redux';
+import type State from '../../models/State';
+import type PostCollection from '../../models/PostCollection';
+import type { Dispatch } from '../../types/redux';
 
 type OwnProps = {
   children?: ?Node | ?Node[];

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import classnames from 'classnames';
 
 // $FlowFixMe
 import './PostExcerpt.styles.scss';
@@ -10,6 +11,7 @@ import type Post from '../../models/Post';
 
 type Props = {
   post: Post;
+  className: ?string;
 };
 
 type DefaultProps = {};
@@ -24,7 +26,7 @@ export default class PostExcerpt extends Component<DefaultProps, Props, State> {
 
   render() {
     return (
-      <div className="post-excerpt">
+      <div className={classnames('post-excerpt', this.props.className)}>
         <Link to={`posts/${this.props.post.id}`} className="title-link">
           <h2 dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
         </Link>
