@@ -20,7 +20,7 @@ class Post extends Component {
       <div className="postContainer">
         <h1 className="postTitle" dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
         {this.renderTags()}
-        <p className="postContent" dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>
+        <p className="postContent" dangerouslySetInnerHTML={{ __html: this.props.post.content.rendered }}/>
       </div>
     );
   }

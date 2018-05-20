@@ -30,9 +30,9 @@ export default class Navigation extends Component<DefaultProps, Props, State> {
         <Link to="/blog" className="nav-link">
           Blog
         </Link>
-        {/* <Link to="/" className="nav-link"> */}
+        <Link to="/" className="nav-link nav-link-logo">
           <Logo/>
-        {/* </Link> */}
+        </Link>
         <Link to="/about" className="nav-link">
           About
         </Link>

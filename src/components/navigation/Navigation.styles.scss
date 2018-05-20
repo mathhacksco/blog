@@ -8,6 +8,11 @@ $dark-grey: #3C4851;
   padding-top: 35px;
   padding-bottom: 35px;
 
+  .nav-link-logo {
+    display: flex;
+    flex: 1;
+  }
+
   .nav-link {
     margin-left: 13px;
     margin-right: 13px;

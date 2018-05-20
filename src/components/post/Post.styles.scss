@@ -28,8 +28,9 @@ $text-color: #383e40;
 
 .postContent {
   line-height: 1.85;
-}
 
-body {
-  -webkit-font-smoothing: antialiased;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
