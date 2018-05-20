@@ -7,7 +7,6 @@ import { fetchPosts } from '../redux/actionCreators/posts';
 import { getPosts } from '../redux/selectors/posts';
 import PostExcerpt from './post-excerpt/PostExcerpt';
 import HeroPostExcerpt from './hero-post-excerpt/HeroPostExcerpt';
-import Paragraph from './paragraph/Paragraph';
 import ContentMaxWidth from './layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from './layout/horizontally-centered/HorizontallyCentered';
 import RowLayout from './layout/row-layout/RowLayout';
@@ -67,10 +66,10 @@ export default class Home extends Component<DefaultProps, Props, {}> {
       <HorizontallyCentered>
         <ContentMaxWidth>
           <Navigation/>
-          {/* <First
+          <First
             array={posts}
             render={post => (
-              <HeroPostExcerpt id={post.id} post={post}/>
+              <HeroPostExcerpt key={post.id} id={post.id} post={post}/>
             )}
           />
           <Slice
@@ -81,11 +80,11 @@ export default class Home extends Component<DefaultProps, Props, {}> {
               <Map
                 container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
                 array={sliced}
-                render={post => <PostExcerpt id={post.id} post={post}/>}
+                render={post => <PostExcerpt key={post.id} id={post.id} post={post}/>}
               />
             )}
-          /> */}
-          {/* <Slice
+          />
+          <Slice
             start={4}
             end={6}
             array={posts}
@@ -93,7 +92,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
               <Map
                 container={({ children }) => (
                   <RowLayout className="homepage-row-2">
-                    <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/>
+                    {/* <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/> */}
                     {children}
                   </RowLayout>
                 )}
@@ -114,7 +113,7 @@ export default class Home extends Component<DefaultProps, Props, {}> {
               />
             )}
           />
-          <SocialLinks/>
+          {/* <SocialLinks/> */}
           <RowLayout className="homepage-row-2">
             <Nth
               n={8}
@@ -124,40 +123,39 @@ export default class Home extends Component<DefaultProps, Props, {}> {
               )}
             />
           </RowLayout>
-          */}
-          <Footer/> 
+          <Footer/>
         </ContentMaxWidth>
       </HorizontallyCentered>
     );
   }
 }
 
-
-function SocialLinks() {
-  return (
-    <RowLayout className="social-links">
-      <div className="half">
-        <TwitterLink/>
-      </div>
-      <div className="half">
-        <InstagramLink/>
-      </div>
-    </RowLayout>
-  );
-}
-
-function TwitterLink() {
-  return (
-    <a className="social-link" href={"https://twitter.com/BrettEBerry"}>
-      <h1>Twitter</h1>
-    </a>
-  );
-}
-
-function InstagramLink() {
-  return (
-    <a className="social-link" href={"https://www.instagram.com/bretteberry/"}>
-      <h1>Instagram</h1>
-    </a>
-  );
-}
+//
+// function SocialLinks() {
+//   return (
+//     <RowLayout className="social-links">
+//       <div className="half">
+//         <TwitterLink/>
+//       </div>
+//       <div className="half">
+//         <InstagramLink/>
+//       </div>
+//     </RowLayout>
+//   );
+// }
+//
+// function TwitterLink() {
+//   return (
+//     <a className="social-link" href={"https://twitter.com/BrettEBerry"}>
+//       <h1>Twitter</h1>
+//     </a>
+//   );
+// }
+//
+// function InstagramLink() {
+//   return (
+//     <a className="social-link" href={"https://www.instagram.com/bretteberry/"}>
+//       <h1>Instagram</h1>
+//     </a>
+//   );
+// }
