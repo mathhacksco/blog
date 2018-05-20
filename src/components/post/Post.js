@@ -1,7 +1,9 @@
-
+// @flow
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+
 import './Post.styles.scss';
 
 class Post extends Component {
@@ -19,6 +21,7 @@ class Post extends Component {
     return (
       <div className="postContainer">
         <h1 className="postTitle" dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
+        <p className="timestamp">{moment.utc(this.props.post.dateGMT).fromNow()}</p>
         {this.renderTags()}
         <p className="postContent" dangerouslySetInnerHTML={{ __html: this.props.post.content.rendered }}/>
       </div>

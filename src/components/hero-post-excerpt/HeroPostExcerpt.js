@@ -37,9 +37,7 @@ export default class HeroPostExcerpt extends Component<DefaultProps, Props, Stat
         />
         <ColumnLayout className="half">
           <Link to={`posts/${this.props.post.id}`} className="title-link">
-            <h2>
-              <span dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
-            </h2>
+            <h2 dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
           </Link>
           <p className="timestamp">{moment.utc(this.props.post.dateGMT).fromNow()}</p>
           <p dangerouslySetInnerHTML={{ __html: this.props.post.excerpt.rendered }}/>

@@ -40,15 +40,14 @@ export default class App extends Component<DefaultProps, Props, State> {
             <link rel="canonical" href="http://mysite.com/example" />
             <title>Math Hacks</title>
             <style>{`
-                html, body, main {
-                    margin: 0;
-                    width: 100%;
-                }
-
-                * {
-                    box-sizing: border-box;
-                }
-              `}
+              html, body, main {
+                margin: 0;
+                width: 100%;
+              }
+              * {
+                box-sizing: border-box;
+              }
+            `}
             </style>
           </Helmet>
           <Typography/>
