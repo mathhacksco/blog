@@ -5,27 +5,57 @@
 
 - name: install node
   apt:
-    name: nodejs
+    name: "{{ item }}"
     state: present
+  with_items:
+    - nodejs
+    - npm
+    - build-essential
 
 - name: synchronize source folder
-  copy:
-    src: "{{ role_path }}/../../"
+  synchronize:
+    src: "{{ role_path }}/../../../"
     dest: ~/frontend
-    remote: yes
+    rsync_opts:
+      - "--exclude=node_modules"
+
+- name: check if swapfile exists
+  stat:
+    path: /swapfile
+  register: swapfile_stat_result
+
+- name: create swap file
+  command: fallocate -l 4G /swapfile
+  when: swapfile_stat_result.stat.exists == False
+
+- command: chmod 600 /swapfile
+  when: swapfile_stat_result.stat.exists == False
+
+- command: mkswap /swapfile
+  when: swapfile_stat_result.stat.exists == False
+
+- command: swapon /swapfile
+  when: swapfile_stat_result.stat.exists == False
+
+# see https://github.com/sass/node-sass/issues/1601
+- name: fix node-sass for ubuntu 16.04
+  file:
+    src: /usr/bin/nodejs
+    dest: /usr/bin/node
+    state: link
 
 - name: install node modules
-  command: bash -lc "npm install"
+  command: npm install
   args:
     chdir: ~/frontend
 
 - name: build production javascript/html/css bundles
-  command: bash -lc "npm run build:production"
+  command: npm run build:production
   args:
     chdir: ~/frontend
 
 - name: sync backup to s3
-  command: aws s3 cp ~/mysql_backup_{{ backup_timestamp }}.sql.tgz s3://{{ aws_public_bucket }} --force --acl public-read
+  command: aws s3 cp ~/frontend/public s3://{{ aws_public_bucket }} --force --acl public-read --recursive
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_public_access_key_id }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_public_secret_access_key }}"
