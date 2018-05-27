@@ -61,8 +61,6 @@ export default class AboutPage extends Component<DefaultProps, Props, State> {
 
   render() {
     const page = this.props.pages.findBySlug('about');
-    console.log(this.props.pages.toArray())
-    console.log(page);
     if (!page) {
       return null;
     }
