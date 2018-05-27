@@ -1,0 +1,32 @@
+---
+- name: list backups on s3
+  command: bash -lc "aws s3 ls s3://{{ aws_backups_bucket }} | tail -n1 | awk '{print $4}'"
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ aws_backups_access_key_id }}"
+    AWS_SECRET_ACCESS_KEY: "{{ aws_backups_secret_access_key }}"
+  register: list_backups_result
+
+- set_fact:
+    backup_filename: "{{ list_backups_result.stdout }}"
+
+- name: copy backup file to local filesystem
+  command: aws s3 cp s3://{{ aws_backups_bucket }}/{{ backup_filename }} {{ backup_filename }}
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ aws_backups_access_key_id }}"
+    AWS_SECRET_ACCESS_KEY: "{{ aws_backups_secret_access_key }}"
+  creates: "~/{{ backup_filename }}"
+
+- command: bash -lc "gunzip -c ~/{{ backup_filename }} > ~/mysql_import.sql"
+  creates: "~/mysql_import.sql"
+
+- name: import dump into mysql in running container
+  command: >
+    bash -cl "\
+      docker exec mathhacks-wordpress-db \
+        bash -c 'exec mysql --max_allowed_packet=256M -uroot -p"{{ mysql_root_password }}"' \
+        > ~/mysql_import.sql"
+
+- name: clear backup file
+  file:
+    path: ~/mysql_import.sql
+    state: absent

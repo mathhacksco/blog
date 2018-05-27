@@ -9,4 +9,4 @@ fi
 ansible-playbook \
     -M command \
     -i ./inventory/digitalocean \
-    ./plays/backup.yml
+    ./plays/restore.yml -vvvvv

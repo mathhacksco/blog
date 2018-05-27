@@ -22,10 +22,10 @@
 - name: archive backup file
   archive:
     path: ~/mysql_backup_{{ backup_timestamp }}.sql
-    dest: ~/mysql_backup_{{ backup_timestamp }}.sql.tgz
+    dest: ~/mysql_backup_{{ backup_timestamp }}.sql.gz
 
 - name: sync backup to s3
-  command: aws s3 cp ~/mysql_backup_{{ backup_timestamp }}.sql.tgz s3://{{ aws_backups_bucket }} --force --acl private
+  command: aws s3 cp ~/mysql_backup_{{ backup_timestamp }}.sql.gz s3://{{ aws_backups_bucket }} --force --acl private
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_backups_access_key_id }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_backups_secret_access_key }}"
