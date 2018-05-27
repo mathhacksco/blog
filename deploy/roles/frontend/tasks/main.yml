@@ -1,15 +1,14 @@
 ---
-- name: apt update
-  apt:
-    update_cache: yes
+- name: "install node (part #1)"
+  command: bash -lc "curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -"
 
-- name: install node
+- name: "install node (part #2)"
   apt:
     name: "{{ item }}"
     state: present
+    force_apt_get: yes
   with_items:
     - nodejs
-    - npm
     - build-essential
 
 - name: synchronize source folder
@@ -36,13 +35,6 @@
 
 - command: swapon /swapfile
   when: swapfile_stat_result.stat.exists == False
-
-# see https://github.com/sass/node-sass/issues/1601
-- name: fix node-sass for ubuntu 16.04
-  file:
-    src: /usr/bin/nodejs
-    dest: /usr/bin/node
-    state: link
 
 - name: install node modules
   command: npm install
