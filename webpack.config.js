@@ -5,12 +5,12 @@ const fs = require('fs');
 const _ = require('lodash');
 const yaml = require('js-yaml');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const DotenvPlugin = require('webpack-dotenv-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const isTest = process.env.NODE_ENV == 'test';
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const libraryName = 'portfolio';
@@ -19,30 +19,20 @@ const yamlPath = path.resolve('app.yml');
 const yamlConfig = yaml.load(fs.readFileSync(yamlPath, 'utf8'));
 
 module.exports = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     target: 'web',
-    debug: isDev,
     entry: _.extend({
-
-        // Note: entry points must be in arrays to fix a strange bug with webpack
-        // See: "A dependency to an entry point is not allowed"
-        // https://github.com/webpack/webpack/issues/300
-        index: ['./src/index.js'],
+        index: './src/index.js',
         vendor: [
             'react',
             'react-dom'
 		]
     },
-    (isDev && !isTest) && {
+    isDev && {
         'hotLoader': 'webpack-hot-middleware/client'
     }),
-    externals: isTest ? {
-        'react': true,
-        'react-dom': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-    } : {},
     context: __dirname,
-    devtool: isProduction ? 'inline-source-map' : 'source-map',
+    devtool: 'source-map',
     node: {
         __filename: true,
         __dirname: true,
@@ -57,66 +47,68 @@ module.exports = {
         umdNamedDefine: true
     },
     resolve: {
-        modulesDirectories: [
+        modules: [
             'node_modules',
             path.resolve(__dirname, './node_modules')
         ],
-        extensions: ['', '.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
         alias: {
             '~': path.resolve(__dirname, 'src'),
-            modernizr$: path.resolve(__dirname, '.modernizrrc'),
             'react-redux': path.join(__dirname, '/node_modules/react-redux/dist/react-redux.min')
         }
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loaders: _.compact([ (isDev && !isTest) && 'react-hot', 'babel']),
                 exclude: /node_modules/,
-                presets: ['react']
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
+                use: _.compact([ isDev && 'react-hot-loader', 'babel-loader'])
             },
             {
                 test: /\.(eot|ttf|woff|woff2|otf)$/,
-                loader: 'file?name=[name].[ext]'
+                use: 'file-loader?name=[name].[ext]'
             },
             {
-                test: /\.modernizrrc$/,
-                loader: 'modernizr'
-            },
-            {
-                test: /\.ejs$/,
-                loader: 'ejs'
-            },
-            {
-                test: /\.(frag|vert)$/,
-                loader: 'raw'
+                test: /\.html$/,
+                use: 'html-loader'
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css')
+                use: [
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
                 test: /\.(jpg|png)$/,
-                loader: 'file?name=[name].[ext]'
+                use: {
+                    loader: 'file-loader?name=[name].[ext]'
+                }
             },
             {
-                test: /(\.scss)$/,
-                loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+                test: /\.s?[ac]ss$/,
+                use: [
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /(\.svg)$/,
-                loader: 'svg-inline-loader'
+                use: {
+                    loader: 'svg-inline-loader'
+                }
             }
         ]
     },
-    postcss: [autoprefixer],
     plugins: _.compact([
-        new ExtractTextPlugin(libraryName + '.css', { allChunks: true }),
+        isProduction && new CleanWebpackPlugin(['public']),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             PROJECT_ROOT: path.join('"', __dirname, '"'),
@@ -125,7 +117,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: path.join(__dirname, 'template.ejs'),
+            template: path.join(__dirname, 'template.html'),
             chunks: ['index', 'vendor', 'hotLoader', 'common'],
             excludeChunks: [],
             chunksSortMode: 'dependency'
@@ -134,14 +126,12 @@ module.exports = {
           sample: './.env',
           path: './.env'
         }),
-
-        (isDev && !isTest) && new webpack.HotModuleReplacementPlugin(),
-
-        isProduction && new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: true
-            }
+        new UglifyJSPlugin({
+            sourceMap: true
         }),
-        isProduction && new webpack.optimize.DedupePlugin()
-    ])
+        isDev && new webpack.HotModuleReplacementPlugin()
+    ]),
+    optimization: {
+        minimize: isProduction
+    }
 };
