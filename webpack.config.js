@@ -64,7 +64,6 @@ module.exports = {
         extensions: ['', '.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
         alias: {
             '~': path.resolve(__dirname, 'src'),
-            modernizr$: path.resolve(__dirname, '.modernizrrc'),
             'react-redux': path.join(__dirname, '/node_modules/react-redux/dist/react-redux.min')
         }
     },
@@ -85,16 +84,8 @@ module.exports = {
                 loader: 'file?name=[name].[ext]'
             },
             {
-                test: /\.modernizrrc$/,
-                loader: 'modernizr'
-            },
-            {
                 test: /\.ejs$/,
                 loader: 'ejs'
-            },
-            {
-                test: /\.(frag|vert)$/,
-                loader: 'raw'
             },
             {
                 test: /\.css$/,

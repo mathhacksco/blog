@@ -17,7 +17,6 @@
   "license": "MIT",
   "repository": "https://github.com/caldera-design/web-boilerplate.git",
   "dependencies": {
-    "animate.css": "^3.5.2",
     "bluebird": "^3.4.1",
     "caldera-immutable-model": "^1.0.1",
     "classnames": "^2.2.5",
@@ -27,11 +26,9 @@
     "lodash": "4.14.1",
     "moment": "^2.21.0",
     "prop-types": "^15.5.10",
-    "radium": "0.23.0",
     "react": "16.2.0",
     "react-addons-shallow-compare": "15.3.1",
     "react-helmet": "^5.2.0",
-    "react-icons": "^2.2.3",
     "react-iterators": "1.0.1",
     "react-measure": "^2.0.2",
     "react-redux": "^5.0.6",
@@ -45,11 +42,7 @@
     "redux-storage-merger-immutablejs": "^1.0.5",
     "redux-thunk": "^2.2.0",
     "typography": "^0.16.6",
-    "typography-theme-grand-view": "^0.15.10",
-    "typography-theme-irving": "^0.15.10",
-    "typography-theme-moraga": "^0.15.10",
-    "typography-theme-sutro": "^0.15.10",
-    "typography-theme-us-web-design-standards": "^0.16.9"
+    "typography-theme-irving": "^0.15.10"
   },
   "devDependencies": {
     "@types/react": "^15.6.6",
