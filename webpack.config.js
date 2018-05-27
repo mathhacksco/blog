@@ -8,6 +8,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const isTest = process.env.NODE_ENV == 'test';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -25,7 +27,7 @@ module.exports = {
         // Note: entry points must be in arrays to fix a strange bug with webpack
         // See: "A dependency to an entry point is not allowed"
         // https://github.com/webpack/webpack/issues/300
-        index: ['./src/index.js'],
+        index: './src/index.js',
         vendor: [
             'react',
             'react-dom'
@@ -41,7 +43,7 @@ module.exports = {
         'react/lib/ReactContext': true
     } : {},
     context: __dirname,
-    devtool: isProduction ? 'inline-source-map' : 'source-map',
+    devtool: 'source-map',
     node: {
         __filename: true,
         __dirname: true,
@@ -88,8 +90,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader'
                 ]
@@ -103,8 +104,7 @@ module.exports = {
             {
                 test: /\.s?[ac]ss$/,
                 use: [
-                    // isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
                     'sass-loader'
@@ -119,10 +119,11 @@ module.exports = {
         ]
     },
     plugins: _.compact([
-        // new MiniCssExtractPlugin({
-        //     filename: '[name].css',
-        //     chunkFilename: '[id].css'
-        // }),
+        isProduction && new CleanWebpackPlugin(['public']),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             PROJECT_ROOT: path.join('"', __dirname, '"'),
@@ -140,7 +141,9 @@ module.exports = {
           sample: './.env',
           path: './.env'
         }),
-
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
         (isDev && !isTest) && new webpack.HotModuleReplacementPlugin()
     ]),
     optimization: {
