@@ -15,7 +15,7 @@ aws_backups_secret_access_key: !vault |
           33363064616638626564646637636331316531653936386266313064643164373566653532353661
           3135363661343933363563386163353931336132313664366537
 aws_backups_bucket: backups.prod.mathhacks.co
-aws_public_bucket: prod.mathhacks.co
+aws_public_bucket: mathhacks.co
 aws_public_access_key_id: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           32366537373031663933643761343763316137343033663063616665346230396637393731316236
