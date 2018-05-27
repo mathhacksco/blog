@@ -11,7 +11,6 @@ const DotenvPlugin = require('webpack-dotenv-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const isTest = process.env.NODE_ENV == 'test';
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const libraryName = 'portfolio';
@@ -23,25 +22,15 @@ module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     target: 'web',
     entry: _.extend({
-
-        // Note: entry points must be in arrays to fix a strange bug with webpack
-        // See: "A dependency to an entry point is not allowed"
-        // https://github.com/webpack/webpack/issues/300
         index: './src/index.js',
         vendor: [
             'react',
             'react-dom'
 		]
     },
-    (isDev && !isTest) && {
+    isDev && {
         'hotLoader': 'webpack-hot-middleware/client'
     }),
-    externals: isTest ? {
-        'react': true,
-        'react-dom': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-    } : {},
     context: __dirname,
     devtool: 'source-map',
     node: {
@@ -73,11 +62,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: _.compact([ (isDev && !isTest) && 'react-hot-loader', 'babel-loader'])
-            },
-            {
-                test: /\.json$/,
-                use: 'json-loader'
+                use: _.compact([ isDev && 'react-hot-loader', 'babel-loader'])
             },
             {
                 test: /\.(eot|ttf|woff|woff2|otf)$/,
@@ -144,7 +129,7 @@ module.exports = {
         new UglifyJSPlugin({
             sourceMap: true
         }),
-        (isDev && !isTest) && new webpack.HotModuleReplacementPlugin()
+        isDev && new webpack.HotModuleReplacementPlugin()
     ]),
     optimization: {
         minimize: isProduction
