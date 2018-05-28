@@ -18,4 +18,21 @@
   template:
     src: "{{ role_path }}/files/nginx.conf"
     dest: /etc/nginx/nginx.conf
-  notify: restart nginx
+
+- name: stop nginx
+  service:
+    name: nginx
+    state: stopped
+  ignore_errors: yes
+  become: true
+  become_user: root
+  become_method: sudo
+  
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+  become: true
+  become_user: root
+  become_method: sudo
+
