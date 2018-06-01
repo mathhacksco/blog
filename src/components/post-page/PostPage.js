@@ -7,16 +7,18 @@ import toNumber from 'lodash/toNumber';
 import { fetchPost } from '../../redux/actionCreators/posts';
 import { getPosts } from '../../redux/selectors/posts';
 import Post from '../post/Post';
+import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
-import type { State as AppState, Dispatch } from '../../types/redux';
-import type { Id, RouteParams } from '../../types/general';
+import type { Dispatch } from '../../types/redux';
+import type { Id, RouteMatch } from '../../types/general';
+import type AppState from '../../models/State';
 import type PostCollection from '../../models/PostCollection';
 
 // $FlowFixMe
 import './PostPage.styles.scss';
 
 type OwnProps = {
-  routeParams: RouteParams;
+  match: RouteMatch,
 };
 
 type StateProps = {
@@ -28,10 +30,6 @@ type DispatchProps = {
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
-
-type DefaultProps = {
-
-};
 
 type State = {
 
@@ -52,13 +50,17 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 @autobind
-class PostPage extends Component<DefaultProps, Props, State> {
+class PostPage extends Component<Props, State> {
 
   props: Props;
   state = {};
-  static defaultProps: DefaultProps = {};
 
   componentDidMount() {
+    GoogleAnalytics.trackEvent({
+      category: GoogleAnalytics.CategoryEnum.PostPage,
+      action: GoogleAnalytics.ActionEnum.PageView,
+      label: 'Post Page View'
+    });
     const id = this.props.match.params.id;
     this.props.fetchPost(id);
   }

@@ -1,19 +1,28 @@
 /* @flow */
 import React, { Component } from 'react';
 
+import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
+
+import type { Children } from '../../types/react';
+
 type Props = {
-  children?: ?Node;
+  children?: Children;
 };
 
 type State = {};
 
-type DefaultProps = {};
-
-export default class PostsPage extends Component<DefaultProps, Props, State> {
+export default class PostsPage extends Component<Props, State> {
 
   props: Props;
-  static defaultProps: DefaultProps = {};
   state: State = {};
+
+  componentDidMount() {
+    GoogleAnalytics.trackEvent({
+      category: GoogleAnalytics.CategoryEnum.PostsPage,
+      action: GoogleAnalytics.ActionEnum.PageView,
+      label: 'Posts Page View'
+    });
+  }
 
   render() {
     return (

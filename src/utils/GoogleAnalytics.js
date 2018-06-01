@@ -16,7 +16,9 @@ const DEBUG = false;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export const CategoryEnum = {
-  HomePage: 'Pages.HomePage'
+  HomePage: 'Pages.HomePage',
+  PostPage: 'Pages.PostPage',
+  PostsPage: 'Pages.PostsPage'
 };
 
 export const ActionEnum = {

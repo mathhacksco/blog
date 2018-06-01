@@ -16,7 +16,7 @@ type PageConvertible = PageObject | Page;
 export default class State extends Model {
 
   _posts: PostCollection;
-  _page: PageCollection;
+  _pages: PageCollection;
 
   constructor(data: any) {
     super(data);
