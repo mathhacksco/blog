@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import qs from 'querystring';
 import extend from 'lodash/extend';
 import Promise from 'bluebird';

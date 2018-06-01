@@ -8,6 +8,7 @@ import { getPosts } from '../../redux/selectors/posts';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
 import HeroPostExcerpt from '../hero-post-excerpt/HeroPostExcerpt';
 import RowLayout from '../layout/row-layout/RowLayout';
+import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -30,8 +31,6 @@ type DispatchProps = {
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-type DefaultProps = {};
-
 function mapStateToProps(state: State): StateProps {
   return {
     posts: getPosts(state)
@@ -46,13 +45,17 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Home extends Component<DefaultProps, Props, {}> {
+export default class Home extends Component<Props, {}> {
 
   props: Props;
-  static defaultProps: DefaultProps = {};
   state = {}
 
   componentDidMount() {
+    GoogleAnalytics.trackEvent({
+      category: GoogleAnalytics.CategoryEnum.HomePage,
+      action: GoogleAnalytics.ActionEnum.PageView,
+      label: 'Home Page View'
+    });
     this.props.fetchPosts();
   }
 
@@ -86,7 +89,6 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             <Map
               container={({ children }) => (
                 <RowLayout className="homepage-row-2">
-                  {/* <Paragraph text={'Some text about learning math. Talk about how the channel will help explain difficult math concepts.'}/> */}
                   {children}
                 </RowLayout>
               )}
@@ -107,7 +109,6 @@ export default class Home extends Component<DefaultProps, Props, {}> {
             />
           )}
         />
-        {/* <SocialLinks/> */}
         <RowLayout className="homepage-row-2">
           <Nth
             n={8}
@@ -121,33 +122,3 @@ export default class Home extends Component<DefaultProps, Props, {}> {
     );
   }
 }
-
-//
-// function SocialLinks() {
-//   return (
-//     <RowLayout className="social-links">
-//       <div className="half">
-//         <TwitterLink/>
-//       </div>
-//       <div className="half">
-//         <InstagramLink/>
-//       </div>
-//     </RowLayout>
-//   );
-// }
-//
-// function TwitterLink() {
-//   return (
-//     <a className="social-link" href={"https://twitter.com/BrettEBerry"}>
-//       <h1>Twitter</h1>
-//     </a>
-//   );
-// }
-//
-// function InstagramLink() {
-//   return (
-//     <a className="social-link" href={"https://www.instagram.com/bretteberry/"}>
-//       <h1>Instagram</h1>
-//     </a>
-//   );
-// }
