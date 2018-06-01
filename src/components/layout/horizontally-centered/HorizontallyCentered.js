@@ -4,8 +4,10 @@ import React from 'react';
 // $FlowFixMe
 import './HorizontallyCentered.styles.scss';
 
+import type { Children } from '../../../types/react';
+
 type Props = {
-  children?: ?Node;
+  children?: Children,
 };
 
 export default function HorizontallyCentered({ children }: Props) {

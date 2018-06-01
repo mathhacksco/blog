@@ -43,7 +43,8 @@
     "redux-storage-merger-immutablejs": "^1.0.5",
     "redux-thunk": "^2.2.0",
     "typography": "^0.16.6",
-    "typography-theme-irving": "^0.15.10"
+    "typography-theme-irving": "^0.15.10",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.1",

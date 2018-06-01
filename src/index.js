@@ -5,10 +5,10 @@ import Promise from 'bluebird';
 import Routes from './Routes';
 
 Promise.config({
-    cancellation: true,
-    warnings: {
-        wForgottenReturn: false
-    }
+  cancellation: true,
+  warnings: {
+    wForgottenReturn: false
+  }
 });
 
 

@@ -4,8 +4,10 @@ import React from 'react';
 // $FlowFixMe
 import './ContentMaxWidth.styles.scss';
 
+import type { Children } from '../../../types/react';
+
 type Props = {
-  children?: ?Node | ?Node[];
+  children?: Children,
 };
 
 export default function ContentMaxWidth({ children }: Props) {

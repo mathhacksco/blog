@@ -5,8 +5,10 @@ import classnames from 'classnames';
 // $FlowFixMe
 import './RowLayout.styles.scss';
 
+import type { Children } from '../../../types/react';
+
 type Props = {
-  children?: ?Node | ?Node[];
+  children?: Children;
   className?: ?string;
 };
 
