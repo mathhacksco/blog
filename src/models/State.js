@@ -17,11 +17,13 @@ export default class State extends Model {
 
   _posts: PostCollection;
   _pages: PageCollection;
+  _featuredPosts: PostCollection;
 
   constructor(data: any) {
     super(data);
     this._posts = new PostCollection(this.get('posts'));
     this._pages = new PageCollection(this.get('pages'));
+    this._featuredPosts = new PostCollection(this.get('featuredPosts'));
   }
 
   get posts(): PostCollection {
@@ -36,6 +38,14 @@ export default class State extends Model {
     return this.set('posts', this._posts.push(post));
   }
 
+  get featuredPosts(): PostCollection {
+    return this._featuredPosts;
+  }
+
+  setFeaturedPosts(posts: PostCollectionConvertible): State {
+    return this.set('featuredPosts', posts);
+  }
+
   get pages(): PageCollection {
     return this._pages;
   }
@@ -45,6 +55,6 @@ export default class State extends Model {
   }
 
   addPage(page: PageConvertible): State {
-    return this.set('pages', this._pages.push(page));
+    return this.set('pages', this.pages.addOrReplaceById(page.id, page));
   }
 }

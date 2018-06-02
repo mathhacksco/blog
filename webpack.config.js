@@ -53,8 +53,7 @@ module.exports = {
         ],
         extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
         alias: {
-            '~': path.resolve(__dirname, 'src'),
-            // 'react-redux': path.join(__dirname, '/node_modules/react-redux/dist/react-redux.min')
+            '~': path.resolve(__dirname, 'src')
         }
     },
     module: {

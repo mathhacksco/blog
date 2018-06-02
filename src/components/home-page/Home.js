@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Slice, Nth, First } from 'react-iterators';
 
-import { fetchPosts } from '../../redux/actionCreators/posts';
-import { getPosts } from '../../redux/selectors/posts';
+import { fetchPosts, fetchFeaturedPosts } from '../../redux/actionCreators/posts';
+import { getPosts, getFeaturedPosts } from '../../redux/selectors/posts';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
 import HeroPostExcerpt from '../hero-post-excerpt/HeroPostExcerpt';
 import RowLayout from '../layout/row-layout/RowLayout';
@@ -23,23 +23,27 @@ type OwnProps = {
 
 type StateProps = {
   posts: PostCollection;
+  featuredPosts: PostCollection;
 };
 
 type DispatchProps = {
   fetchPosts: () => Promise<void>;
+  fetchFeaturedPosts: () => Promise<void>;
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
 
 function mapStateToProps(state: State): StateProps {
   return {
-    posts: getPosts(state)
+    posts: getPosts(state),
+    featuredPosts: getFeaturedPosts(state)
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchPosts: () => dispatch(fetchPosts())
+    fetchPosts: () => dispatch(fetchPosts()),
+    fetchFeaturedPosts: () => dispatch(fetchFeaturedPosts()),
   };
 }
 
@@ -57,14 +61,16 @@ export default class Home extends Component<Props, {}> {
       label: 'Home Page View'
     });
     this.props.fetchPosts();
+    this.props.fetchFeaturedPosts();
   }
 
   render() {
-    const posts = this.props.posts.toArray();
+    const featuredPosts = this.props.featuredPosts.toArray();
+    const latestPosts = this.props.posts.exclude(this.props.featuredPosts).toArray();
     return (
       <div>
         <First
-          array={posts}
+          array={featuredPosts}
           render={post => (
             <HeroPostExcerpt key={post.id} id={post.id} post={post}/>
           )}
@@ -72,7 +78,7 @@ export default class Home extends Component<Props, {}> {
         <Slice
           start={1}
           end={4}
-          array={posts}
+          array={featuredPosts}
           render={sliced => (
             <Map
               container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
@@ -82,9 +88,9 @@ export default class Home extends Component<Props, {}> {
           )}
         />
         <Slice
-          start={4}
+          start={0}
           end={6}
-          array={posts}
+          array={latestPosts}
           render={sliced => (
             <Map
               container={({ children }) => (
@@ -97,27 +103,6 @@ export default class Home extends Component<Props, {}> {
             />
           )}
         />
-        <Slice
-          start={6}
-          end={8}
-          array={posts}
-          render={sliced => (
-            <Map
-              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
-              array={sliced}
-              render={post => <PostExcerpt id={post.id} post={post}/>}
-            />
-          )}
-        />
-        <RowLayout className="homepage-row-2">
-          <Nth
-            n={8}
-            array={posts}
-            render={post => (
-              <HeroPostExcerpt id={post.id} post={post}/>
-            )}
-          />
-        </RowLayout>
       </div>
     );
   }

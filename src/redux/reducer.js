@@ -14,6 +14,7 @@ import type {
 const initialState = new State();
 const actions = {
 	[POST_ACTION_TYPES.RECEIVE_POSTS]: receivePosts,
+	[POST_ACTION_TYPES.RECEIVE_FEATURED_POSTS]: receiveFeaturedPosts,
   [POST_ACTION_TYPES.RECEIVE_POST]: receivePost,
   [PAGE_ACTION_TYPES.RECEIVE_PAGES]: receivePages
 };
@@ -24,6 +25,14 @@ function receivePosts(state: State, { payload }: Action<ReceivePostsPayload>): S
 		return state;
 	}
 	return state.setPosts(payload.posts);
+}
+
+// eslint-disable-next-line object-curly-spacing
+function receiveFeaturedPosts(state: State, { payload }: Action<ReceivePostsPayload>): State {
+	if (!payload) {
+		return state;
+	}
+	return state.setFeaturedPosts(payload.posts);
 }
 
 // eslint-disable-next-line object-curly-spacing

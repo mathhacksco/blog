@@ -13,5 +13,6 @@ export default class Post extends Model {
   get type(): string { return this.get('string'); }
   get date(): string { return this.get('date'); }
   get dateGMT(): string { return this.get('date_gmt'); }
+  get categories(): number[] { return this.get('categories'); }
   getId(): Id { return this.id; }
 }

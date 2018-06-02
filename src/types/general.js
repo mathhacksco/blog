@@ -1,5 +1,5 @@
 /* @flow */
-export type Id = string | number;
+export type Id = number;
 
 export type RouteParams = {
   id: Id;
