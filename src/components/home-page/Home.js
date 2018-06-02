@@ -1,12 +1,14 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Map, Slice, Nth, First } from 'react-iterators';
+import { Map, Slice, First } from 'react-iterators';
 
 import { fetchPosts, fetchFeaturedPosts } from '../../redux/actionCreators/posts';
+import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getPosts, getFeaturedPosts } from '../../redux/selectors/posts';
+import { getCategories } from '../../redux/selectors/categories';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
-import HeroPostExcerpt from '../hero-post-excerpt/HeroPostExcerpt';
+import FeaturedPostExcerpt from '../featured-post-excerpt/FeaturedPostExcerpt';
 import RowLayout from '../layout/row-layout/RowLayout';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
@@ -15,20 +17,21 @@ import './Home.styles.scss';
 
 import type State from '../../models/State';
 import type PostCollection from '../../models/PostCollection';
+import type CategoryCollection from '../../models/CategoryCollection';
 import type { Dispatch } from '../../types/redux';
 
-type OwnProps = {
-  children?: ?Node | ?Node[];
-};
+type OwnProps = {};
 
 type StateProps = {
   posts: PostCollection;
   featuredPosts: PostCollection;
+  categories: CategoryCollection;
 };
 
 type DispatchProps = {
   fetchPosts: () => Promise<void>;
   fetchFeaturedPosts: () => Promise<void>;
+  fetchCategories: () => Promise<void>;
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -36,7 +39,8 @@ type Props = OwnProps & StateProps & DispatchProps;
 function mapStateToProps(state: State): StateProps {
   return {
     posts: getPosts(state),
-    featuredPosts: getFeaturedPosts(state)
+    featuredPosts: getFeaturedPosts(state),
+    categories: getCategories(state)
   };
 }
 
@@ -44,6 +48,7 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     fetchFeaturedPosts: () => dispatch(fetchFeaturedPosts()),
+    fetchCategories: () => dispatch(fetchCategories())
   };
 }
 
@@ -61,6 +66,7 @@ export default class Home extends Component<Props, {}> {
       label: 'Home Page View'
     });
     this.props.fetchPosts();
+    this.props.fetchCategories();
     this.props.fetchFeaturedPosts();
   }
 
@@ -72,7 +78,7 @@ export default class Home extends Component<Props, {}> {
         <First
           array={featuredPosts}
           render={post => (
-            <HeroPostExcerpt key={post.id} id={post.id} post={post}/>
+            <FeaturedPostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories}/>
           )}
         />
         <Slice

@@ -6,6 +6,6 @@ export default class PostCollection extends Collection {
   static Model = Post;
 
   exclude(posts: PostCollection): PostCollection {
-    return this.remove(p => !!posts.findById(p.id));
+    return this.remove(p => !posts.findById(p.id));
   }
 }
