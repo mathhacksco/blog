@@ -1,3 +1,5 @@
+@import "../../styles/constants";
+
 $dark-grey: #3C4851;
 
 .navigation {
@@ -7,6 +9,15 @@ $dark-grey: #3C4851;
   flex-direction: row;
   padding-top: 35px;
   padding-bottom: 35px;
+
+  .navigation-top-bar {
+    position: absolute;
+    top: -192px;
+    left: 0;
+    height: 200px;
+    width: 100%;
+    background-color: $theme-pink;
+  }
 
   .nav-link-logo {
     display: flex;

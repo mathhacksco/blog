@@ -11,6 +11,7 @@ type Props = {};
 export default function Navigation(props: Props) {
   return (
     <nav className="navigation">
+      <div className="navigation-top-bar"/>
       <Link to="/tutorials" className="nav-link">
         Tutorials
       </Link>
