@@ -1,5 +1,6 @@
 /* @flow */
 import { Model } from 'caldera-immutable-model';
+import includes from 'lodash/includes';
 
 import type { Id } from '../types/general';
 
@@ -13,5 +14,9 @@ export default class Post extends Model {
   get type(): string { return this.get('string'); }
   get date(): string { return this.get('date'); }
   get dateGMT(): string { return this.get('date_gmt'); }
+  get categories(): number[] { return this.get('categories'); }
   getId(): Id { return this.id; }
+  hasCategory(category: Id): boolean {
+    return includes(this.categories, category);
+  }
 }

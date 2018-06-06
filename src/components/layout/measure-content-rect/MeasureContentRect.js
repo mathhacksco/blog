@@ -5,6 +5,8 @@ import noop from 'lodash/noop';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 
+import type { Element } from 'react';
+
 const DEFAULT_CONTENT_RECT_ENTRY = { width: 0, height: 0, x: 0, y: 0 };
 
 type ContentRectEntry = {
@@ -31,7 +33,7 @@ type State = {};
 
 // $FlowFixMe
 @withContentRect('bound')
-export default class MeasureContentRect extends Component<DefaultProps, Props, State> {
+export default class MeasureContentRect extends Component<Props, State> {
   props: Props;
   state: State;
   static defaultProps: DefaultProps = {

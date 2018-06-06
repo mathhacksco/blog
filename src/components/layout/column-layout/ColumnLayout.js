@@ -5,10 +5,12 @@ import classnames from 'classnames';
 // $FlowFixMe
 import './ColumnLayout.styles.scss';
 
+import type { Children } from '../../../types/react';
+
 type Props = {
   id?: string;
   className?: string;
-  children?: ?Node | ?Node[];
+  children?: Children;
 };
 
 export default function ColumnLayout({ id, className, children }: Props) {

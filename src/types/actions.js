@@ -1,5 +1,5 @@
 /* @flow */
-import type { PostObject, PageObject } from './wordpress';
+import type { PostObject, PageObject, CategoryObject } from './wordpress';
 
 export type ReceivePostsPayload = {
   posts: PostObject[];
@@ -11,4 +11,8 @@ export type ReceivePostPayload = {
 
 export type ReceivePagesPayload = {
   pages: PageObject[];
+};
+
+export type ReceiveCategoriesPayload = {
+  categories: CategoryObject[];
 };

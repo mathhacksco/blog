@@ -26,3 +26,10 @@ export type PageObject = {
   };
   date_gmt: string;
 };
+
+export type CategoryObject = {
+  id: Id;
+  slug: string;
+  name: string;
+  date_gmt: string;
+};
