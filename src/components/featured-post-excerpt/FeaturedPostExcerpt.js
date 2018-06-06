@@ -21,7 +21,7 @@ type Props = {
 export default function FeaturedPostExcerpt({ post, categories }: Props) {
   const categoryId = first(post.categories); // TODO: make sure category is not "Featured"
   const category = categories.findById(categoryId);
-  const categoryName = category.name;
+  const categoryName = category ? category.name : '';
   return (
     <div className="hero-post-excerpt">
       <MeasureContentRect
@@ -33,7 +33,7 @@ export default function FeaturedPostExcerpt({ post, categories }: Props) {
       />
       <ColumnLayout className="half">
         <p className="featured">Featured Article</p>
-        <p className="category">{categoryName}</p>
+        <p className="category">{formatCategoryName(categoryName)}</p>
         <Link to={`posts/${post.id}`} className="title-link">
           <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
         </Link>
@@ -45,4 +45,8 @@ export default function FeaturedPostExcerpt({ post, categories }: Props) {
       </ColumnLayout>
     </div>
   );
+}
+
+function formatCategoryName(categoryName: string): string {
+  return categoryName.toLocaleUpperCase();
 }

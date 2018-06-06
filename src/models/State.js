@@ -1,5 +1,7 @@
 /* @flow */
 import { Model } from 'caldera-immutable-model';
+import reduce from 'lodash/reduce';
+import isFunction from 'lodash/isFunction';
 
 import PostCollection from '../models/PostCollection';
 import PageCollection from '../models/PageCollection';
@@ -20,14 +22,12 @@ export default class State extends Model {
 
   _posts: PostCollection;
   _pages: PageCollection;
-  _featuredPosts: PostCollection;
   _categories: CategoryCollection;
 
   constructor(data: any) {
     super(data);
     this._posts = new PostCollection(this.get('posts'));
     this._pages = new PageCollection(this.get('pages'));
-    this._featuredPosts = new PostCollection(this.get('featuredPosts'));
     this._categories = new CategoryCollection(this.get('categories'));
   }
 
@@ -43,12 +43,11 @@ export default class State extends Model {
     return this.set('posts', this._posts.push(post));
   }
 
-  get featuredPosts(): PostCollection {
-    return this._featuredPosts;
-  }
-
-  setFeaturedPosts(posts: PostCollectionConvertible): State {
-    return this.set('featuredPosts', posts);
+  addOrReplacePostsById(posts: PostCollectionConvertible): State {
+    // $FlowFixMe
+    const data = posts.toArray && isFunction(posts.toArray) ? posts.toArray() : posts;
+    const updatedPosts = reduce(data, (acc, p) => acc.addOrReplaceById(p.id, p), this.posts);
+    return this.setPosts(updatedPosts);
   }
 
   get pages(): PageCollection {

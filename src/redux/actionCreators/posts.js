@@ -49,19 +49,15 @@ export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => P
   };
 }
 
-export function fetchFeaturedPosts(): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function fetchPostsByCategory(categoryId: Id): (dispatch: Dispatch, getState: GetState) => Promise<void> {
   return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
     try {
-      dispatch({ type: POST_ACTION_TYPES.FETCH_FEATURED_POSTS });
-      const categories = await categoryActions.fetchCategories();
-      const featuredCategory = categories.find(c => c.slug === 'featured');
-      if (!featuredCategory) {
-        throw new Error('Failed to find featured category.');
-      }
-      const posts = await actions.fetchPosts({ categories: [featuredCategory.id] });
+      dispatch({ type: POST_ACTION_TYPES.FETCH_POSTS_BY_CATEGORY });
+      const posts = await actions.fetchPosts({ categories: [categoryId] });
       dispatch({
-        type: POST_ACTION_TYPES.RECEIVE_FEATURED_POSTS,
+        type: POST_ACTION_TYPES.RECEIVE_POSTS_BY_CATEGORY,
         payload: {
+          categoryId,
           posts
         }
       });

@@ -29,7 +29,7 @@ module.exports = {
 		]
     },
     isDev && {
-        'hotLoader': 'webpack-hot-middleware/client'
+        hotLoader: 'webpack-hot-middleware/client'
     }),
     context: __dirname,
     devtool: 'source-map',
@@ -125,7 +125,7 @@ module.exports = {
           sample: './.env',
           path: './.env'
         }),
-        new UglifyJSPlugin({
+        isProduction && new UglifyJSPlugin({
             sourceMap: true
         }),
         isDev && new webpack.HotModuleReplacementPlugin()
