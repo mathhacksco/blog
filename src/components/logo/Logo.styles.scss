@@ -1,13 +1,22 @@
-.logo {
+.logo-container {
   display: flex;
   flex: 1;
-  padding-right: 35px;
-  padding-left: 35px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  flex-direction: row;
+  min-width: 200px;
+  max-width: 325px;
 
-  svg {
+  .logo {
     display: flex;
     flex: 1;
+
+    svg {
+      display: flex;
+      flex: 1;
+    }
+  }
+
+  .logo-icon {
+    flex: 0.5;
+    margin-right: 25px;
   }
 }

@@ -7,8 +7,9 @@ $dark-grey: #3C4851;
   flex: 1;
   align-items: center;
   flex-direction: row;
-  padding-top: 35px;
+  justify-content: space-between;
   padding-bottom: 35px;
+  margin-top: 8px;
 
   .navigation-top-bar {
     position: absolute;
@@ -19,21 +20,19 @@ $dark-grey: #3C4851;
     background-color: $theme-pink;
   }
 
-  .nav-link-logo {
-    display: flex;
-    flex: 1;
-  }
-
   .nav-link {
     margin-left: 13px;
     margin-right: 13px;
     text-decoration: none;
-    display: inline;
+    display: flex;
+    flex: 0.5;
     font-weight: bold;
     color: $dark-grey;
     text-align: center;
     vertical-align: middle;
     line-height: 1;
+    align-items: center;
+    justify-content: center;
 
     &:hover, &:active, &:focus {
       color: $dark-grey;
@@ -48,5 +47,12 @@ $dark-grey: #3C4851;
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  .nav-link-logo {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
   }
 }
