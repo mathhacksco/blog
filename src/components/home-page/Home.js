@@ -13,6 +13,9 @@ import RowLayout from '../layout/row-layout/RowLayout';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 import * as Debug from '../../utils/DebugUtil';
 import PostCollection from '../../models/PostCollection';
+import Navigation from '../navigation/Navigation';
+import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
+import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -95,38 +98,56 @@ export default class Home extends Component<Props, {}> {
       <div>
         <First
           array={featuredPostsArray}
+          container={({ children }) => (
+            <div className="homepage-hero">
+              <div className="homepage-hero-background">
+                <div className="top-gradient"/>
+                <div className="bottom-gradient"/>
+              </div>
+              <HorizontallyCentered>
+                <ContentMaxWidth>
+                  <Navigation/>
+                  {children}
+                </ContentMaxWidth>
+              </HorizontallyCentered>
+            </div>
+          )}
           render={post => (
             <FeaturedPostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories}/>
           )}
         />
-        <Slice
-          start={1}
-          end={4}
-          array={featuredPostsArray}
-          render={sliced => (
-            <Map
-              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
-              array={sliced}
-              render={post => <PostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories} />}
-            />
-          )}
-        />
-        <Slice
-          start={0}
-          end={6}
-          array={latestPostsArray}
-          render={sliced => (
-            <Map
-              container={({ children }) => (
-                <RowLayout className="homepage-row-2">
-                  {children}
-                </RowLayout>
+        <HorizontallyCentered>
+          <ContentMaxWidth>
+            <Slice
+              start={1}
+              end={4}
+              array={featuredPostsArray}
+              render={sliced => (
+                <Map
+                  container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
+                  array={sliced}
+                  render={post => <PostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories} />}
+                />
               )}
-              array={sliced}
-              render={post => <PostExcerpt id={post.id} post={post} categories={this.props.categories}/>}
             />
-          )}
-        />
+            <Slice
+              start={0}
+              end={6}
+              array={latestPostsArray}
+              render={sliced => (
+                <Map
+                  container={({ children }) => (
+                    <RowLayout className="homepage-row-2">
+                      {children}
+                    </RowLayout>
+                  )}
+                  array={sliced}
+                  render={post => <PostExcerpt id={post.id} post={post} categories={this.props.categories}/>}
+                />
+              )}
+            />
+          </ContentMaxWidth>
+        </HorizontallyCentered>
       </div>
     );
   }

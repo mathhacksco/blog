@@ -1,3 +1,5 @@
+@import "../../styles/constants";
+
 .homepage-row-2 {
   background-color: #fff;
   margin-top: 50px;
@@ -37,6 +39,41 @@
 
     &:hover h1, &:active h1, &:focus h1 {
       color: #00F7AA;
+    }
+  }
+}
+
+.homepage-hero {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+
+  .homepage-hero-background {
+    background-color: $theme-pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    .top-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(to bottom, rgba(#000, 0.15) 0%, rgba(#000, 0) 100%);
+    }
+
+    .bottom-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(to bottom, rgba(#000, 0) 0%, rgba(#000, 0.15) 100%);
     }
   }
 }

@@ -3,9 +3,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
-import ContentMaxWidth from './components/layout/content-max-width/ContentMaxWidth';
-import HorizontallyCentered from './components/layout/horizontally-centered/HorizontallyCentered';
-import Navigation from './components/navigation/Navigation';
 import Footer from './components/footer/Footer';
 import Typography from './components/typography/Typography';
 import store from './redux/store';
@@ -42,14 +39,9 @@ export default function App({ children }: Props): Element<Provider> {
           `}</style>
         </Helmet>
         <Typography/>
-        <HorizontallyCentered>
-          <ContentMaxWidth>
-            <Navigation/>
-            { /* $FlowFixMe */
-              children
-            }
-          </ContentMaxWidth>
-        </HorizontallyCentered>
+        { /* $FlowFixMe */
+          children
+        }
         <Footer/>
       </div>
     </Provider>
