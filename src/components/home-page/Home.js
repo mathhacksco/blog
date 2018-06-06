@@ -104,7 +104,7 @@ export default class Home extends Component<Props, {}> {
                 <div className="top-gradient"/>
                 <div className="bottom-gradient"/>
               </div>
-              <HorizontallyCentered>
+              <HorizontallyCentered className="hero-container">
                 <ContentMaxWidth>
                   <Navigation/>
                   {children}
