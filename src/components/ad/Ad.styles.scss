@@ -1,0 +1,21 @@
+@import "../../styles/fonts";
+@import "../../styles/constants";
+
+.ad {
+  background-color: $theme-light-gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 196px;
+  flex: 1;
+  margin-top: 67px;
+  margin-bottom: 67px;
+
+  h2 {
+    font-family: $crimsonTextFontFamily;
+    font-weight: 100;
+    font-size: 24pt * $sketchFontMulitplier;
+    color: $theme-medium-gray;
+    margin-bottom: 0;
+  }
+}

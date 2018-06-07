@@ -16,6 +16,7 @@ import PostCollection from '../../models/PostCollection';
 import Navigation from '../navigation/Navigation';
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
+import Ad from '../ad/Ad.js';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -118,6 +119,7 @@ export default class Home extends Component<Props, {}> {
         />
         <HorizontallyCentered>
           <ContentMaxWidth>
+            <Ad/>
             <Slice
               start={1}
               end={4}

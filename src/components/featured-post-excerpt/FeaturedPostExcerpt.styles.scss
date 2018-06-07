@@ -1,7 +1,7 @@
 @import "../../styles/fonts";
 @import "../../styles/constants";
 
-.hero-post-excerpt {
+.featured-post-excerpt {
   display: flex;
   flex: 1;
   justify-content: flex-end;
@@ -22,7 +22,7 @@
   }
 
   .category {
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     font-family: $tajawalLightFontFamily;
     font-weight: 100;
     font-size: 20pt * $sketchFontMulitplier;

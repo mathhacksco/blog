@@ -21,7 +21,7 @@ export default function FeaturedPostExcerpt({ post, categories }: Props) {
   const category = categories.findById(categoryId);
   const categoryName = category ? category.name : '';
   return (
-    <ColumnLayout className="hero-post-excerpt">
+    <ColumnLayout className="featured-post-excerpt">
       <p className="featured">Featured Article</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.id}`} className="title-link">
