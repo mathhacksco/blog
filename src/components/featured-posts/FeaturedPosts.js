@@ -21,20 +21,19 @@ type Props = {
 export default function FeaturedPosts({ featuredPosts, categories }: Props) {
   return (
     <HorizontallyCentered className="featured-posts-container">
-      <ContentMaxWidth className="featured-posts-inner">
-        <Slice
-          start={1}
-          end={4}
-          array={featuredPosts.toArray()}
-          render={sliced => (
-            <Map
-              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
-              array={sliced}
-              render={post => <FeaturedPostExcerpt key={post.id} post={post} categories={categories} />}
-            />
-          )}
-        />
-      </ContentMaxWidth>
+      <Slice
+        container={({ children }) => <ContentMaxWidth className="featured-posts-inner">{children}</ContentMaxWidth>}
+        start={1}
+        end={4}
+        array={featuredPosts.toArray()}
+        render={sliced => (
+          <Map
+            container={({ children }) => <RowLayout className="flex-1">{children}</RowLayout>}
+            array={sliced}
+            render={post => <FeaturedPostExcerpt className="featured-post" key={post.id} post={post} categories={categories} />}
+          />
+        )}
+      />
     </HorizontallyCentered>
   );
 }
