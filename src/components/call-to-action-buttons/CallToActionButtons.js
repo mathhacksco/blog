@@ -1,6 +1,5 @@
 /* @flow */
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
