@@ -30,12 +30,23 @@
   }
 
   .title-link {
-    margin-top: 3px;
     text-decoration: none;
-    color: #fff;
+
+    h2 {
+      color: #fff;
+      display: inline-block;
+      height: 41px;
+      margin: 0;
+      font-family: $tajawalLightFontFamily;
+      font-size: 48pt * $sketchFontMulitplier;
+      font-weight: 100;
+    }
 
     &:hover, &:active, &:focus {
-      text-decoration: underline;
+      h2 {
+        background-color: #fff;
+        color: $theme-pink;
+      }
     }
   }
 
@@ -45,15 +56,6 @@
     font-weight: 100;
     font-size: 20pt * $sketchFontMulitplier;
     color: #fff;
-  }
-
-  h2 {
-    display: inline;
-    border-radius: 2px;
-    color: #fff;
-    font-family: $tajawalLightFontFamily;
-    font-size: 48pt * $sketchFontMulitplier;
-    font-weight: 100;
   }
 
   .timestamp {

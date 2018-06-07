@@ -38,7 +38,7 @@ export default function App({ children }: Props): Element<Provider> {
             }
           `}</style>
         </Helmet>
-        <Typography/>
+        {/* <Typography/> */}
         { /* $FlowFixMe */
           children
         }
