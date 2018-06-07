@@ -25,7 +25,7 @@ export default function HeroPostExcerpt({ post, categories }: Props) {
       <p className="featured">Featured Article</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.id}`} className="title-link">
-        <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
+        <p className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
       </Link>
       <p className="author">by Brett Berry</p>
     </ColumnLayout>

@@ -31,19 +31,20 @@
 
   .title-link {
     text-decoration: none;
+    max-width: 750px;
 
-    h2 {
+    .title {
       color: #fff;
-      display: inline-block;
-      height: 41px;
+      display: inline;
       margin: 0;
-      font-family: $tajawalLightFontFamily;
+      font-family: $crimsonTextFontFamily;
       font-size: 48pt * $sketchFontMulitplier;
       font-weight: 100;
+      line-height: 1.37em;
     }
 
     &:hover, &:active, &:focus {
-      h2 {
+      .title {
         background-color: #fff;
         color: $theme-pink;
       }
