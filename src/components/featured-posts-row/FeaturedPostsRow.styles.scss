@@ -1,0 +1,49 @@
+@import "../../styles/fonts";
+@import "../../styles/constants";
+
+.featured-posts-container {
+  margin-top: 35px;
+
+  .featured-posts-inner {
+    flex-direction: row;
+  }
+}
+
+.featured-posts {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 160px;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &:first-child .background {
+    background-color: $theme-pink;
+    left: -500px;
+  }
+
+  &:nth-child(2) .background {
+    background-color: $theme-teal;
+  }
+
+  &:last-child .background {
+    background-color: $theme-voilet;
+    right: -500px;
+  }
+
+  h2 {
+    color: #fff;
+    font-family: $crimsonTextFontFamily;
+    font-size: 32pt * $sketchFontMulitplier;
+    font-weight: 100;
+  }
+}

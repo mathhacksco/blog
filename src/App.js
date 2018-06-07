@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
 import Footer from './components/footer/Footer';
-import Typography from './components/typography/Typography';
 import store from './redux/store';
 
 // $FlowFixMe
@@ -38,7 +37,6 @@ export default function App({ children }: Props): Element<Provider> {
             }
           `}</style>
         </Helmet>
-        {/* <Typography/> */}
         { /* $FlowFixMe */
           children
         }

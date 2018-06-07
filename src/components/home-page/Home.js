@@ -1,22 +1,23 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Map, Slice, First } from 'react-iterators';
+import { Map, Slice } from 'react-iterators';
 
 import { fetchPosts, fetchPostsByCategory } from '../../redux/actionCreators/posts';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getPosts } from '../../redux/selectors/posts';
 import { getCategories } from '../../redux/selectors/categories';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
-import FeaturedPostExcerpt from '../featured-post-excerpt/FeaturedPostExcerpt';
 import RowLayout from '../layout/row-layout/RowLayout';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 import * as Debug from '../../utils/DebugUtil';
 import PostCollection from '../../models/PostCollection';
-import Navigation from '../navigation/Navigation';
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 import Ad from '../ad/Ad.js';
+import CallToActionButtons from '../call-to-action-buttons/CallToActionButtons';
+import FeaturedPostsRow from '../featured-posts-row/FeaturedPostsRow';
+import Hero from '../hero/Hero';
 
 // $FlowFixMe
 import './Home.styles.scss';
@@ -97,29 +98,20 @@ export default class Home extends Component<Props, {}> {
     const latestPostsArray = this.props.posts.exclude(featuredPosts).toArray();
     return (
       <div>
-        <First
-          array={featuredPostsArray}
-          container={({ children }) => (
-            <div className="homepage-hero">
-              <div className="homepage-hero-background">
-                <div className="top-gradient"/>
-                <div className="bottom-gradient"/>
-              </div>
-              <HorizontallyCentered className="hero-container">
-                <ContentMaxWidth>
-                  <Navigation/>
-                  {children}
-                </ContentMaxWidth>
-              </HorizontallyCentered>
-            </div>
-          )}
-          render={post => (
-            <FeaturedPostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories}/>
-          )}
-        />
+        <Hero featuredPosts={featuredPosts} categories={this.props.categories}/>
+        {/* TODO: create AddContainer component */}
         <HorizontallyCentered>
           <ContentMaxWidth>
             <Ad/>
+          </ContentMaxWidth>
+        </HorizontallyCentered>
+
+        <CallToActionButtons/>
+        <FeaturedPostsRow/>
+        {/* TODO: <LatestContent/> */}
+
+        <HorizontallyCentered>
+          <ContentMaxWidth>
             <Slice
               start={1}
               end={4}
@@ -128,7 +120,7 @@ export default class Home extends Component<Props, {}> {
                 <Map
                   container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
                   array={sliced}
-                  render={post => <PostExcerpt key={post.id} id={post.id} post={post} categories={this.props.categories} />}
+                  render={post => <PostExcerpt key={post.id} post={post} categories={this.props.categories} />}
                 />
               )}
             />
@@ -144,7 +136,7 @@ export default class Home extends Component<Props, {}> {
                     </RowLayout>
                   )}
                   array={sliced}
-                  render={post => <PostExcerpt id={post.id} post={post} categories={this.props.categories}/>}
+                  render={post => <PostExcerpt key={post.id} post={post} categories={this.props.categories}/>}
                 />
               )}
             />
