@@ -2,11 +2,12 @@
 @import "../../styles/constants";
 
 .featured-posts-container {
-  margin-top: 35px;
+  padding-top: 35px;
   padding-bottom: 35px;
   border-bottom-width: 28px;
   border-bottom-style: solid;
   border-bottom-color: $theme-violet;
+  background-color: #fff;
 
   .featured-posts-inner {
     flex-direction: row;
@@ -24,7 +25,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+  }
+
+  .content {
+    position: relative;
   }
 
   &:first-child .background {

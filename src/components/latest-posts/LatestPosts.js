@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import { Map, Slice } from 'react-iterators';
+import classnames from 'classnames';
 
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
@@ -14,13 +15,14 @@ import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
+  className?: ?string;
   posts: PostCollection;
   categories: CategoryCollection;
 };
 
-export default function LatestPosts({ posts, categories }: Props) {
+export default function LatestPosts({ className, posts, categories }: Props) {
   return (
-    <HorizontallyCentered className="latest-posts-container">
+    <HorizontallyCentered className={classnames('latest-posts-container', classnames)}>
       <ContentMaxWidth className="latest-posts-inner">
         <Slice
           start={0}

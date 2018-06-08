@@ -19,7 +19,7 @@ type Props = {
 export default function App({ children }: Props): Element<Provider> {
   return (
     <Provider store={store}>
-      <div>
+      <div className="app-container">
         <Helmet>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />

@@ -18,7 +18,7 @@ import Hero from '../hero/Hero';
 import LatestPosts from '../latest-posts/LatestPosts';
 
 // $FlowFixMe
-import './Home.styles.scss';
+import './Home.scss';
 
 import type { Id } from '../../types/general';
 import type State from '../../models/State';
@@ -94,23 +94,21 @@ export default class Home extends Component<Props, {}> {
     const featuredPosts = this.getFeaturedPosts();
     const latestPosts = this.props.posts.exclude(featuredPosts);
     return (
-      <div>
+      <div className="homepage">
         <Hero featuredPosts={featuredPosts} categories={this.props.categories}/>
-        <HorizontallyCentered>
+        <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
             <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
-        <CallToActionButtons/>
+        <CallToActionButtons className="call-to-action-container"/>
         <FeaturedPosts featuredPosts={featuredPosts} categories={this.props.categories}/>
-        <div className="extra-light-gray">
-          <HorizontallyCentered>
-            <ContentMaxWidth>
-              <Ad/>
-            </ContentMaxWidth>
-          </HorizontallyCentered>
-          <LatestPosts posts={latestPosts} categories={this.props.categories}/>
-        </div>
+        <HorizontallyCentered className="ad-container-2">
+          <ContentMaxWidth>
+            <Ad/>
+          </ContentMaxWidth>
+        </HorizontallyCentered>
+        <LatestPosts className="latest-posts-container" posts={latestPosts} categories={this.props.categories}/>
       </div>
     );
   }

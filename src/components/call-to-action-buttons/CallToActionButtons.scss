@@ -21,7 +21,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
   }
 
   &:first-child .background {
@@ -36,6 +35,10 @@
   &:last-child .background {
     background-color: $theme-violet;
     right: -500px;
+  }
+
+  .content {
+    position: relative;
   }
 
   h2 {
