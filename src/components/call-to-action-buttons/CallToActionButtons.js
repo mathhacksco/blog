@@ -5,7 +5,7 @@ import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 
 // $FlowFixMe
-import './CallToActionButtons.styles.scss';
+import './CallToActionButtons.scss';
 
 type Props = {};
 

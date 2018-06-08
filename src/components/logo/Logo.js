@@ -2,7 +2,7 @@
 import React from 'react';
 
 // $FlowFixMe
-import './Logo.styles.scss';
+import './Logo.scss';
 // $FlowFixMe
 import LogoTextSvg from './logoText.svg';
 // $FlowFixMe
