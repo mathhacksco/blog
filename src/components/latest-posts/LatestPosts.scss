@@ -1,4 +1,12 @@
 @import "../../styles/constants";
+@import "../../styles/fonts";
+
+.latest-posts-container .section-header {
+  font-family: $imFellFrenchCanonFontFamily;
+  font-weight: 100;
+  font-size: 48pt * $sketchFontMulitplier;
+  color: $theme-medium-gray;
+}
 
 .latest-posts {
   display: flex;

@@ -24,6 +24,7 @@ export default function LatestPosts({ className, posts, categories }: Props) {
   return (
     <HorizontallyCentered className={classnames('latest-posts-container', classnames)}>
       <ContentMaxWidth className="latest-posts-inner">
+        <h2 className="section-header">Latest Posts</h2>
         <Slice
           start={0}
           end={6}

@@ -12,5 +12,12 @@
   font-weight: 100;
 }
 
+@font-face {
+  font-family: 'IM FELL French Canon SC';
+  src: url('~/fonts/IMFellFrenchCanonSC/IMFeFCsc28P.ttf') format('ttf');
+  font-style: normal;
+}
+
+$imFellFrenchCanonFontFamily: 'IM FELL French Canon SC', serif;
 $crimsonTextFontFamily: 'Crimson Text', serif;
 $tajawalLightFontFamily: 'Tajawal Light', sans-serif;
