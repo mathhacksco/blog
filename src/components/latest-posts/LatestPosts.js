@@ -28,7 +28,7 @@ export default function LatestPosts({ posts, categories }: Props) {
           array={posts.toArray()}
           render={sliced => (
             <Map
-              container={({ children }) => <RowLayout className="homepage-row-2">{children}</RowLayout>}
+              container={({ children }) => <RowLayout className="latest-posts">{children}</RowLayout>}
               array={sliced}
               render={post => <PostExcerpt key={post.id} post={post} categories={categories} />}
             />

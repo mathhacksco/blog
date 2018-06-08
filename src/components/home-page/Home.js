@@ -103,12 +103,14 @@ export default class Home extends Component<Props, {}> {
         </HorizontallyCentered>
         <CallToActionButtons/>
         <FeaturedPosts featuredPosts={featuredPosts} categories={this.props.categories}/>
-        <HorizontallyCentered>
-          <ContentMaxWidth>
-            <Ad/>
-          </ContentMaxWidth>
-        </HorizontallyCentered>
-        <LatestPosts posts={latestPosts} categories={this.props.categories}/>
+        <div className="extra-light-gray">
+          <HorizontallyCentered>
+            <ContentMaxWidth>
+              <Ad/>
+            </ContentMaxWidth>
+          </HorizontallyCentered>
+          <LatestPosts posts={latestPosts} categories={this.props.categories}/>
+        </div>
       </div>
     );
   }
