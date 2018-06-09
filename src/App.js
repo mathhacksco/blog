@@ -19,13 +19,13 @@ type Props = {
 export default function App({ children }: Props): Element<Provider> {
   return (
     <Provider store={store}>
-      <div className="app-container">
+      <main className="app-container">
         <Head/>
         { /* $FlowFixMe */
           children
         }
         <Footer/>
-      </div>
+      </main>
     </Provider>
   );
 }
