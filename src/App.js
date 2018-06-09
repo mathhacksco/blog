@@ -8,7 +8,7 @@ import store from './redux/store';
 import { APP_VERSION } from './constants';
 
 // $FlowFixMe
-import './app.scss';
+import './App.scss';
 
 import type { Element } from 'react';
 import type { Children } from './types/react';
