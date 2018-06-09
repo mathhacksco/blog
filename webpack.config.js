@@ -11,6 +11,8 @@ const DotenvPlugin = require('webpack-dotenv-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const packageData = require('./package.json');
+
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const libraryName = 'portfolio';
@@ -112,7 +114,8 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             PROJECT_ROOT: path.join('"', __dirname, '"'),
             'typeof window': JSON.stringify('object'),
-            CONFIG: JSON.stringify(yamlConfig)
+            CONFIG: JSON.stringify(yamlConfig),
+            VERSION: JSON.stringify(packageData.version)
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
