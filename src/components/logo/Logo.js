@@ -1,26 +1,20 @@
 /* @flow */
-import React, { Component } from 'react';
+import React from 'react';
 
 // $FlowFixMe
-import './Logo.styles.scss';
+import './Logo.scss';
 // $FlowFixMe
-import LogoSvg from './logo.svg';
+import LogoTextSvg from './logoText.svg';
+// $FlowFixMe
+import LogoIconSvg from './logoIcon.svg';
 
 type Props = {};
 
-type DefaultProps = {};
-
-type State = {};
-
-export default class Logo extends Component<DefaultProps, Props, State> {
-
-  props: Props;
-  state: State = {};
-  static defaultProps: DefaultProps = {};
-
-  render() {
-    return (
-      <div className="logo" dangerouslySetInnerHTML={{ __html: LogoSvg }}/>
-    );
-  }
+export default function Logo(props: Props) {
+  return (
+    <div className="logo-container">
+      <div className="logo logo-icon" dangerouslySetInnerHTML={{ __html: LogoIconSvg }}/>
+      <div className="logo logo-text" dangerouslySetInnerHTML={{ __html: LogoTextSvg }}/>
+    </div>
+  );
 }

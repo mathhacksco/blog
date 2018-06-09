@@ -1,5 +1,7 @@
+@import "./styles/constants";
+
 body {
-  background-color: #fff;
+  background-color: $theme-pink;
 }
 
 main {
@@ -8,4 +10,9 @@ main {
 
 * {
   box-sizing: border-box;
+}
+
+.flex-1 {
+  display: flex;
+  flex: 1;
 }

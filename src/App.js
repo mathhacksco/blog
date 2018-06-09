@@ -3,11 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
-import ContentMaxWidth from './components/layout/content-max-width/ContentMaxWidth';
-import HorizontallyCentered from './components/layout/horizontally-centered/HorizontallyCentered';
-import Navigation from './components/navigation/Navigation';
 import Footer from './components/footer/Footer';
-import Typography from './components/typography/Typography';
 import store from './redux/store';
 
 // $FlowFixMe
@@ -23,7 +19,7 @@ type Props = {
 export default function App({ children }: Props): Element<Provider> {
   return (
     <Provider store={store}>
-      <div>
+      <div className="app-container">
         <Helmet>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,15 +37,9 @@ export default function App({ children }: Props): Element<Provider> {
             }
           `}</style>
         </Helmet>
-        <Typography/>
-        <HorizontallyCentered>
-          <ContentMaxWidth>
-            <Navigation/>
-            { /* $FlowFixMe */
-              children
-            }
-          </ContentMaxWidth>
-        </HorizontallyCentered>
+        { /* $FlowFixMe */
+          children
+        }
         <Footer/>
       </div>
     </Provider>

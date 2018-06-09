@@ -1,0 +1,43 @@
+@import "../../styles/constants";
+@import "../../styles/fonts";
+
+.latest-posts-container .section-header {
+  font-family: $imFellFrenchCanonFontFamily;
+  font-weight: 100;
+  font-size: 48pt * $sketchFontMulitplier;
+  color: $theme-medium-gray;
+}
+
+.latest-posts {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  padding-bottom: 45px;
+
+  .post-excerpt {
+    display: flex;
+    flex: 1;
+    flex-basis: 30%;
+    margin-bottom: 15px;
+
+    &:nth-child(n) {
+      margin-right: 15px;
+    }
+
+    &:nth-child(n + 1) {
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+
+    &:nth-child(n + 2) {
+      margin-left: 15px;
+    }
+
+    &:nth-child(n + 4) {
+      margin-top: 52px;
+      margin-bottom: 52px;
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+  }
+}

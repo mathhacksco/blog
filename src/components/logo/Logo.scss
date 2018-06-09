@@ -1,0 +1,22 @@
+.logo-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  min-width: 200px;
+  max-width: 325px;
+
+  .logo {
+    display: flex;
+    flex: 1;
+
+    svg {
+      display: flex;
+      flex: 1;
+    }
+  }
+
+  .logo-icon {
+    flex: 0.5;
+    margin-right: 25px;
+  }
+}
