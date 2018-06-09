@@ -31,15 +31,6 @@ export default function App({ children }: Props): Element<Provider> {
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
           <link rel="canonical" href="http://mathhacks.co" />
           <title>Math Hacks</title>
-          <style>{`
-            html, body, main {
-              margin: 0;
-              width: 100%;
-            }
-            * {
-              box-sizing: border-box;
-            }
-          `}</style>
         </Helmet>
         { /* $FlowFixMe */
           children

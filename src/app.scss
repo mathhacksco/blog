@@ -1,5 +1,10 @@
 @import "./styles/constants";
 
+html, body, main {
+  margin: 0;
+  width: 100%;
+}
+
 body {
   background-color: $theme-pink;
 }
