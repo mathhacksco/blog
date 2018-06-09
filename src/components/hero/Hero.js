@@ -19,7 +19,7 @@ type Props = {
 
 export default function Hero({ post, categories }: Props) {
   return (
-    <div className="hero">
+    <section className="hero">
       <div className="hero-background">
         <div className="top-gradient"/>
         <div className="bottom-gradient"/>
@@ -30,6 +30,6 @@ export default function Hero({ post, categories }: Props) {
           <HeroPostExcerpt key={post.id} id={post.id} post={post} categories={categories}/>
         </ContentMaxWidth>
       </HorizontallyCentered>
-    </div>
+    </section>
   );
 }

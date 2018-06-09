@@ -20,7 +20,7 @@ type Props = {
 
 export default function FeaturedPosts({ featuredPosts, categories }: Props) {
   return (
-    <HorizontallyCentered className="featured-posts-container">
+    <HorizontallyCentered className="featured-posts-container" container="section">
       <Slice
         container={({ children }) => <ContentMaxWidth className="featured-posts-inner">{children}</ContentMaxWidth>}
         start={1}

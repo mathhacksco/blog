@@ -17,6 +17,8 @@ import CallToActionButtons from '../call-to-action-buttons/CallToActionButtons';
 import FeaturedPosts from '../featured-posts/FeaturedPosts';
 import Hero from '../hero/Hero';
 import LatestPosts from '../latest-posts/LatestPosts';
+import Footer from '../footer/Footer';
+import Head from '../head/Head';
 
 // $FlowFixMe
 import './Home.scss';
@@ -96,21 +98,23 @@ export default class Home extends Component<Props, {}> {
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
     return (
-      <div className="homepage">
+      <div className="app-container homepage">
+        <Head/>
         {featuredPost && <Hero post={featuredPost} categories={this.props.categories}/>}
-        <HorizontallyCentered className="ad-container-1">
+        <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth>
             <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
         <CallToActionButtons className="call-to-action-container"/>
         <FeaturedPosts featuredPosts={featuredPosts} categories={this.props.categories}/>
-        <HorizontallyCentered className="ad-container-2">
+        <HorizontallyCentered className="ad-container-2" container="section">
           <ContentMaxWidth>
             <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
         <LatestPosts className="latest-posts-container" posts={latestPosts} categories={this.props.categories}/>
+        <Footer/>
       </div>
     );
   }

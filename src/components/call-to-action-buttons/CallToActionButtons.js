@@ -14,7 +14,7 @@ type Props = {
 
 export default function CallToActionButtons({ className }: Props) {
   return (
-    <HorizontallyCentered className={classnames('call-to-action-button-container', className)}>
+    <HorizontallyCentered className={classnames('call-to-action-button-container', className)} container="section">
       <ContentMaxWidth className="call-to-action-inner">
         <div className="call-to-action-button">
           <div className="background"/>
