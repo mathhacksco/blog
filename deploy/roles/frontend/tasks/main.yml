@@ -11,12 +11,17 @@
     - nodejs
     - build-essential
 
-- name: synchronize source folder
-  synchronize:
-    src: "{{ role_path }}/../../../"
-    dest: ~/frontend
-    rsync_opts:
-      - "--exclude=node_modules"
+- name: remove source folder
+  file:
+    path: "{{ remote_home_directory }}/frontend"
+    state: absent
+
+- name: clone git repo
+  git:
+    repo: "{{ git_repo_origin }}"
+    dest: "{{ remote_home_directory }}/frontend"
+    refspec: "refs/heads/{{ git_repo_branch }}"
+    version: "{{ git_repo_sha }}"
 
 - name: check if swapfile exists
   stat:
@@ -39,15 +44,15 @@
 - name: install node modules
   command: npm install
   args:
-    chdir: ~/frontend
+    chdir: "{{ remote_home_directory }}/frontend"
 
 - name: build production javascript/html/css bundles
   command: npm run build:production
   args:
-    chdir: ~/frontend
+    chdir: "{{ remote_home_directory }}/frontend"
 
 - name: sync backup to s3
-  command: aws s3 cp ~/frontend/public s3://{{ aws_public_bucket }} --force --acl public-read --recursive
+  command: aws s3 cp {{ remote_home_directory }}/frontend/public s3://{{ aws_public_bucket }} --force --acl public-read --recursive
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_public_access_key_id }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_public_secret_access_key }}"
