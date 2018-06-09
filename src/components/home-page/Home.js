@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import first from 'lodash/first';
 
 import { fetchPosts, fetchPostsByCategory } from '../../redux/actionCreators/posts';
 import { fetchCategories } from '../../redux/actionCreators/categories';
@@ -93,9 +94,10 @@ export default class Home extends Component<Props, {}> {
   render() {
     const featuredPosts = this.getFeaturedPosts();
     const latestPosts = this.props.posts.exclude(featuredPosts);
+    const featuredPost = first(featuredPosts.toArray());
     return (
       <div className="homepage">
-        <Hero featuredPosts={featuredPosts} categories={this.props.categories}/>
+        {featuredPost && <Hero post={featuredPost} categories={this.props.categories}/>}
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
             <Ad/>

@@ -1,0 +1,10 @@
+@import "../../styles/constants";
+@import "../../styles/fonts";
+
+.post-content-container {
+  .post-content {
+    font-family: $crimsonTextFontFamily;
+    font-size: 24pt * $sketchFontMulitplier;
+    color: $theme-dark-gray;
+  }
+}
