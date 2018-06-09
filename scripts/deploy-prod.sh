@@ -10,6 +10,8 @@ chmod 400 ./deploy/ssh-keys/deploy_key
 
 docker run \
   -e "ANSIBLE_VAULT_PASSWORD=$ANSIBLE_VAULT_PASSWORD" \
+  -e "TRAVIS_COMMIT=$TRAVIS_COMMIT" \
+  -e "TRAVIS_BRANCH=$TRAVIS_BRANCH" \
   -v $(pwd)/deploy/ssh-keys:/root/.ssh \
   mathhacksco/blog
 
