@@ -3,13 +3,28 @@
 
 .post-content-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 640px;
+  align-self: center;
+
+  .post-info {
+    font-family: $crimsonTextFontFamily;
+    font-size: 14pt * $sketchFontMulitplier;
+    color: $theme-medium-gray;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
 
   .post-content {
     font-family: $crimsonTextFontFamily;
     font-size: 24pt * $sketchFontMulitplier;
     color: $theme-dark-gray;
-    max-width: 640px;
+    width: 100%;
 
     *::selection {
       background-color: $theme-extra-light-violet;
