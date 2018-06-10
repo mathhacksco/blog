@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { postRequest } from './requests';
 import * as Debug from './DebugUtil';
 import * as Tracking from './Tracking';
+import { APP_VERSION } from '../constants';
 
 // $FlowFixMe
 export const GOOGLE_ANALYTICS_TRACKING_ID: string = process.env.GOOGLE_ANALYTICS_TRACKING_ID;
@@ -14,7 +15,6 @@ export const GOOGLE_ANALYTICS_PARAMS = {
 };
 
 const DEBUG = false;
-const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export const CategoryEnum = {
   HomePage: 'Pages.HomePage',
@@ -50,19 +50,15 @@ export const trackEvent = async (event: TrackingEvent) => {
     ea: event.action,
     el: event.label,
     ev: event.value,
-    cd1: window.location.hostname,
     ds: 'web',
     an: 'MathHacks',
     aid: 'com.jonbrennecke.mathhacksweb',
     ua: getUserAgent(),
-    uid: Tracking.getBrowserFingerprint()
-
-    // TODO: add more app information to every API request
-    // an=funTimes                // App name.
-    // &av=1.5.0                   // App version.
-    // &aid=com.foo.App            // App Id.
-    // &aiid=com.android.vending   // App Installer Id.
-    // &cd=Home                    // Screen name / content description.
+    uid: Tracking.getBrowserFingerprint(),
+    av: APP_VERSION,
+    cd: event.category,
+    cd1: window.location.hostname,
+    cd2: APP_VERSION
 
   }, _.isNil);
   const res = await postRequest({
