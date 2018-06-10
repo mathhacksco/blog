@@ -22,6 +22,7 @@
     "caldera-immutable-model": "^1.0.1",
     "classnames": "^2.2.5",
     "core-decorators": "^0.15.0",
+    "crypto-js": "3.1.9-1",
     "immutable": "^3.8.1",
     "invariant": "2.2.1",
     "lodash": "4.14.1",
