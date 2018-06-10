@@ -67,6 +67,13 @@
       color: $theme-violet;
     }
 
+    blockquote {
+      border-left-color: $theme-extra-light-violet;
+      border-left-width: 25px;
+      border-left-style: solid;
+      padding-left: 25px;
+    }
+
     figure {
       box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.07);
       border: 15px solid $theme-extra-light-violet;
