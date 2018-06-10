@@ -1,16 +1,21 @@
 /* @flow */
 import React from 'react';
+import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+
 import Logo from '../logo/Logo';
 
 // $FlowFixMe
 import './Navigation.styles.scss';
 
-type Props = {};
+type Props = {
+  className?: ?string;
+  colorScheme: 'violet' | 'teal' | 'pink';
+};
 
-export default function Navigation(props: Props) {
+export default function Navigation({ className, colorScheme }: Props) {
   return (
-    <nav className="navigation">
+    <nav className={classnames('navigation', colorScheme || 'pink', className)}>
       <div className="navigation-top-bar"/>
       <Link to="/tutorials" className="nav-link">
         Tutorials

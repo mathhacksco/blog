@@ -13,7 +13,6 @@ import TagPage from './components/tag-page/TagPage';
 import AboutPage from './components/about-page/AboutPage';
 import BlogPage from './components/blog-page/Blog';
 import Head from './components/head/Head';
-import Footer from './components/footer/Footer';
 
 import store from './redux/store';
 
@@ -30,7 +29,6 @@ export default function Routes() {
             <Route path="/posts" component={PostsPage}/>
             <Route path="/posts/:id" component={PostPage}/>
             <Route path="/tags/:id" component={TagPage}/>
-            <Footer/>
           </div>
         </Route>
       </Router>

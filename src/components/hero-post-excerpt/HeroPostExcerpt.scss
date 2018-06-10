@@ -9,6 +9,36 @@
   padding-right: 20px;
   padding-bottom: 45px;
 
+  &.violet {
+    .title-link {
+      &:hover, &:active, &:focus {
+        .title {
+          color: $theme-violet;
+        }
+      }
+    }
+  }
+
+  &.teal {
+    .title-link {
+      &:hover, &:active, &:focus {
+        .title {
+          color: $theme-teal;
+        }
+      }
+    }
+  }
+
+  &.pink {
+    .title-link {
+      &:hover, &:active, &:focus {
+        .title {
+          color: $theme-pink;
+        }
+      }
+    }
+  }
+
   .column-layout {
     align-items: flex-start;
   }
@@ -46,7 +76,6 @@
     &:hover, &:active, &:focus {
       .title {
         background-color: #fff;
-        color: $theme-pink;
       }
     }
   }
@@ -57,31 +86,5 @@
     font-weight: 100;
     font-size: 20pt * $sketchFontMulitplier;
     color: #fff;
-  }
-
-  .timestamp {
-    margin-bottom: 5px;
-    margin-top: 5px;
-    color: #B1B1B2;
-  }
-
-  .more-link {
-    text-decoration: none;
-    text-align: center;
-    border-color: transparent;
-    border-width: 0px;
-    border-bottom-color: transparent;
-    border-bottom-width: 1px;
-    border-style: solid;
-    color: #3C4851;
-
-    h5 {
-      margin-bottom: 0;
-      line-height: 0.9em;
-    }
-
-    &:hover, &:active, &:focus {
-      border-bottom-color: #3C4851;
-    }
   }
 }

@@ -6,6 +6,7 @@ html, body, main {
 }
 
 body {
+  // TODO: should match page color scheme
   background-color: $theme-pink;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;

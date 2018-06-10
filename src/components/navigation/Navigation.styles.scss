@@ -9,13 +9,30 @@
   padding-bottom: 35px;
   margin-top: 8px;
 
+  &.violet {
+    .navigation-top-bar {
+      background-color: $theme-violet;
+    }
+  }
+
+  &.teal {
+    .navigation-top-bar {
+      background-color: $theme-teal;
+    }
+  }
+
+  &.pink {
+    .navigation-top-bar {
+      background-color: $theme-pink;
+    }
+  }
+
   .navigation-top-bar {
     position: absolute;
     top: -192px;
     left: 0;
     height: 200px;
     width: 100%;
-    background-color: $theme-pink;
   }
 
   .nav-link {
