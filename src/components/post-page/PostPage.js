@@ -16,7 +16,6 @@ import Ad from '../ad/Ad.js';
 import Footer from '../footer/Footer';
 
 import type { Dispatch } from '../../types/redux';
-import type { Id } from '../../types/general';
 import type AppState from '../../models/State';
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';

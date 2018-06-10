@@ -8,14 +8,14 @@ import type { Dispatch, GetState } from '../../types/redux';
 import type { Id } from '../../types/general';
 
 export function handleException(error: Error): (dispatch: Dispatch, getState: GetState) => Promise<void> {
-  return async (dispatch: Dispatch) => {
+  return async () => {
     // TODO log error in analytics
     throw error;
   };
 }
 
 export function fetchPosts(): (dispatch: Dispatch, getState: GetState) => Promise<void> {
-  return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POSTS });
       const posts = await actions.fetchPosts();
@@ -33,7 +33,7 @@ export function fetchPosts(): (dispatch: Dispatch, getState: GetState) => Promis
 }
 
 export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => Promise<void> {
-  return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
       const post = await actions.fetchPost(id);
@@ -51,7 +51,7 @@ export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => P
 }
 
 export function fetchPostBySlug(slug: string): (dispatch: Dispatch, getState: GetState) => Promise<void> {
-  return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
       const posts = await actions.fetchPostsBySlug(slug);
@@ -73,7 +73,7 @@ export function fetchPostBySlug(slug: string): (dispatch: Dispatch, getState: Ge
 }
 
 export function fetchPostsByCategory(categoryId: Id): (dispatch: Dispatch, getState: GetState) => Promise<void> {
-  return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POSTS_BY_CATEGORY });
       const posts = await actions.fetchPosts({ categories: [categoryId] });

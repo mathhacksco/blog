@@ -22,7 +22,7 @@ type Props = {
 
 export default function LatestPosts({ className, posts, categories }: Props) {
   return (
-    <HorizontallyCentered className={classnames('latest-posts-container', classnames)} container="section">
+    <HorizontallyCentered className={classnames('latest-posts-container', className)} container="section">
       <ContentMaxWidth className="latest-posts-inner">
         <h2 className="section-header">Latest Posts</h2>
         <Slice

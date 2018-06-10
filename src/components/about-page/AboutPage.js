@@ -7,7 +7,6 @@ import { fetchPages } from '../../redux/actionCreators/pages';
 import { getPages } from '../../redux/selectors/pages';
 
 import type { Dispatch } from '../../types/redux';
-import type { Id } from '../../types/general';
 import type PageCollection from '../../models/PostCollection';
 import type AppState from '../../models/State';
 
