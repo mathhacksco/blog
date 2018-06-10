@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import { fetchPages } from '../../redux/actionCreators/pages';
 import { getPages } from '../../redux/selectors/pages';
 
-import type { State as AppState, Dispatch } from '../../types/redux';
+import type { Dispatch } from '../../types/redux';
 import type { Id } from '../../types/general';
 import type PageCollection from '../../models/PostCollection';
+import type AppState from '../../models/State';
 
 // $FlowFixMe
 import './AboutPage.styles.scss';
@@ -21,18 +22,10 @@ type StateProps = {
 };
 
 type DispatchProps = {
-  fetchPages: Id => Promise<void>;
+  fetchPages: () => Promise<void>;
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
-
-type DefaultProps = {
-
-};
-
-type State = {
-
-};
 
 function mapStateToProps(state: AppState): StateProps {
   return {
@@ -42,18 +35,16 @@ function mapStateToProps(state: AppState): StateProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchPages: (id: Id) => dispatch(fetchPages(id))
+    fetchPages: () => dispatch(fetchPages())
   };
 }
 
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 @autobind
-export default class AboutPage extends Component<DefaultProps, Props, State> {
+export default class AboutPage extends Component<Props, {}> {
 
   props: Props;
-  state = {};
-  static defaultProps: DefaultProps = {};
 
   componentDidMount() {
     this.props.fetchPages();
@@ -66,8 +57,6 @@ export default class AboutPage extends Component<DefaultProps, Props, State> {
     }
     return (
       <div className="aboutPage">
-        {/* <h1 className="postTitle" dangerouslySetInnerHTML={{ __html: this.props.post.title.rendered }}/>
-        {this.renderTags()} */}
         <p className="postContent" dangerouslySetInnerHTML={{ __html: page.content.rendered }}/>
       </div>
     );

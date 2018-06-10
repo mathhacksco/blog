@@ -10,7 +10,7 @@ import './Navigation.styles.scss';
 
 type Props = {
   className?: ?string;
-  colorScheme: 'violet' | 'teal' | 'pink';
+  colorScheme?: 'violet' | 'teal' | 'pink';
 };
 
 export default function Navigation({ className, colorScheme }: Props) {

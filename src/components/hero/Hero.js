@@ -17,7 +17,7 @@ type Props = {
   className?: ?string;
   post: Post;
   categories: CategoryCollection;
-  colorScheme: 'violet' | 'teal' | 'pink';
+  colorScheme?: 'violet' | 'teal' | 'pink';
 };
 
 export default function Hero({ className, colorScheme, post, categories }: Props) {
