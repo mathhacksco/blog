@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 
-import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
+// import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 import type { Children } from '../../types/react';
 
@@ -17,11 +17,12 @@ export default class PostsPage extends Component<Props, State> {
   state: State = {};
 
   componentDidMount() {
-    GoogleAnalytics.trackEvent({
-      category: GoogleAnalytics.CategoryEnum.PostsPage,
-      action: GoogleAnalytics.ActionEnum.PageView,
-      label: 'Posts Page View'
-    });
+    // TODO: this event is unnecessary when on PostPage
+    // GoogleAnalytics.trackEvent({
+    //   category: GoogleAnalytics.CategoryEnum.PostsPage,
+    //   action: GoogleAnalytics.ActionEnum.PageView,
+    //   label: 'Posts Page View'
+    // });
   }
 
   render() {

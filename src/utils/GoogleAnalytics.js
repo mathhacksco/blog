@@ -1,12 +1,13 @@
 // @flow
 import _ from 'lodash';
-import uuid from 'uuid';
 
 import { postRequest } from './requests';
 import * as Debug from './DebugUtil';
+import * as Tracking from './Tracking';
 
-const GOOGLE_ANALYTICS_TRACKING_ID = process.env.GOOGLE_ANALYTICS_TRACKING_ID;
-const GOOGLE_ANALYTICS_PARAMS = {
+// $FlowFixMe
+export const GOOGLE_ANALYTICS_TRACKING_ID: string = process.env.GOOGLE_ANALYTICS_TRACKING_ID;
+export const GOOGLE_ANALYTICS_PARAMS = {
   HOST: 'https://www.google-analytics.com',
   API_VERSION: '1',
   TRACKING_ID: GOOGLE_ANALYTICS_TRACKING_ID
@@ -38,6 +39,8 @@ export function getUserAgent(): string {
   return window.navigator.userAgent;
 }
 
+// TODO: gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
+
 export const trackEvent = async (event: TrackingEvent) => {
   const query: { [key: string]: string | number } = _.omitBy({
     v: GOOGLE_ANALYTICS_PARAMS.API_VERSION,
@@ -52,7 +55,7 @@ export const trackEvent = async (event: TrackingEvent) => {
     an: 'MathHacks',
     aid: 'com.jonbrennecke.mathhacksweb',
     ua: getUserAgent(),
-    cid: uuid.v4() // FIXME
+    uid: Tracking.getBrowserFingerprint()
 
     // TODO: add more app information to every API request
     // an=funTimes                // App name.
