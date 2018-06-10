@@ -27,7 +27,7 @@ export default function HeroPostExcerpt({ className, colorScheme, post, categori
     <ColumnLayout className={classnames('hero-post-excerpt', colorScheme || 'pink', className)}>
       <p className="featured">Featured Article</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
-      <Link to={`posts/${post.id}`} className="title-link">
+      <Link to={`posts/${post.slug}`} className="title-link">
         <p className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
       </Link>
       <p className="author">by Brett Berry</p>

@@ -8,4 +8,8 @@ export default class PostCollection extends Collection {
   exclude(posts: PostCollection): PostCollection {
     return this.remove(p => !posts.findById(p.id));
   }
+
+  findBySlug(slug: string): ?Post {
+    return this.find(p => p.slug === slug);
+  }
 }

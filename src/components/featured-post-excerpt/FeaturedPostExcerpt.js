@@ -27,7 +27,7 @@ export default function FeaturedPostExcerpt({ post, categories, className }: Pro
       <div className="background"/>
       <div className="content">
         <p className="category">{formatCategoryName(categoryName)}</p>
-        <Link to={`posts/${post.id}`} className="title-link">
+        <Link to={`posts/${post.slug}`} className="title-link">
           <h2 className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
         </Link>
         <p className="author">by Brett Berry</p>

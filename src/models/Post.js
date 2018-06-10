@@ -15,6 +15,7 @@ export default class Post extends Model {
   get date(): string { return this.get('date'); }
   get dateGMT(): string { return this.get('date_gmt'); }
   get categories(): number[] { return this.get('categories'); }
+  get slug(): string { return this.get('slug'); }
   getId(): Id { return this.id; }
   hasCategory(category: Id): boolean {
     return includes(this.categories, category);
