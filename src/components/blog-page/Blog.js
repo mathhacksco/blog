@@ -21,13 +21,13 @@ import type { Dispatch } from '../../types/redux';
 type OwnProps = {};
 
 type StateProps = {
-  posts: PostCollection;
-  categories: CategoryCollection;
+  posts: PostCollection,
+  categories: CategoryCollection,
 };
 
 type DispatchProps = {
-  fetchPosts: () => Promise<void>;
-  fetchCategories: () => Promise<void>;
+  fetchPosts: () => Promise<void>,
+  fetchCategories: () => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -35,21 +35,20 @@ type Props = OwnProps & StateProps & DispatchProps;
 function mapStateToProps(state: State): StateProps {
   return {
     posts: getPosts(state),
-    categories: getCategories(state)
+    categories: getCategories(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
   };
 }
 
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Blog extends Component<Props, {}> {
-
   props: Props;
 
   componentDidMount() {
@@ -66,9 +65,19 @@ export default class Blog extends Component<Props, {}> {
         array={posts}
         render={sliced => (
           <Map
-            container={({ children }) => <ColumnLayout>{children}</ColumnLayout>}
+            container={({ children }) => (
+              <ColumnLayout>{children}</ColumnLayout>
+            )}
             array={sliced}
-            render={post => <PostExcerpt key={post.id} id={post.id} post={post} className="post" categories={this.props.categories}/>}
+            render={post => (
+              <PostExcerpt
+                key={post.id}
+                id={post.id}
+                post={post}
+                className="post"
+                categories={this.props.categories}
+              />
+            )}
           />
         )}
       />

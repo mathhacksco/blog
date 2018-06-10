@@ -11,9 +11,5 @@ type Props = {
 };
 
 export default function ContentMinWidth({ children }: Props) {
-  return (
-    <div className="content-min-width">
-      {children}
-    </div>
-  );
+  return <div className="content-min-width">{children}</div>;
 }

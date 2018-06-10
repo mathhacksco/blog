@@ -20,14 +20,18 @@ export function deleteRequest({ ...rest }: any) {
 }
 
 export function request({ url, method, body, query, headers = {} }: any) {
-  const options = extend({
-    method: method,
-    headers: headers
-  }, body && {
-    body: JSON.stringify(body)
-  });
-  return Promise.resolve()
-    .then(() => fetch(url + createQueryString(query), options));
+  const options = extend(
+    {
+      method: method,
+      headers: headers,
+    },
+    body && {
+      body: JSON.stringify(body),
+    }
+  );
+  return Promise.resolve().then(() =>
+    fetch(url + createQueryString(query), options)
+  );
 }
 
 function createQueryString(query) {

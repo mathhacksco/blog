@@ -7,14 +7,19 @@ import { POST_ACTION_TYPES } from '../constants';
 import type { Dispatch, GetState } from '../../types/redux';
 import type { Id } from '../../types/general';
 
-export function handleException(error: Error): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function handleException(
+  error: Error
+): (dispatch: Dispatch, getState: GetState) => Promise<void> {
   return async () => {
     // TODO log error in analytics
     throw error;
   };
 }
 
-export function fetchPosts(): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function fetchPosts(): (
+  dispatch: Dispatch,
+  getState: GetState
+) => Promise<void> {
   return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POSTS });
@@ -22,17 +27,18 @@ export function fetchPosts(): (dispatch: Dispatch, getState: GetState) => Promis
       dispatch({
         type: POST_ACTION_TYPES.RECEIVE_POSTS,
         payload: {
-          posts
-        }
+          posts,
+        },
       });
-    }
-    catch (error) {
+    } catch (error) {
       dispatch(handleException(error));
     }
   };
 }
 
-export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function fetchPost(
+  id: Id
+): (dispatch: Dispatch, getState: GetState) => Promise<void> {
   return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
@@ -40,39 +46,41 @@ export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => P
       dispatch({
         type: POST_ACTION_TYPES.RECEIVE_POST,
         payload: {
-          post
-        }
+          post,
+        },
       });
-    }
-    catch (error) {
+    } catch (error) {
       dispatch(handleException(error));
     }
   };
 }
 
-export function fetchPostBySlug(slug: string): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function fetchPostBySlug(
+  slug: string
+): (dispatch: Dispatch, getState: GetState) => Promise<void> {
   return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
       const posts = await actions.fetchPostsBySlug(slug);
       const post = first(posts);
       if (!post) {
-        throw new Error(`failed to find a post matching the slug "${slug}"`)
+        throw new Error(`failed to find a post matching the slug "${slug}"`);
       }
       dispatch({
         type: POST_ACTION_TYPES.RECEIVE_POST,
         payload: {
-          post
-        }
+          post,
+        },
       });
-    }
-    catch (error) {
+    } catch (error) {
       dispatch(handleException(error));
     }
   };
 }
 
-export function fetchPostsByCategory(categoryId: Id): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+export function fetchPostsByCategory(
+  categoryId: Id
+): (dispatch: Dispatch, getState: GetState) => Promise<void> {
   return async (dispatch: Dispatch): Promise<void> => {
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POSTS_BY_CATEGORY });
@@ -81,11 +89,10 @@ export function fetchPostsByCategory(categoryId: Id): (dispatch: Dispatch, getSt
         type: POST_ACTION_TYPES.RECEIVE_POSTS_BY_CATEGORY,
         payload: {
           categoryId,
-          posts
-        }
+          posts,
+        },
       });
-    }
-    catch (error) {
+    } catch (error) {
       dispatch(handleException(error));
     }
   };

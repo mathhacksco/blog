@@ -12,13 +12,13 @@ import './index.scss';
 Promise.config({
   cancellation: true,
   warnings: {
-    wForgottenReturn: false
-  }
+    wForgottenReturn: false,
+  },
 });
 
 const element = document.getElementById('react-main');
 if (!element) {
   Debug.logErrorMessage('Failed to find `#react-naim` component.');
 } else {
-  render(<Routes/>, element);
+  render(<Routes />, element);
 }

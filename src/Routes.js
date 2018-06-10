@@ -1,9 +1,6 @@
 /* @flow */
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import Home from './components/home-page/Home';
@@ -22,13 +19,13 @@ export default function Routes() {
       <Router>
         <Route path="/">
           <div className="app-container">
-            <Head/>
-            <Route path="/" exact component={Home}/>
-            <Route path="/about" exact component={AboutPage}/>
-            <Route path="/blog" exact component={BlogPage}/>
-            <Route path="/posts" component={PostsPage}/>
-            <Route path="/posts/:slug" component={PostPage}/>
-            <Route path="/tags/:id" component={TagPage}/>
+            <Head />
+            <Route path="/" exact component={Home} />
+            <Route path="/about" exact component={AboutPage} />
+            <Route path="/blog" exact component={BlogPage} />
+            <Route path="/posts" component={PostsPage} />
+            <Route path="/posts/:slug" component={PostPage} />
+            <Route path="/tags/:id" component={TagPage} />
           </div>
         </Route>
       </Router>

@@ -14,8 +14,6 @@ type Props = {
 
 export default function ContentMaxWidth({ children, className }: Props) {
   return (
-    <div className={classnames('content-max-width', className)}>
-      {children}
-    </div>
+    <div className={classnames('content-max-width', className)}>{children}</div>
   );
 }

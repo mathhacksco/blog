@@ -13,8 +13,8 @@ import FooterMathSymbols from './FooterMathSymbols.svg';
 import './Footer.scss';
 
 type Props = {
-  className?: ?string;
-  colorScheme: 'violet' | 'teal' | 'pink';
+  className?: ?string,
+  colorScheme: 'violet' | 'teal' | 'pink',
 };
 
 const COPYRIGHT_HOLDER = 'Brett Berry';
@@ -23,14 +23,19 @@ const COPYRIGHT_YEAR = moment().format('YYYY');
 export default function Footer({ colorScheme, className }: Props) {
   return (
     <footer className={classnames('footer', colorScheme || 'pink', className)}>
-      <div className="math-symbols" dangerouslySetInnerHTML={{ __html: FooterMathSymbols }}/>
+      <div
+        className="math-symbols"
+        dangerouslySetInnerHTML={{ __html: FooterMathSymbols }}
+      />
       <div className="copyright-container">
         <div className="logo-container">
-          <Logo/>
+          <Logo />
         </div>
         <p className="copyright-text">
           <span>Copyright {COPYRIGHT_YEAR}, </span>
-          <Link to="/about" className="author-link">{COPYRIGHT_HOLDER}</Link>
+          <Link to="/about" className="author-link">
+            {COPYRIGHT_HOLDER}
+          </Link>
           <span>, All Rights Reserved</span>
         </p>
       </div>

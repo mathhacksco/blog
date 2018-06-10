@@ -26,8 +26,8 @@ import './PostPage.scss';
 type OwnProps = {
   match: {
     params: {
-      slug: string
-    }
+      slug: string,
+    },
   },
 };
 
@@ -37,27 +37,25 @@ type StateProps = {
 };
 
 type DispatchProps = {
-  fetchPostBySlug: (slug: string) => Promise<void>;
-  fetchCategories: () => Promise<void>;
+  fetchPostBySlug: (slug: string) => Promise<void>,
+  fetchCategories: () => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-type State = {
-
-};
+type State = {};
 
 function mapStateToProps(state: AppState): StateProps {
   return {
     posts: getPosts(state),
-    categories: getCategories(state)
+    categories: getCategories(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
     fetchPostBySlug: (slug: string) => dispatch(fetchPostBySlug(slug)),
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
   };
 }
 
@@ -65,7 +63,6 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 @connect(mapStateToProps, mapDispatchToProps)
 @autobind
 class PostPage extends Component<Props, State> {
-
   props: Props;
   state = {};
 
@@ -73,7 +70,7 @@ class PostPage extends Component<Props, State> {
     GoogleAnalytics.trackEvent({
       category: GoogleAnalytics.CategoryEnum.PostPage,
       action: GoogleAnalytics.ActionEnum.PageView,
-      label: 'Post Page View'
+      label: 'Post Page View',
     });
     const slug = this.props.match.params.slug;
     this.props.fetchPostBySlug(slug);
@@ -85,15 +82,21 @@ class PostPage extends Component<Props, State> {
     return (
       <div className="post-page">
         {/* TODO: Hero should handle loading state with no post */}
-        {post && <Hero post={post} categories={this.props.categories} colorScheme="violet"/>}
+        {post && (
+          <Hero
+            post={post}
+            categories={this.props.categories}
+            colorScheme="violet"
+          />
+        )}
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
-            <Ad/>
-            {post && <PostContent post={post}/>}
-            <Ad/>
+            <Ad />
+            {post && <PostContent post={post} />}
+            <Ad />
           </ContentMaxWidth>
         </HorizontallyCentered>
-        <Footer colorScheme="violet"/>
+        <Footer colorScheme="violet" />
       </div>
     );
   }

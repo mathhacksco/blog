@@ -14,23 +14,39 @@ import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
-  featuredPosts: PostCollection;
-  categories: CategoryCollection;
+  featuredPosts: PostCollection,
+  categories: CategoryCollection,
 };
 
 export default function FeaturedPosts({ featuredPosts, categories }: Props) {
   return (
-    <HorizontallyCentered className="featured-posts-container" container="section">
+    <HorizontallyCentered
+      className="featured-posts-container"
+      container="section"
+    >
       <Slice
-        container={({ children }) => <ContentMaxWidth className="featured-posts-inner">{children}</ContentMaxWidth>}
+        container={({ children }) => (
+          <ContentMaxWidth className="featured-posts-inner">
+            {children}
+          </ContentMaxWidth>
+        )}
         start={1}
         end={4}
         array={featuredPosts.toArray()}
         render={sliced => (
           <Map
-            container={({ children }) => <RowLayout className="flex-1">{children}</RowLayout>}
+            container={({ children }) => (
+              <RowLayout className="flex-1">{children}</RowLayout>
+            )}
             array={sliced}
-            render={post => <FeaturedPostExcerpt className="featured-post" key={post.id} post={post} categories={categories} />}
+            render={post => (
+              <FeaturedPostExcerpt
+                className="featured-post"
+                key={post.id}
+                post={post}
+                categories={categories}
+              />
+            )}
           />
         )}
       />

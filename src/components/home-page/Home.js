@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import first from 'lodash/first';
 
-import { fetchPosts, fetchPostsByCategory } from '../../redux/actionCreators/posts';
+import {
+  fetchPosts,
+  fetchPostsByCategory,
+} from '../../redux/actionCreators/posts';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getPosts } from '../../redux/selectors/posts';
 import { getCategories } from '../../redux/selectors/categories';
@@ -29,14 +32,14 @@ import type { Dispatch } from '../../types/redux';
 type OwnProps = {};
 
 type StateProps = {
-  posts: PostCollection;
-  categories: CategoryCollection;
+  posts: PostCollection,
+  categories: CategoryCollection,
 };
 
 type DispatchProps = {
-  fetchPosts: () => Promise<void>;
-  fetchPostsByCategory: Id => Promise<void>;
-  fetchCategories: () => Promise<void>;
+  fetchPosts: () => Promise<void>,
+  fetchPostsByCategory: Id => Promise<void>,
+  fetchCategories: () => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -44,7 +47,7 @@ type Props = OwnProps & StateProps & DispatchProps;
 function mapStateToProps(state: State): StateProps {
   return {
     posts: getPosts(state),
-    categories: getCategories(state)
+    categories: getCategories(state),
   };
 }
 
@@ -52,22 +55,21 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     fetchPostsByCategory: (id: Id) => dispatch(fetchPostsByCategory(id)),
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
   };
 }
 
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Home extends Component<Props, {}> {
-
   props: Props;
-  state = {}
+  state = {};
 
   componentDidMount() {
     GoogleAnalytics.trackEvent({
       category: GoogleAnalytics.CategoryEnum.HomePage,
       action: GoogleAnalytics.ActionEnum.PageView,
-      label: 'Home Page View'
+      label: 'Home Page View',
     });
     this.props.fetchPosts();
     this.fetchFeaturedPosts();
@@ -75,7 +77,9 @@ export default class Home extends Component<Props, {}> {
 
   async fetchFeaturedPosts() {
     await this.props.fetchCategories();
-    const featuredCategory = this.props.categories.find(c => c.slug === 'featured');
+    const featuredCategory = this.props.categories.find(
+      c => c.slug === 'featured'
+    );
     if (!featuredCategory) {
       await Debug.logErrorMessage('Failed to find featured category.');
       return;
@@ -84,7 +88,9 @@ export default class Home extends Component<Props, {}> {
   }
 
   getFeaturedPosts(): PostCollection {
-    const featuredCategory = this.props.categories.find(c => c.slug === 'featured');
+    const featuredCategory = this.props.categories.find(
+      c => c.slug === 'featured'
+    );
     if (!featuredCategory) {
       return new PostCollection();
     }
@@ -97,20 +103,29 @@ export default class Home extends Component<Props, {}> {
     const featuredPost = first(featuredPosts.toArray());
     return (
       <div className="app-container homepage">
-        {featuredPost && <Hero post={featuredPost} categories={this.props.categories}/>}
+        {featuredPost && (
+          <Hero post={featuredPost} categories={this.props.categories} />
+        )}
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth>
-            <Ad/>
+            <Ad />
           </ContentMaxWidth>
         </HorizontallyCentered>
-        <CallToActionButtons className="call-to-action-container"/>
-        <FeaturedPosts featuredPosts={featuredPosts} categories={this.props.categories}/>
+        <CallToActionButtons className="call-to-action-container" />
+        <FeaturedPosts
+          featuredPosts={featuredPosts}
+          categories={this.props.categories}
+        />
         <HorizontallyCentered className="ad-container-2" container="section">
           <ContentMaxWidth>
-            <Ad/>
+            <Ad />
           </ContentMaxWidth>
         </HorizontallyCentered>
-        <LatestPosts className="latest-posts-container" posts={latestPosts} categories={this.props.categories}/>
+        <LatestPosts
+          className="latest-posts-container"
+          posts={latestPosts}
+          categories={this.props.categories}
+        />
       </div>
     );
   }

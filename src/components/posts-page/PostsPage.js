@@ -6,13 +6,12 @@ import React, { Component } from 'react';
 import type { Children } from '../../types/react';
 
 type Props = {
-  children?: Children;
+  children?: Children,
 };
 
 type State = {};
 
 export default class PostsPage extends Component<Props, State> {
-
   props: Props;
   state: State = {};
 
@@ -26,10 +25,6 @@ export default class PostsPage extends Component<Props, State> {
   }
 
   render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }

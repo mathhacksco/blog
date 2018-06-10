@@ -2,17 +2,17 @@
 import type { PostObject, PageObject, CategoryObject } from './wordpress';
 
 export type ReceivePostsPayload = {
-  posts: PostObject[];
+  posts: PostObject[],
 };
 
 export type ReceivePostPayload = {
-  post: PostObject;
+  post: PostObject,
 };
 
 export type ReceivePagesPayload = {
-  pages: PageObject[];
+  pages: PageObject[],
 };
 
 export type ReceiveCategoriesPayload = {
-  categories: CategoryObject[];
+  categories: CategoryObject[],
 };

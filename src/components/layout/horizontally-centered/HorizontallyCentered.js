@@ -13,7 +13,11 @@ type Props = {
   container?: React$ElementType,
 };
 
-export default function HorizontallyCentered({ container, children, className }: Props) {
+export default function HorizontallyCentered({
+  container,
+  children,
+  className,
+}: Props) {
   const Container = container || 'div';
   return (
     <Container className={classnames('horizonally-centered', className)}>

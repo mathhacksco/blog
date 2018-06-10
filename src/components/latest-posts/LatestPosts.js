@@ -15,14 +15,17 @@ import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
-  className?: ?string;
-  posts: PostCollection;
-  categories: CategoryCollection;
+  className?: ?string,
+  posts: PostCollection,
+  categories: CategoryCollection,
 };
 
 export default function LatestPosts({ className, posts, categories }: Props) {
   return (
-    <HorizontallyCentered className={classnames('latest-posts-container', className)} container="section">
+    <HorizontallyCentered
+      className={classnames('latest-posts-container', className)}
+      container="section"
+    >
       <ContentMaxWidth className="latest-posts-inner">
         <h2 className="section-header">Latest Posts</h2>
         <Slice
@@ -31,9 +34,17 @@ export default function LatestPosts({ className, posts, categories }: Props) {
           array={posts.toArray()}
           render={sliced => (
             <Map
-              container={({ children }) => <RowLayout className="latest-posts">{children}</RowLayout>}
+              container={({ children }) => (
+                <RowLayout className="latest-posts">{children}</RowLayout>
+              )}
               array={sliced}
-              render={post => <PostExcerpt key={post.id} post={post} categories={categories} />}
+              render={post => (
+                <PostExcerpt
+                  key={post.id}
+                  post={post}
+                  categories={categories}
+                />
+              )}
             />
           )}
         />

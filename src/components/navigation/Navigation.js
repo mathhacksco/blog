@@ -9,14 +9,14 @@ import Logo from '../logo/Logo';
 import './Navigation.styles.scss';
 
 type Props = {
-  className?: ?string;
-  colorScheme?: 'violet' | 'teal' | 'pink';
+  className?: ?string,
+  colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
 export default function Navigation({ className, colorScheme }: Props) {
   return (
     <nav className={classnames('navigation', colorScheme || 'pink', className)}>
-      <div className="navigation-top-bar"/>
+      <div className="navigation-top-bar" />
       <Link to="/tutorials" className="nav-link">
         Tutorials
       </Link>
@@ -27,7 +27,7 @@ export default function Navigation({ className, colorScheme }: Props) {
         Blog
       </Link>
       <Link to="/" className="nav-link nav-link-logo">
-        <Logo/>
+        <Logo />
       </Link>
       <Link to="/about" className="nav-link">
         About

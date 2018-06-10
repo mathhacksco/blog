@@ -16,5 +16,5 @@ export const MOMENT_DAY_MONTH_CALENDAR_FORMAT = {
   lastDay: '[Yesterday], MMM D',
   lastWeek: 'dddd, MMM D',
   nextWeek: 'dddd, MMM D',
-  sameElse: 'dddd, MMM D'
+  sameElse: 'dddd, MMM D',
 };

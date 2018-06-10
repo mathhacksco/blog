@@ -13,28 +13,27 @@ import type AppState from '../../models/State';
 // $FlowFixMe
 import './AboutPage.styles.scss';
 
-type OwnProps = {
-};
+type OwnProps = {};
 
 type StateProps = {
   pages: PageCollection,
 };
 
 type DispatchProps = {
-  fetchPages: () => Promise<void>;
+  fetchPages: () => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
 
 function mapStateToProps(state: AppState): StateProps {
   return {
-    pages: getPages(state)
+    pages: getPages(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchPages: () => dispatch(fetchPages())
+    fetchPages: () => dispatch(fetchPages()),
   };
 }
 
@@ -42,7 +41,6 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 @connect(mapStateToProps, mapDispatchToProps)
 @autobind
 export default class AboutPage extends Component<Props, {}> {
-
   props: Props;
 
   componentDidMount() {
@@ -56,7 +54,10 @@ export default class AboutPage extends Component<Props, {}> {
     }
     return (
       <div className="aboutPage">
-        <p className="postContent" dangerouslySetInnerHTML={{ __html: page.content.rendered }}/>
+        <p
+          className="postContent"
+          dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+        />
       </div>
     );
   }
