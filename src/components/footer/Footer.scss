@@ -6,10 +6,27 @@
   flex: 1;
   flex-direction: column;
 
+  &.violet {
+    .math-symbols {
+      background-color: $theme-violet;
+    }
+  }
+
+  &.teal {
+    .math-symbols {
+      background-color: $theme-teal;
+    }
+  }
+
+  &.pink {
+    .math-symbols {
+      background-color: $theme-pink;
+    }
+  }
+
   .math-symbols {
     display: flex;
     flex: 1;
-    background-color: $theme-pink;
     height: 275px;
   
     svg {

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import first from 'lodash/first';
+import classnames from 'classnames';
 
 import ColumnLayout from '../layout/column-layout/ColumnLayout';
 
@@ -12,16 +13,18 @@ import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
+  className?: ?string,
   post: Post;
   categories: CategoryCollection;
+  colorScheme?: 'violet' | 'teal' | 'pink';
 };
 
-export default function HeroPostExcerpt({ post, categories }: Props) {
+export default function HeroPostExcerpt({ className, colorScheme, post, categories }: Props) {
   const categoryId = first(post.categories); // TODO: make sure category is not "Featured"
   const category = categories.findById(categoryId);
   const categoryName = category ? category.name : '';
   return (
-    <ColumnLayout className="hero-post-excerpt">
+    <ColumnLayout className={classnames('hero-post-excerpt', colorScheme || 'pink', className)}>
       <p className="featured">Featured Article</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.id}`} className="title-link">
