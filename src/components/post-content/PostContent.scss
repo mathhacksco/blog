@@ -1,6 +1,21 @@
 @import "../../styles/constants";
 @import "../../styles/fonts";
 
+@mixin dropcap {
+  float: left;
+
+  &::first-letter {
+    line-height: 0.7em;
+    font-size: 55pt;
+    float: left;
+    display: block;
+    margin-right: 10px;
+    margin-bottom: -10px;
+    font-weight: 600;
+    text-shadow: 2px 4px 0px $theme-extra-light-violet;
+  }
+}
+
 .post-content-container {
   display: flex;
   align-items: center;
@@ -38,27 +53,18 @@
       line-height: 1.4em;
     }
 
-    p:first-child {
-      float: left;
+    & > p:first-child {
+      @include dropcap;
+    }
 
-      &::first-letter {
-        line-height: 0.7em;
-        font-size: 55pt;
-        float: left;
-        display: block;
-        margin-right: 10px;
-        margin-bottom: -10px;
-        font-weight: 600;
-        text-shadow: 2px 4px 0px $theme-extra-light-violet;
-      }
+    // FIXME: find a better way to clean this up
+    & > section:first-child > div:first-child > div:first-child > p:first-child,
+    & > section:first-child > div:first-child > p:first-child {
+      @include dropcap;
     }
 
     a {
       color: $theme-violet;
-    }
-
-    h2 {
-      // TODO
     }
 
     figure {
@@ -83,6 +89,15 @@
       img {
         width: 100%;
         height: auto;
+      }
+
+      figcaption {
+        text-align: center;
+        font-family: $crimsonTextFontFamily;
+        font-size: 14pt * $sketchFontMulitplier;
+        color: $theme-medium-gray;
+        padding-bottom: 15px;
+        padding-top: 15px;
       }
     }
   }
