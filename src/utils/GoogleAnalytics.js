@@ -39,8 +39,6 @@ export function getUserAgent(): string {
   return window.navigator.userAgent;
 }
 
-// TODO: gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
-
 export const trackEvent = async (event: TrackingEvent) => {
   const query: { [key: string]: string | number } = _.omitBy({
     v: GOOGLE_ANALYTICS_PARAMS.API_VERSION,
@@ -79,6 +77,3 @@ export const trackEvent = async (event: TrackingEvent) => {
     Debug.log(JSON.stringify(json, null, 2));
   }
 };
-
-// TODO trackException
-// TODO trackScreen (in the API this could be an EP group)
