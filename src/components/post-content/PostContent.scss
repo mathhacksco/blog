@@ -11,6 +11,11 @@
     color: $theme-dark-gray;
     max-width: 640px;
 
+    *::selection {
+      background-color: $theme-extra-light-violet;
+      color: $theme-violet;
+    }
+
     p {
       display: block;
       letter-spacing: 0.5px;
