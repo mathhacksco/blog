@@ -50,8 +50,8 @@ export default class State extends Model {
   }
 
   addOrReplacePostsById(posts: PostCollectionConvertible): State {
-    // $FlowFixMe
     const data =
+      // $FlowFixMe
       posts.toArray && isFunction(posts.toArray) ? posts.toArray() : posts;
     const updatedPosts = reduce(
       data,
