@@ -1,6 +1,7 @@
 /* @flow */
+import first from 'lodash/first';
+
 import * as actions from '../actions/posts';
-import * as categoryActions from '../actions/categories';
 import { POST_ACTION_TYPES } from '../constants';
 
 import type { Dispatch, GetState } from '../../types/redux';
@@ -36,6 +37,28 @@ export function fetchPost(id: Id): (dispatch: Dispatch, getState: GetState) => P
     try {
       dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
       const post = await actions.fetchPost(id);
+      dispatch({
+        type: POST_ACTION_TYPES.RECEIVE_POST,
+        payload: {
+          post
+        }
+      });
+    }
+    catch (error) {
+      dispatch(handleException(error));
+    }
+  };
+}
+
+export function fetchPostBySlug(slug: string): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+  return async (dispatch: Dispatch, getState: GetState): Promise<void> => {
+    try {
+      dispatch({ type: POST_ACTION_TYPES.FETCH_POST });
+      const posts = await actions.fetchPostsBySlug(slug);
+      const post = first(posts);
+      if (!post) {
+        throw new Error(`failed to find a post matching the slug "${slug}"`)
+      }
       dispatch({
         type: POST_ACTION_TYPES.RECEIVE_POST,
         payload: {

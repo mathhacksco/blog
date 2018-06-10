@@ -5,6 +5,7 @@ import type { PageObject } from '../../types/wordpress';
 
 // $FlowFixMe
 const WORDPRESS_API_URI: string = process.env.WORDPRESS_API_URI;
+// $FlowFixMe
 const WORDPRESS_API_PREFIX: string = process.env.WORDPRESS_API_PREFIX;
 
 export const fetchPages = async (): PageObject[] => {

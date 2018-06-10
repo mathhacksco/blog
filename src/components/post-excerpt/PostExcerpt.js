@@ -26,7 +26,7 @@ export default function PostExcerpt({ post, categories, className }: Props) {
       <div className="image-container"/>
       <div className="content-container">
         <p className="category">{formatCategoryName(categoryName)}</p>
-        <Link to={`posts/${post.id}`} className="title-link">
+        <Link to={`posts/${post.slug}`} className="title-link">
           <h2 className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
         </Link>
         <p className="timestamp">{moment.utc(post.dateGMT).fromNow()}</p>

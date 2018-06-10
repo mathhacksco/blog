@@ -29,6 +29,12 @@ export const fetchPost = async (id: Id) => {
   return await res.json();
 };
 
+export const fetchPostsBySlug = async (slug: string) => {
+  const query = { rest_route: `${WORDPRESS_API_PREFIX}/posts`, slug };
+  const res = await getRequest({ url: WORDPRESS_API_URI, query });
+  return await res.json();
+};
+
 // TODO: combine with the fetchPosts function
 export const fetchPostsWithTag = async (tag: string) => {
   const query = pickBy({ rest_route: `${WORDPRESS_API_PREFIX}/posts`, tags: tag });

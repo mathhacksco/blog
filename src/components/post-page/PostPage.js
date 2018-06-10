@@ -2,9 +2,8 @@
 import React, { Component } from 'react';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
-import toNumber from 'lodash/toNumber';
 
-import { fetchPost } from '../../redux/actionCreators/posts';
+import { fetchPostBySlug } from '../../redux/actionCreators/posts';
 import { getPosts } from '../../redux/selectors/posts';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getCategories } from '../../redux/selectors/categories';
@@ -17,7 +16,7 @@ import Ad from '../ad/Ad.js';
 import Footer from '../footer/Footer';
 
 import type { Dispatch } from '../../types/redux';
-import type { Id, RouteMatch } from '../../types/general';
+import type { Id } from '../../types/general';
 import type AppState from '../../models/State';
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
@@ -26,7 +25,11 @@ import type CategoryCollection from '../../models/CategoryCollection';
 import './PostPage.scss';
 
 type OwnProps = {
-  match: RouteMatch,
+  match: {
+    params: {
+      slug: string
+    }
+  },
 };
 
 type StateProps = {
@@ -35,7 +38,7 @@ type StateProps = {
 };
 
 type DispatchProps = {
-  fetchPost: Id => Promise<void>;
+  fetchPostBySlug: (slug: string) => Promise<void>;
   fetchCategories: () => Promise<void>;
 };
 
@@ -54,7 +57,7 @@ function mapStateToProps(state: AppState): StateProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchPost: (id: Id) => dispatch(fetchPost(id)),
+    fetchPostBySlug: (slug: string) => dispatch(fetchPostBySlug(slug)),
     fetchCategories: () => dispatch(fetchCategories())
   };
 }
@@ -73,13 +76,13 @@ class PostPage extends Component<Props, State> {
       action: GoogleAnalytics.ActionEnum.PageView,
       label: 'Post Page View'
     });
-    const id = this.props.match.params.id;
-    this.props.fetchPost(id);
+    const slug = this.props.match.params.slug;
+    this.props.fetchPostBySlug(slug);
   }
 
   render() {
-    const id = toNumber(this.props.match.params.id);
-    const post = this.props.posts.findById(id);
+    const slug = this.props.match.params.slug;
+    const post = this.props.posts.findBySlug(slug);
     return (
       <div className="post-page">
         {/* TODO: Hero should handle loading state with no post */}

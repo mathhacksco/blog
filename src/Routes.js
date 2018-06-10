@@ -27,7 +27,7 @@ export default function Routes() {
             <Route path="/about" exact component={AboutPage}/>
             <Route path="/blog" exact component={BlogPage}/>
             <Route path="/posts" component={PostsPage}/>
-            <Route path="/posts/:id" component={PostPage}/>
+            <Route path="/posts/:slug" component={PostPage}/>
             <Route path="/tags/:id" component={TagPage}/>
           </div>
         </Route>
