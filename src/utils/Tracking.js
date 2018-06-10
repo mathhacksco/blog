@@ -1,8 +1,9 @@
 // @flow
 import uuid from 'uuid';
 import Crypto from 'crypto-js';
-// import toPlainObject from 'lodash/toPlainObject';
 import times from 'lodash/times';
+
+import * as Debug from './DebugUtil';
 
 export function getBrowserFingerprint() {
   try {
@@ -33,7 +34,7 @@ export function getBrowserFingerprint() {
     return shaFingerprint.toString();
   }
   catch (error) {
-    // TODO: debug
+    Debug.log(`Failed to create fingerprint: ${error.message}.`);
     return uuid.v4();
   }
 }
