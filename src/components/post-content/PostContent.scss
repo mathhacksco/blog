@@ -2,9 +2,68 @@
 @import "../../styles/fonts";
 
 .post-content-container {
+  display: flex;
+  justify-content: center;
+
   .post-content {
     font-family: $crimsonTextFontFamily;
     font-size: 24pt * $sketchFontMulitplier;
     color: $theme-dark-gray;
+    max-width: 640px;
+
+    p {
+      display: block;
+      letter-spacing: 0.5px;
+      word-spacing: 1px;
+      line-height: 1.4em;
+    }
+
+    p:first-child {
+      float: left;
+
+      &::first-letter {
+        line-height: 0.7em;
+        font-size: 55pt;
+        float: left;
+        display: block;
+        margin-right: 10px;
+        margin-bottom: -10px;
+        font-weight: 600;
+        text-shadow: 2px 4px 0px $theme-extra-light-violet;
+      }
+    }
+
+    a {
+      color: $theme-violet;
+    }
+
+    h2 {
+      // TODO
+    }
+
+    figure {
+      box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.07);
+      border: 15px solid $theme-extra-light-violet;
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 45px;
+      margin-top: 45px;
+      overflow: hidden;
+
+      .progressiveMedia {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      canvas, .aspectRatioPlaceholder-fill {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 }
