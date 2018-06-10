@@ -5,7 +5,7 @@ import React from 'react';
 import './Paragraph.styles.scss';
 
 type Props = {
-  text?: string;
+  text?: string,
 };
 
 export default function Paragraph({ text }: Props) {

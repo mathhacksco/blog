@@ -14,21 +14,35 @@ import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
   className?: ?string,
-  post: Post;
-  categories: CategoryCollection;
-  colorScheme?: 'violet' | 'teal' | 'pink';
+  post: Post,
+  categories: CategoryCollection,
+  colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
-export default function HeroPostExcerpt({ className, colorScheme, post, categories }: Props) {
+export default function HeroPostExcerpt({
+  className,
+  colorScheme,
+  post,
+  categories,
+}: Props) {
   const categoryId = first(post.categories); // TODO: make sure category is not "Featured"
   const category = categories.findById(categoryId);
   const categoryName = category ? category.name : '';
   return (
-    <ColumnLayout className={classnames('hero-post-excerpt', colorScheme || 'pink', className)}>
+    <ColumnLayout
+      className={classnames(
+        'hero-post-excerpt',
+        colorScheme || 'pink',
+        className
+      )}
+    >
       <p className="featured">Featured Article</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.slug}`} className="title-link">
-        <p className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
+        <p
+          className="title"
+          dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+        />
       </Link>
       <p className="author">by Brett Berry</p>
     </ColumnLayout>

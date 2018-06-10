@@ -14,23 +14,34 @@ import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
-  className?: ?string;
-  post: Post;
-  categories: CategoryCollection;
-  colorScheme: 'violet' | 'teal' | 'pink';
+  className?: ?string,
+  post: Post,
+  categories: CategoryCollection,
+  colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
-export default function Hero({ className, colorScheme, post, categories }: Props) {
+export default function Hero({
+  className,
+  colorScheme,
+  post,
+  categories,
+}: Props) {
   return (
     <section className={classnames('hero', colorScheme || 'pink', className)}>
       <div className="hero-background">
-        <div className="top-gradient"/>
-        <div className="bottom-gradient"/>
+        <div className="top-gradient" />
+        <div className="bottom-gradient" />
       </div>
       <HorizontallyCentered className="hero-container">
         <ContentMaxWidth>
-          <Navigation colorScheme={colorScheme}/>
-          <HeroPostExcerpt key={post.id} id={post.id} post={post} categories={categories} colorScheme={colorScheme}/>
+          <Navigation colorScheme={colorScheme} />
+          <HeroPostExcerpt
+            key={post.id}
+            id={post.id}
+            post={post}
+            categories={categories}
+            colorScheme={colorScheme}
+          />
         </ContentMaxWidth>
       </HorizontallyCentered>
     </section>

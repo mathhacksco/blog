@@ -10,16 +10,22 @@ import CategoryCollection from '../models/CategoryCollection';
 import type Post from './Post';
 import type Page from './Page';
 import type Category from './Category';
-import type { CategoryObject, PostObject, PageObject } from '../types/wordpress';
+import type {
+  CategoryObject,
+  PostObject,
+  PageObject,
+} from '../types/wordpress';
 
 type PostCollectionConvertible = PostObject[] | Post[] | PostCollection;
 type PostConvertible = PostObject | Post;
 type PageCollectionConvertible = PageObject[] | Page[] | PageCollection;
 type PageConvertible = PageObject | Page;
-type CategoryCollectionConvertible = CategoryObject[] | Category[] | CategoryCollection;
+type CategoryCollectionConvertible =
+  | CategoryObject[]
+  | Category[]
+  | CategoryCollection;
 
 export default class State extends Model {
-
   _posts: PostCollection;
   _pages: PageCollection;
   _categories: CategoryCollection;
@@ -44,9 +50,14 @@ export default class State extends Model {
   }
 
   addOrReplacePostsById(posts: PostCollectionConvertible): State {
-    // $FlowFixMe
-    const data = posts.toArray && isFunction(posts.toArray) ? posts.toArray() : posts;
-    const updatedPosts = reduce(data, (acc, p) => acc.addOrReplaceById(p.id, p), this.posts);
+    const data =
+      // $FlowFixMe
+      posts.toArray && isFunction(posts.toArray) ? posts.toArray() : posts;
+    const updatedPosts = reduce(
+      data,
+      (acc, p) => acc.addOrReplaceById(p.id, p),
+      this.posts
+    );
     return this.setPosts(updatedPosts);
   }
 

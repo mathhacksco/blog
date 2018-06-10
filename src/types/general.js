@@ -2,7 +2,7 @@
 export type Id = number;
 
 export type RouteParams = {
-  id: Id;
+  id: Id,
 };
 
 export type RouteMatch = {

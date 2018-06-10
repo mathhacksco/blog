@@ -12,15 +12,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const loggerMiddleware = createLogger({
   collapsed: (getState, action) => !action.error,
-  stateTransformer: state => mapValues(state, s => s.toJS())
+  stateTransformer: state => mapValues(state, s => s.toJS()),
 });
 
-const rootReducer = storage.reducer(
-  reducer,
-  immutableMerger
-);
+const rootReducer = storage.reducer(reducer, immutableMerger);
 
-const middleware = isProduction ? applyMiddleware(thunkMiddleware) :
-                                  applyMiddleware(thunkMiddleware, loggerMiddleware);
+const middleware = isProduction
+  ? applyMiddleware(thunkMiddleware)
+  : applyMiddleware(thunkMiddleware, loggerMiddleware);
 
 export default createStore(rootReducer, middleware);

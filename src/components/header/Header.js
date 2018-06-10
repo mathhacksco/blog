@@ -9,7 +9,7 @@ import Logo from './logo.svg';
 export default function Header() {
   return (
     <header className="header">
-      <div className="logo" dangerouslySetInnerHTML={{ __html: Logo }}/>
+      <div className="logo" dangerouslySetInnerHTML={{ __html: Logo }} />
     </header>
   );
 }

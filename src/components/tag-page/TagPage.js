@@ -6,12 +6,11 @@ import PostExcerpt from '../post-excerpt/PostExcerpt';
 import './TagPage.styles.scss';
 
 class TagPage extends Component {
-
   state = {
     tag: null,
     posts: [],
-    isFetchingTag: false
-  }
+    isFetchingTag: false,
+  };
 
   componentDidMount() {
     // const id = this.props.routeParams.id;
@@ -40,16 +39,16 @@ class TagPage extends Component {
       return null;
     }
     return (
-        <div className="tagsPage">
-          <h1>{this.state.tag.name}</h1>
-          {this.state.posts.map(post => {
-            return (
-              <div key={post.id}>
-                <PostExcerpt post={post}/>
-              </div>
-            );
-          })}
-        </div>
+      <div className="tagsPage">
+        <h1>{this.state.tag.name}</h1>
+        {this.state.posts.map(post => {
+          return (
+            <div key={post.id}>
+              <PostExcerpt post={post} />
+            </div>
+          );
+        })}
+      </div>
     );
   }
 }
