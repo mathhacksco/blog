@@ -1,5 +1,6 @@
 /* @flow */
 import React from 'react';
+import classnames from 'classnames';
 
 import Navigation from '../navigation/Navigation';
 import HeroPostExcerpt from '../hero-post-excerpt/HeroPostExcerpt';
@@ -13,23 +14,25 @@ import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
 
 type Props = {
+  className?: ?string;
   post: Post;
   categories: CategoryCollection;
+  colorScheme: 'violet' | 'teal' | 'pink';
 };
 
-export default function Hero({ post, categories }: Props) {
+export default function Hero({ className, colorScheme, post, categories }: Props) {
   return (
-    <div className="hero">
+    <section className={classnames('hero', colorScheme || 'pink', className)}>
       <div className="hero-background">
         <div className="top-gradient"/>
         <div className="bottom-gradient"/>
       </div>
       <HorizontallyCentered className="hero-container">
         <ContentMaxWidth>
-          <Navigation/>
-          <HeroPostExcerpt key={post.id} id={post.id} post={post} categories={categories}/>
+          <Navigation colorScheme={colorScheme}/>
+          <HeroPostExcerpt key={post.id} id={post.id} post={post} categories={categories} colorScheme={colorScheme}/>
         </ContentMaxWidth>
       </HorizontallyCentered>
-    </div>
+    </section>
   );
 }

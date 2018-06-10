@@ -96,16 +96,16 @@ export default class Home extends Component<Props, {}> {
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
     return (
-      <div className="homepage">
+      <div className="app-container homepage">
         {featuredPost && <Hero post={featuredPost} categories={this.props.categories}/>}
-        <HorizontallyCentered className="ad-container-1">
+        <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth>
             <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
         <CallToActionButtons className="call-to-action-container"/>
         <FeaturedPosts featuredPosts={featuredPosts} categories={this.props.categories}/>
-        <HorizontallyCentered className="ad-container-2">
+        <HorizontallyCentered className="ad-container-2" container="section">
           <ContentMaxWidth>
             <Ad/>
           </ContentMaxWidth>

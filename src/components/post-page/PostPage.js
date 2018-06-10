@@ -14,6 +14,7 @@ import Hero from '../hero/Hero';
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 import Ad from '../ad/Ad.js';
+import Footer from '../footer/Footer';
 
 import type { Dispatch } from '../../types/redux';
 import type { Id, RouteMatch } from '../../types/general';
@@ -82,7 +83,7 @@ class PostPage extends Component<Props, State> {
     return (
       <div className="post-page">
         {/* TODO: Hero should handle loading state with no post */}
-        {post && <Hero post={post} categories={this.props.categories}/>}
+        {post && <Hero post={post} categories={this.props.categories} colorScheme="violet"/>}
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
             <Ad/>
@@ -90,6 +91,7 @@ class PostPage extends Component<Props, State> {
             <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
+        <Footer colorScheme="violet"/>
       </div>
     );
   }

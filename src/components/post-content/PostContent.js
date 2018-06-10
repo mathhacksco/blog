@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import * as DateTimeUtil from '../../utils/DateTimeUtil';
 
 // $FlowFixMe
 import './PostContent.scss';
@@ -14,16 +14,11 @@ type Props = {
 export default function PostContent({ post }: Props) {
   return (
     <div className="post-content-container">
-      {/* {this.renderTags()} */}
-      <p className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }}/>
+      <div className="post-info">
+        <div className="post-author">Brett Berry</div>
+        <div className="post-date">{DateTimeUtil.formatCalendarDate(post.dateGMT, true)}</div>
+      </div>
+      <article className="post-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }}/>
     </div>
   );
 }
-
-// function renderTags(tags: string[]) {
-//   return this.props.tags.map(tag => (
-//     <Link to={`/tags/${tag.id}`}>
-//       <div>{tag.name}</div>
-//     </Link>
-//   ));
-// }

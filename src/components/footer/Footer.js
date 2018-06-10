@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import classnames from 'classnames';
 
 import Logo from '../logo/Logo';
 
@@ -11,14 +12,17 @@ import FooterMathSymbols from './FooterMathSymbols.svg';
 // $FlowFixMe
 import './Footer.scss';
 
-type Props = {};
+type Props = {
+  className?: ?string;
+  colorScheme: 'violet' | 'teal' | 'pink';
+};
 
 const COPYRIGHT_HOLDER = 'Brett Berry';
 const COPYRIGHT_YEAR = moment().format('YYYY');
 
-export default function Footer(props: Props) {
+export default function Footer({ colorScheme, className }: Props) {
   return (
-    <footer className="footer">
+    <footer className={classnames('footer', colorScheme || 'pink', className)}>
       <div className="math-symbols" dangerouslySetInnerHTML={{ __html: FooterMathSymbols }}/>
       <div className="copyright-container">
         <div className="logo-container">

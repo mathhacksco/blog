@@ -10,12 +10,14 @@ import type { Children } from '../../../types/react';
 type Props = {
   className?: ?string,
   children?: Children,
+  container?: React$ElementType,
 };
 
-export default function HorizontallyCentered({ children, className }: Props) {
+export default function HorizontallyCentered({ container, children, className }: Props) {
+  const Container = container || 'div';
   return (
-    <div className={classnames('horizonally-centered', className)}>
+    <Container className={classnames('horizonally-centered', className)}>
       {children}
-    </div>
+    </Container>
   );
 }

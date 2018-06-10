@@ -7,6 +7,24 @@
   position: relative;
   min-height: 675px;
 
+  &.violet {
+    .hero-background {
+      background-color: $theme-violet;
+    }
+  }
+
+  &.teal {
+    .hero-background {
+      background-color: $theme-teal;
+    }
+  }
+
+  &.pink {
+    .hero-background {
+      background-color: $theme-pink;
+    }
+  }
+
   .hero-container {
     display: flex;
     flex: 1;
@@ -14,7 +32,6 @@
   }
 
   .hero-background {
-    background-color: $theme-pink;
     position: absolute;
     top: 0;
     left: 0;
