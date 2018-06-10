@@ -50,7 +50,7 @@ export const trackEvent = async (event: TrackingEvent) => {
     ea: event.action,
     el: event.label,
     ev: event.value,
-    cd1: IS_PRODUCTION,
+    cd1: window.location.hostname,
     ds: 'web',
     an: 'MathHacks',
     aid: 'com.jonbrennecke.mathhacksweb',
