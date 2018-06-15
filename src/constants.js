@@ -1,6 +1,8 @@
 // @flow
 /* global VERSION */
 
+export const FAVICON_DIRECTORY = '';
+
 // $FlowFixMe
 export const APP_VERSION = VERSION;
 
