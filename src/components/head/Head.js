@@ -75,7 +75,7 @@ export default function Head() {
       <meta property="og:type" content="website" />
       <meta property="og:title" content="MathHacks" />
       {/* TODO: <meta property="og:image" content="http://mathhacks.co/image.jpg"> */}
-      <meta property="og:description" content={SITE_DESCRIPTION}>
+      <meta property="og:description" content={SITE_DESCRIPTION}/>
       <meta property="og:site_name" content="MathHacks" />
       <meta property="og:locale" content="en_US" />
       <meta property="article:author" content="Brett Berry" />
