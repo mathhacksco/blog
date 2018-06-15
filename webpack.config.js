@@ -84,7 +84,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpg|png|ico|eot|ttf|woff|woff2|otf|xml)$/,
+                test: /\.(jpg|png|ico|eot|ttf|woff|woff2|otf|xml|html)$/,
                 use: {
                     loader: 'file-loader?name=[name].[ext]'
                 }

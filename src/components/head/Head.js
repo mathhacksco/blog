@@ -30,6 +30,8 @@ import 'assets/favicon/dist/favicon.ico';
 // $FlowFixMe - flow doesn't like .xml files for some reason
 import 'assets/favicon/dist/browserconfig.xml';
 
+import 'assets/google-site-verification/google86c8c564b4df64aa.html';
+
 export default function Head() {
   return (
     <Helmet>
