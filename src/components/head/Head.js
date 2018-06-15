@@ -30,6 +30,9 @@ import 'assets/favicon/dist/favicon.ico';
 // $FlowFixMe - flow doesn't like .xml files for some reason
 import 'assets/favicon/dist/browserconfig.xml';
 
+// $FlowFixMe
+import 'assets/google-site-verification/google86c8c564b4df64aa.html';
+
 export default function Head() {
   return (
     <Helmet>
@@ -48,8 +51,9 @@ export default function Head() {
       <meta name="robots" content="index,follow" />
       <meta name="googlebot" content="index,follow" />
 
+      <meta name="google-site-verification" content="1ELExjSDfmvpRQ0nT8BHlmeMMJKiFFqj-UzYNu4qNpM" />
+
       {/* TODO:
-      <meta name="google-site-verification" content="verification_token"><!-- Google Search Console -->
       <meta name="yandex-verification" content="verification_token"><!-- Yandex Webmasters -->
       <meta name="msvalidate.01" content="verification_token"><!-- Bing Webmaster Center -->
       <meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console -->
