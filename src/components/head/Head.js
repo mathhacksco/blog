@@ -52,13 +52,11 @@ export default function Head() {
       <meta name="googlebot" content="index,follow" />
 
       <meta name="google-site-verification" content="1ELExjSDfmvpRQ0nT8BHlmeMMJKiFFqj-UzYNu4qNpM" />
+      <meta name="p:domain_verify" content="ad26da832d110e25d1b7750e14bd1719"/>
 
       {/* TODO:
-      <meta name="yandex-verification" content="verification_token"><!-- Yandex Webmasters -->
       <meta name="msvalidate.01" content="verification_token"><!-- Bing Webmaster Center -->
-      <meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console -->
-      <meta name="p:domain_verify" content="code_from_pinterest"><!-- Pinterest Console-->
-      <meta name="norton-safeweb-site-verification" content="norton_code"><!-- Norton Safe Web --> */}
+      <meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console --> */}
 
       <meta name="rating" content="General" />
       <meta name="subject" content="education" />
