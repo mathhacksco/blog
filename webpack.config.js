@@ -55,7 +55,8 @@ module.exports = {
         ],
         extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
         alias: {
-            '~': path.resolve(__dirname, 'src')
+            '~': path.resolve(__dirname, 'src'),
+            'assets': path.resolve(__dirname, 'assets')
         }
     },
     module: {
@@ -64,10 +65,6 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: _.compact([ isDev && 'react-hot-loader', 'babel-loader'])
-            },
-            {
-                test: /\.(eot|ttf|woff|woff2|otf)$/,
-                use: 'file-loader?name=[name].[ext]'
             },
             {
                 test: /\.html$/,
@@ -82,7 +79,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpg|png)$/,
+                test: /\.(jpg|png|ico|eot|ttf|woff|woff2|otf|xml)$/,
                 use: {
                     loader: 'file-loader?name=[name].[ext]'
                 }
