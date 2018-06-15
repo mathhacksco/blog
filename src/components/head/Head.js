@@ -33,6 +33,8 @@ import 'assets/favicon/dist/browserconfig.xml';
 // $FlowFixMe
 import 'assets/google-site-verification/google86c8c564b4df64aa.html';
 
+const SITE_DESCRIPTION = 'MathHacks is the modern person\'s destination for math writing, videos and tutorials.';
+
 export default function Head() {
   return (
     <Helmet>
@@ -43,7 +45,7 @@ export default function Head() {
         content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no"
       />
       <meta name="application-name" content="MathHacks" />
-      {/* TODO: <meta name="description" content="" /> */}
+      <meta name="description" content={SITE_DESCRIPTION} />
 
       {/* TODO: add header color for chrome: <meta name="theme-color" content="#4285f4"> */}
 
@@ -73,7 +75,7 @@ export default function Head() {
       <meta property="og:type" content="website" />
       <meta property="og:title" content="MathHacks" />
       {/* TODO: <meta property="og:image" content="http://mathhacks.co/image.jpg"> */}
-      {/* TODO: <meta property="og:description" content="Description Here"> */}
+      <meta property="og:description" content={SITE_DESCRIPTION}>
       <meta property="og:site_name" content="MathHacks" />
       <meta property="og:locale" content="en_US" />
       <meta property="article:author" content="Brett Berry" />
