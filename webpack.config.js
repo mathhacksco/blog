@@ -74,7 +74,12 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true
+                        }
+                    },
                     'postcss-loader'
                 ]
             },
@@ -88,7 +93,12 @@ module.exports = {
                 test: /\.s?[ac]ss$/,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true
+                        }
+                    },
                     'postcss-loader',
                     'sass-loader'
                 ]
