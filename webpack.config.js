@@ -84,7 +84,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpg|png|ico|eot|ttf|woff|woff2|otf|xml|html)$/,
+                test: /\.(jpg|png|ico|eot|ttf|woff|woff2|otf|xml)$/,
+                use: {
+                    loader: 'file-loader?name=[name].[ext]'
+                }
+            },
+            {
+                test: /google.*\.html$/,
                 use: {
                     loader: 'file-loader?name=[name].[ext]'
                 }
