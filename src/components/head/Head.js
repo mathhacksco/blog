@@ -54,15 +54,14 @@ export default function Head() {
       <meta name="robots" content="index,follow" />
       <meta name="googlebot" content="index,follow" />
 
+      {/* Search engine verification tags */}
       <meta
         name="google-site-verification"
         content="1ELExjSDfmvpRQ0nT8BHlmeMMJKiFFqj-UzYNu4qNpM"
       />
       <meta name="p:domain_verify" content="ad26da832d110e25d1b7750e14bd1719" />
-
-      {/* TODO:
-      <meta name="msvalidate.01" content="verification_token"><!-- Bing Webmaster Center -->
-      <meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console --> */}
+      <meta name="msvalidate.01" content="ABF5AE6D72B987F7E57C176A8520C683" />
+      {/* TODO: <meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console --> */}
 
       <meta name="rating" content="General" />
       <meta name="subject" content="education" />
