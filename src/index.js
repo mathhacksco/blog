@@ -18,7 +18,7 @@ Promise.config({
 
 const element = document.getElementById('react-main');
 if (!element) {
-  Debug.logErrorMessage('Failed to find `#react-naim` component.');
+  Debug.logErrorMessage('Failed to find `#react-main` component.');
 } else {
   render(<Routes />, element);
 }
