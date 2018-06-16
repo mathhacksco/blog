@@ -17,12 +17,12 @@ import 'assets/favicon/dist/apple-touch-icon-180x180.png';
 import 'assets/favicon/dist/apple-touch-icon.png';
 import 'assets/favicon/dist/favicon-16x16.png';
 import 'assets/favicon/dist/favicon-32x32.png';
-
 import 'assets/favicon/dist/mstile-70x70.png';
 import 'assets/favicon/dist/mstile-144x144.png';
 import 'assets/favicon/dist/mstile-150x150.png';
 import 'assets/favicon/dist/mstile-310x150.png';
 import 'assets/favicon/dist/mstile-310x310.png';
+import 'assets/facebook/og_image.png';
 
 // $FlowFixMe - flow doesn't like .ico files for some reason
 import 'assets/favicon/dist/favicon.ico';
@@ -69,12 +69,12 @@ export default function Head() {
       <!-- TODO: Refers to a copyright statement that applies to the link's context -->
       <link rel="license" href="http://mathhacks.co/copyright"> */}
 
-      {/* Open Graph - http://ogp.me/ */}
-      {/* TODO: <meta property="fb:app_id" content="123456789"> */}
+      {/* Facebook Open Graph - http://ogp.me/ */}
+      <meta property="fb:app_id" content="186638215372469">
       <meta property="og:url" content="http://mathhacks.co" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="MathHacks" />
-      {/* TODO: <meta property="og:image" content="http://mathhacks.co/image.jpg"> */}
+      <meta property="og:image" content="http://mathhacks.co/og_image.png">
       <meta property="og:description" content={SITE_DESCRIPTION}/>
       <meta property="og:site_name" content="MathHacks" />
       <meta property="og:locale" content="en_US" />
