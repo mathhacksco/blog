@@ -33,7 +33,8 @@ import 'assets/favicon/dist/browserconfig.xml';
 // $FlowFixMe
 import 'assets/google-site-verification/google86c8c564b4df64aa.html';
 
-const SITE_DESCRIPTION = 'MathHacks is the modern person\'s destination for math writing, videos and tutorials.';
+const SITE_DESCRIPTION =
+  "MathHacks is the modern person's destination for math writing, videos and tutorials.";
 
 export default function Head() {
   return (
@@ -53,8 +54,11 @@ export default function Head() {
       <meta name="robots" content="index,follow" />
       <meta name="googlebot" content="index,follow" />
 
-      <meta name="google-site-verification" content="1ELExjSDfmvpRQ0nT8BHlmeMMJKiFFqj-UzYNu4qNpM" />
-      <meta name="p:domain_verify" content="ad26da832d110e25d1b7750e14bd1719"/>
+      <meta
+        name="google-site-verification"
+        content="1ELExjSDfmvpRQ0nT8BHlmeMMJKiFFqj-UzYNu4qNpM"
+      />
+      <meta name="p:domain_verify" content="ad26da832d110e25d1b7750e14bd1719" />
 
       {/* TODO:
       <meta name="msvalidate.01" content="verification_token"><!-- Bing Webmaster Center -->
@@ -70,12 +74,12 @@ export default function Head() {
       <link rel="license" href="http://mathhacks.co/copyright"> */}
 
       {/* Facebook Open Graph - http://ogp.me/ */}
-      <meta property="fb:app_id" content="186638215372469">
+      <meta property="fb:app_id" content="186638215372469" />
       <meta property="og:url" content="http://mathhacks.co" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="MathHacks" />
-      <meta property="og:image" content="http://mathhacks.co/og_image.png">
-      <meta property="og:description" content={SITE_DESCRIPTION}/>
+      <meta property="og:image" content="http://mathhacks.co/og_image.png" />
+      <meta property="og:description" content={SITE_DESCRIPTION} />
       <meta property="og:site_name" content="MathHacks" />
       <meta property="og:locale" content="en_US" />
       <meta property="article:author" content="Brett Berry" />
