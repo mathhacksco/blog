@@ -1,6 +1,7 @@
 /* @flow */
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
 
 import Home from './components/home-page/Home';
@@ -13,12 +14,22 @@ import Head from './components/head/Head';
 
 import store from './redux/store';
 
-export default function Routes() {
+type Props = {
+  isBrowser?: boolean,
+};
+
+export default function Routes({ isBrowser }: Props) {
+  const Router = isBrowser
+    ? BrowserRouter
+    // eslint-disable-next-line react/display-name
+    : ({ children }: any) => (
+        <StaticRouter context={{}}>{children}</StaticRouter>
+      );
   return (
     <Provider store={store}>
       <Router>
         <Route path="/">
-          <div className="app-container">
+          <Fragment>
             <Head />
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={AboutPage} />
@@ -26,7 +37,7 @@ export default function Routes() {
             <Route path="/posts" component={PostsPage} />
             <Route path="/posts/:slug" component={PostPage} />
             <Route path="/tags/:id" component={TagPage} />
-          </div>
+          </Fragment>
         </Route>
       </Router>
     </Provider>

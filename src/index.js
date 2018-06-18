@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
-import { render } from 'react-dom';
+// $FlowFixMe
+import { hydrate } from 'react-dom';
 import Promise from 'bluebird';
+import * as Debug from './utils/DebugUtil';
 
 import Routes from './Routes';
-import * as Debug from './utils/DebugUtil';
 
 // $FlowFixMe
 import './index.scss';
@@ -20,5 +21,5 @@ const element = document.getElementById('react-main');
 if (!element) {
   Debug.logErrorMessage('Failed to find `#react-main` component.');
 } else {
-  render(<Routes />, element);
+  hydrate(<Routes />, element);
 }
