@@ -1,4 +1,6 @@
-/* use strict */
+/* eslint-disable */
+'use strict'
+
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');

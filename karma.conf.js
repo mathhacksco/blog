@@ -1,6 +1,7 @@
 'use strict';
 
 const webpackConfig = require('./webpack.config.js');
+const clientWebpackConfig = webpackConfig[1];
 
 module.exports = (config) => {
   config.set({
@@ -22,7 +23,7 @@ module.exports = (config) => {
     reporters: ['dots'],
     singleRun: true,
     webpack: {
-      ...webpackConfig,
+      ...clientWebpackConfig,
       entry: null
     },
     webpackMiddleware: {

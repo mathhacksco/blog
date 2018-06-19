@@ -36,9 +36,17 @@ import 'assets/google-site-verification/google86c8c564b4df64aa.html';
 const SITE_DESCRIPTION =
   "MathHacks is the modern person's destination for math writing, videos and tutorials.";
 
+const SCHEMA = '';
+
 export default function Head() {
   return (
-    <Helmet>
+    <Helmet
+      htmlAttributes={{
+        lang: 'en',
+        itemscope: undefined,
+        itemtype: `http://schema.org/${SCHEMA}`,
+      }}
+    >
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta

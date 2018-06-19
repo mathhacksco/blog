@@ -102,7 +102,7 @@ export default class Home extends Component<Props, {}> {
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
     return (
-      <div className="app-container homepage">
+      <main id="react-main" className="app-container homepage">
         {featuredPost && (
           <Hero post={featuredPost} categories={this.props.categories} />
         )}
@@ -126,7 +126,7 @@ export default class Home extends Component<Props, {}> {
           posts={latestPosts}
           categories={this.props.categories}
         />
-      </div>
+      </main>
     );
   }
 }

@@ -1,3 +1,4 @@
+'use strict';
 
 const path = require('path');
 const fs = require('fs');
@@ -7,16 +8,17 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const yaml = require('js-yaml');
 
 const log = require('./log');
-const config = require('./webpack.config');
+const webpackConfig = require('./webpack.config');
+const webpackClientConfig = webpackConfig[1];
 
 const yamlPath = path.resolve('app.yml');
 const yamlConfig = yaml.load(fs.readFileSync(yamlPath, 'utf8'));
 const app = express();
-const compiler = webpack(config);
+const compiler = webpack(webpackClientConfig);
 
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
-    publicPath: config.output.publicPath,
+    publicPath: webpackClientConfig.output.publicPath,
     stats: {
         colors: true
     },
