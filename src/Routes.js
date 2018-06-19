@@ -21,8 +21,8 @@ type Props = {
 export default function Routes({ isBrowser }: Props) {
   const Router = isBrowser
     ? BrowserRouter
-    // eslint-disable-next-line react/display-name
-    : ({ children }: any) => (
+    : // eslint-disable-next-line react/display-name
+      ({ children }: any) => (
         <StaticRouter context={{}}>{children}</StaticRouter>
       );
   return (
