@@ -21,6 +21,8 @@ import FeaturedPosts from '../featured-posts/FeaturedPosts';
 import Hero from '../hero/Hero';
 import LatestPosts from '../latest-posts/LatestPosts';
 import Footer from '../footer/Footer';
+import { SEO_PAGE_TYPE } from '../../constants';
+import Seo from '../seo/Seo';
 
 // $FlowFixMe
 import './Home.scss';
@@ -104,6 +106,12 @@ export default class Home extends Component<Props, {}> {
     const featuredPost = first(featuredPosts.toArray());
     return (
       <main id="react-main" className="app-container homepage">
+        <Seo
+          pageType={SEO_PAGE_TYPE.WEBPAGE}
+          title="MathHacks"
+          description="MathHacks is the modern person's destination for math writing, videos and tutorials."
+          url="http://mathhacks.co"
+        />
         {featuredPost && (
           <Hero post={featuredPost} categories={this.props.categories} />
         )}

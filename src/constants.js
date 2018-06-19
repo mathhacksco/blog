@@ -20,3 +20,8 @@ export const MOMENT_DAY_MONTH_CALENDAR_FORMAT = {
   nextWeek: 'dddd, MMM D',
   sameElse: 'dddd, MMM D',
 };
+
+export const SEO_PAGE_TYPE = {
+  ARTICLE: 'article',
+  WEBPAGE: 'webpage',
+};
