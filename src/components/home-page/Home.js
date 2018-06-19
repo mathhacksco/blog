@@ -20,6 +20,7 @@ import CallToActionButtons from '../call-to-action-buttons/CallToActionButtons';
 import FeaturedPosts from '../featured-posts/FeaturedPosts';
 import Hero from '../hero/Hero';
 import LatestPosts from '../latest-posts/LatestPosts';
+import Footer from '../footer/Footer';
 
 // $FlowFixMe
 import './Home.scss';
@@ -126,6 +127,7 @@ export default class Home extends Component<Props, {}> {
           posts={latestPosts}
           categories={this.props.categories}
         />
+        <Footer colorScheme="pink" />
       </main>
     );
   }
