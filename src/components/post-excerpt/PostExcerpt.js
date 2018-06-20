@@ -10,20 +10,26 @@ import './PostExcerpt.scss';
 
 import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 
 type Props = {
   post: Post,
   categories: CategoryCollection,
+  media: MediaCollection,
   className?: ?string,
 };
 
-export default function PostExcerpt({ post, categories, className }: Props) {
+// $FlowFixMe
+export default function PostExcerpt({ post, categories, className, media }: Props) {
   const categoryId = first(post.categories);
   const category = categories.findById(categoryId);
   const categoryName = category ? category.name : '';
+  const image = media.findById(post.featuredMedia);
   return (
     <div className={classnames('post-excerpt', className)}>
-      <div className="image-container" />
+      <div className="image-container">
+        {image && <img src={image.fullSourceUrl} />}
+      </div>
       <div className="content-container">
         <p className="category">{formatCategoryName(categoryName)}</p>
         <Link to={`posts/${post.slug}`} className="title-link">

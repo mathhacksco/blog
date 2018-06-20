@@ -32,3 +32,22 @@ export function fetchMediaById(
     }
   };
 }
+
+export function fetchMediaByIds(
+  ids: Id[]
+): (dispatch: Dispatch, getState: GetState) => Promise<void> {
+  return async (dispatch: Dispatch): Promise<void> => {
+    try {
+      dispatch({ type: MEDIA_ACTION_TYPES.FETCH_MEDIA_BY_IDS });
+      const media = await actions.fetchMediaByIds(ids);
+      dispatch({
+        type: MEDIA_ACTION_TYPES.RECEIVE_MEDIA_BY_IDS,
+        payload: {
+          media,
+        },
+      });
+    } catch (error) {
+      dispatch(handleException(error));
+    }
+  };
+}

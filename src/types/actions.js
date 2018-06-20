@@ -1,5 +1,10 @@
 /* @flow */
-import type { PostObject, PageObject, CategoryObject, MediaObject } from './wordpress';
+import type {
+  PostObject,
+  PageObject,
+  CategoryObject,
+  MediaObject,
+} from './wordpress';
 
 export type ReceivePostsPayload = {
   posts: PostObject[],
@@ -18,5 +23,9 @@ export type ReceiveCategoriesPayload = {
 };
 
 export type ReceiveMediaPayload = {
-  media: MediaObject
+  media: MediaObject,
+};
+
+export type ReceiveMultipleMediaPayload = {
+  media: MediaObject[]
 };

@@ -2,11 +2,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import first from 'lodash/first';
+import compact from 'lodash/compact';
 
 import {
   fetchPosts,
   fetchPostsByCategory,
 } from '../../redux/actionCreators/posts';
+import { fetchMediaByIds } from '../../redux/actionCreators/media';
+import { getMedia } from '../../redux/selectors/media';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getPosts } from '../../redux/selectors/posts';
 import { getCategories } from '../../redux/selectors/categories';
@@ -30,6 +33,7 @@ import './Home.scss';
 import type { Id } from '../../types/general';
 import type State from '../../models/State';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 import type { Dispatch } from '../../types/redux';
 
 type OwnProps = {};
@@ -37,12 +41,14 @@ type OwnProps = {};
 type StateProps = {
   posts: PostCollection,
   categories: CategoryCollection,
+  media: MediaCollection,
 };
 
 type DispatchProps = {
   fetchPosts: () => Promise<void>,
   fetchPostsByCategory: Id => Promise<void>,
   fetchCategories: () => Promise<void>,
+  fetchMediaByIds: (ids: Id[]) => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -51,6 +57,7 @@ function mapStateToProps(state: State): StateProps {
   return {
     posts: getPosts(state),
     categories: getCategories(state),
+    media: getMedia(state),
   };
 }
 
@@ -59,6 +66,7 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
     fetchPosts: () => dispatch(fetchPosts()),
     fetchPostsByCategory: (id: Id) => dispatch(fetchPostsByCategory(id)),
     fetchCategories: () => dispatch(fetchCategories()),
+    fetchMediaByIds: (ids: Id[]) => dispatch(fetchMediaByIds(ids)),
   };
 }
 
@@ -68,14 +76,21 @@ export default class Home extends Component<Props, {}> {
   props: Props;
   state = {};
 
-  componentDidMount() {
-    GoogleAnalytics.trackEvent({
+  async componentDidMount() {
+    await GoogleAnalytics.trackEvent({
       category: GoogleAnalytics.CategoryEnum.HomePage,
       action: GoogleAnalytics.ActionEnum.PageView,
       label: 'Home Page View',
     });
-    this.props.fetchPosts();
-    this.fetchFeaturedPosts();
+    await this.props.fetchPosts();
+    await this.fetchFeaturedPosts();
+    await this.fetchMedia();
+  }
+
+  async fetchMedia() {
+    const mediaIds = this.props.posts.toArray().map(p => p.featuredMedia);
+    const compactMediaIds = compact(mediaIds);
+    await this.props.fetchMediaByIds(compactMediaIds);
   }
 
   async fetchFeaturedPosts() {
@@ -115,6 +130,7 @@ export default class Home extends Component<Props, {}> {
         {featuredPost && (
           <Hero post={featuredPost} categories={this.props.categories} />
         )}
+        <Hero post={featuredPost} categories={this.props.categories} media={this.props.media} />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth>
             <Ad />
@@ -134,6 +150,7 @@ export default class Home extends Component<Props, {}> {
           className="latest-posts-container"
           posts={latestPosts}
           categories={this.props.categories}
+          media={this.props.media}
         />
         <Footer colorScheme="pink" />
       </div>

@@ -27,17 +27,17 @@ Promise.config({
 });
 
 const render = async () => {
-  const reactBody = renderToString(<Routes isBrowser={false} />);
+  const reactDOM = renderToString(<Routes isBrowser={false} />);
   const htmlTemplate = await fs.readFileAsync(HTML_TEMPLATE_PATH, 'utf8');
   const dom = new JSDOM(htmlTemplate);
-  await renderBody(dom, reactBody);
+  await renderReactDOM(dom, reactDOM);
   await renderHead(dom);
   await fs.writeFileAsync(HTML_TEMPLATE_PATH, dom.serialize(), 'utf8');
 };
 
-const renderBody = async (dom: JSDOM, body: string) => {
-  const templateBody = dom.window.document.querySelector('body');
-  templateBody.insertAdjacentHTML('afterbegin', body);
+const renderReactDOM = async (dom: JSDOM, reactDOM: string) => {
+  const templateBody = dom.window.document.querySelector('main');
+  templateBody.insertAdjacentHTML('afterbegin', reactDOM);
   return dom;
 };
 
