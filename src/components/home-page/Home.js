@@ -127,10 +127,11 @@ export default class Home extends Component<Props, {}> {
           description="MathHacks is the modern person's destination for math writing, videos and tutorials."
           url="http://mathhacks.co"
         />
-        {featuredPost && (
-          <Hero post={featuredPost} categories={this.props.categories} />
-        )}
-        <Hero post={featuredPost} categories={this.props.categories} media={this.props.media} />
+        <Hero
+          post={featuredPost}
+          categories={this.props.categories}
+          media={this.props.media}
+        />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth>
             <Ad />

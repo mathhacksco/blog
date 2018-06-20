@@ -22,7 +22,13 @@ type Props = {
   colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
-export default function Hero({ className, colorScheme, post, categories, media }: Props) {
+export default function Hero({
+  className,
+  colorScheme,
+  post,
+  categories,
+  media,
+}: Props) {
   const image = post && media.findById(post.featuredMedia);
   return (
     <section className={classnames('hero', colorScheme || 'pink', className)}>

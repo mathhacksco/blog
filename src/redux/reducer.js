@@ -27,7 +27,7 @@ const actions = {
   [PAGE_ACTION_TYPES.RECEIVE_PAGES]: receivePages,
   [CATEGORY_ACTION_TYPES.RECEIVE_CATEGORIES]: receiveCategories,
   [MEDIA_ACTION_TYPES.RECEIVE_MEDIA]: receiveMedia,
-  [MEDIA_ACTION_TYPES.RECEIVE_MEDIA_BY_IDS]: receveMultipleMedia
+  [MEDIA_ACTION_TYPES.RECEIVE_MEDIA_BY_IDS]: receveMultipleMedia,
 };
 
 // eslint-disable-next-line object-curly-spacing

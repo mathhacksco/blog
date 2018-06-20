@@ -4,7 +4,9 @@ import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 
 import { fetchPostBySlug } from '../../redux/actionCreators/posts';
+import { fetchMediaById } from '../../redux/actionCreators/media';
 import { getPosts } from '../../redux/selectors/posts';
+import { getMedia } from '../../redux/selectors/media';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import { getCategories } from '../../redux/selectors/categories';
 import PostContent from '../post-content/PostContent';
@@ -16,9 +18,11 @@ import Ad from '../ad/Ad.js';
 import Footer from '../footer/Footer';
 
 import type { Dispatch } from '../../types/redux';
+import type { Id } from '../../types/general';
 import type AppState from '../../models/State';
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 
 // $FlowFixMe
 import './PostPage.scss';
@@ -34,11 +38,13 @@ type OwnProps = {
 type StateProps = {
   posts: PostCollection,
   categories: CategoryCollection,
+  media: MediaCollection,
 };
 
 type DispatchProps = {
   fetchPostBySlug: (slug: string) => Promise<void>,
   fetchCategories: () => Promise<void>,
+  fetchMediaById: (id: Id) => Promise<void>,
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -49,6 +55,7 @@ function mapStateToProps(state: AppState): StateProps {
   return {
     posts: getPosts(state),
     categories: getCategories(state),
+    media: getMedia(state),
   };
 }
 
@@ -56,6 +63,7 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
     fetchPostBySlug: (slug: string) => dispatch(fetchPostBySlug(slug)),
     fetchCategories: () => dispatch(fetchCategories()),
+    fetchMediaById: (id: Id) => dispatch(fetchMediaById(id)),
   };
 }
 
@@ -66,14 +74,22 @@ class PostPage extends Component<Props, State> {
   props: Props;
   state = {};
 
-  componentDidMount() {
-    GoogleAnalytics.trackEvent({
+  async componentWillMount() {
+    await GoogleAnalytics.trackEvent({
       category: GoogleAnalytics.CategoryEnum.PostPage,
       action: GoogleAnalytics.ActionEnum.PageView,
       label: 'Post Page View',
     });
     const slug = this.props.match.params.slug;
-    this.props.fetchPostBySlug(slug);
+    await this.props.fetchPostBySlug(slug);
+  }
+
+  async fetchMedia() {
+    const slug = this.props.match.params.slug;
+    const post = this.props.posts.findBySlug(slug);
+    if (post) {
+      await this.props.fetchMediaById(post.featuredMedia);
+    }
   }
 
   render() {
@@ -81,14 +97,12 @@ class PostPage extends Component<Props, State> {
     const post = this.props.posts.findBySlug(slug);
     return (
       <div className="post-page">
-        {/* TODO: Hero should handle loading state with no post */}
-        {post && (
-          <Hero
-            post={post}
-            categories={this.props.categories}
-            colorScheme="violet"
-          />
-        )}
+        <Hero
+          post={post}
+          categories={this.props.categories}
+          colorScheme="violet"
+          media={this.props.media}
+        />
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
             <Ad />

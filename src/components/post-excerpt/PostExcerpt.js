@@ -20,7 +20,12 @@ type Props = {
 };
 
 // $FlowFixMe
-export default function PostExcerpt({ post, categories, className, media }: Props) {
+export default function PostExcerpt({
+  post,
+  categories,
+  className,
+  media,
+}: Props) {
   const categoryId = first(post.categories);
   const category = categories.findById(categoryId);
   const categoryName = category ? category.name : '';

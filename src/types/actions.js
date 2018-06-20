@@ -27,5 +27,5 @@ export type ReceiveMediaPayload = {
 };
 
 export type ReceiveMultipleMediaPayload = {
-  media: MediaObject[]
+  media: MediaObject[],
 };

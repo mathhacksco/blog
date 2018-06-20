@@ -20,7 +20,10 @@ export const fetchMediaById = async (id: Id): MediaObject => {
 };
 
 export const fetchMediaByIds = async (ids: Id[]): MediaObject => {
-  const query = pickBy({ rest_route: `${WORDPRESS_API_PREFIX}/media`, id: ids });
+  const query = pickBy({
+    rest_route: `${WORDPRESS_API_PREFIX}/media`,
+    id: ids,
+  });
   const res = await getRequest({ url: WORDPRESS_API_URI, query });
   const json = await res.json();
   // $FlowFixMe

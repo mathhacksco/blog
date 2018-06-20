@@ -22,7 +22,12 @@ type Props = {
   media: MediaCollection,
 };
 
-export default function LatestPosts({ className, posts, categories, media }: Props) {
+export default function LatestPosts({
+  className,
+  posts,
+  categories,
+  media,
+}: Props) {
   return (
     <HorizontallyCentered
       className={classnames('latest-posts-container', className)}
