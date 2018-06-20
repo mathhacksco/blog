@@ -33,18 +33,20 @@ import 'assets/favicon/dist/browserconfig.xml';
 // $FlowFixMe
 import 'assets/google-site-verification/google86c8c564b4df64aa.html';
 
-const SITE_DESCRIPTION =
-  "MathHacks is the modern person's destination for math writing, videos and tutorials.";
+type Props = {
+  schema: string,
+  title: string,
+  description: string,
+  url: string,
+};
 
-const SCHEMA = '';
-
-export default function Head() {
+export default function Head({ schema, title, description, url }: Props) {
   return (
     <Helmet
       htmlAttributes={{
         lang: 'en',
         itemscope: undefined,
-        itemtype: `http://schema.org/${SCHEMA}`,
+        itemtype: `http://schema.org/${schema}`,
       }}
     >
       <meta charSet="utf-8" />
@@ -53,8 +55,8 @@ export default function Head() {
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no"
       />
-      <meta name="application-name" content="MathHacks" />
-      <meta name="description" content={SITE_DESCRIPTION} />
+      <meta name="application-name" content={title} />
+      <meta name="description" content={description} />
 
       {/* TODO: add header color for chrome: <meta name="theme-color" content="#4285f4"> */}
 
@@ -82,36 +84,39 @@ export default function Head() {
 
       {/* Facebook Open Graph - http://ogp.me/ */}
       <meta property="fb:app_id" content="186638215372469" />
-      <meta property="og:url" content="http://mathhacks.co" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="MathHacks" />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content={schema} />
+      <meta property="og:title" content={title} />
       <meta property="og:image" content="http://mathhacks.co/og_image.png" />
-      <meta property="og:description" content={SITE_DESCRIPTION} />
-      <meta property="og:site_name" content="MathHacks" />
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content={title} />
       <meta property="og:locale" content="en_US" />
-      <meta property="article:author" content="Brett Berry" />
+      {/* <meta property="article:author" content="Brett Berry" /> */}
+      {/* TODO: article:published_time - datetime - When the article was first published.
+      article:modified_time - datetime - When the article was last changed.
+      article:expiration_time - datetime - When the article is out of date after.
+      article:author - profile array - Writers of the article.
+      article:section - string - A high-level section name. E.g. Technology
+      article:tag - string array - Tag words associated with this article. */}
 
-      {/* Facebook Instant Articles */}
-      <meta property="op:markup_version" content="v1.0" />
+      {/* Facebook Instant Articles (TODO: use only on article page) */}
+      {/* <meta property="op:markup_version" content="v1.0" /> */}
       {/* TODO: <meta property="fb:article_style" content="myarticlestyle"> */}
 
       {/* TODO: twitter card tags - https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started */}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@site_account" />
       <meta name="twitter:creator" content="@individual_account" />
-      <meta name="twitter:url" content="http://example.com/page.html" />
-      <meta name="twitter:title" content="Content Title" />
-      <meta
-        name="twitter:description"
-        content="Content description less than 200 characters"
-      />
-      <meta name="twitter:image" content="http://example.com/image.jpg" />
+      <meta name="twitter:url" content={url} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content="/image.jpg" />
 
       {/* Custom version tag for debug purposes */}
       <meta name="version" content={APP_VERSION} />
 
       {/* TODO: change canonical link if on an article page */}
-      <link rel="canonical" href="http://mathhacks.co" />
+      <link rel="canonical" href={url} />
       <title>MathHacks</title>
 
       {/* Google Analytics tracking script */}
