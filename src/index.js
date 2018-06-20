@@ -21,5 +21,5 @@ const element = document.getElementById('react-main');
 if (!element) {
   Debug.logErrorMessage('Failed to find `#react-main` component.');
 } else {
-  render(<Routes />, element);
+  render(<Routes isBrowser={true} />, element);
 }

@@ -10,7 +10,6 @@ import PostsPage from './components/posts-page/PostsPage';
 import TagPage from './components/tag-page/TagPage';
 import AboutPage from './components/about-page/AboutPage';
 import BlogPage from './components/blog-page/Blog';
-import Head from './components/head/Head';
 
 import store from './redux/store';
 
@@ -30,7 +29,6 @@ export default function Routes({ isBrowser }: Props) {
       <Router>
         <Route path="/">
           <Fragment>
-            <Head />
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={AboutPage} />
             <Route path="/blog" exact component={BlogPage} />
