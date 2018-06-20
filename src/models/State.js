@@ -6,14 +6,17 @@ import isFunction from 'lodash/isFunction';
 import PostCollection from '../models/PostCollection';
 import PageCollection from '../models/PageCollection';
 import CategoryCollection from '../models/CategoryCollection';
+import MediaCollection from '../models/MediaCollection';
 
 import type Post from './Post';
 import type Page from './Page';
 import type Category from './Category';
+import type Media from './Media';
 import type {
   CategoryObject,
   PostObject,
   PageObject,
+  MediaObject,
 } from '../types/wordpress';
 
 type PostCollectionConvertible = PostObject[] | Post[] | PostCollection;
@@ -24,17 +27,21 @@ type CategoryCollectionConvertible =
   | CategoryObject[]
   | Category[]
   | CategoryCollection;
+type MediaCollectionConvertible = Media[] | MediaObject[] | MediaCollection;
+type MediaConvertible = Media | MediaObject;
 
 export default class State extends Model {
   _posts: PostCollection;
   _pages: PageCollection;
   _categories: CategoryCollection;
+  _media: MediaCollection;
 
   constructor(data: any) {
     super(data);
     this._posts = new PostCollection(this.get('posts'));
     this._pages = new PageCollection(this.get('pages'));
     this._categories = new CategoryCollection(this.get('categories'));
+    this._media = new MediaCollection(this.get('media'));
   }
 
   get posts(): PostCollection {
@@ -79,5 +86,17 @@ export default class State extends Model {
 
   setCategories(categories: CategoryCollectionConvertible): State {
     return this.set('categories', categories);
+  }
+
+  get media(): MediaCollection {
+    return this._media;
+  }
+
+  setMedia(media: MediaCollectionConvertible): State {
+    return this.set('media', media);
+  }
+
+  addMedia(media: MediaConvertible): State {
+    return this.setMedia(this.media.addOrReplaceById(media.id, media));
   }
 }

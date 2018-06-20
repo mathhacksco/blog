@@ -44,11 +44,9 @@ const renderBody = async (dom: JSDOM, body: string) => {
 const renderHead = async (dom: JSDOM) => {
   const helmet = Helmet.renderStatic();
   const head = `
-    <head>
-      ${helmet.title.toString()}
-      ${helmet.meta.toString()}
-      ${helmet.link.toString()}
-    </head>`;
+    ${helmet.title.toString()}
+    ${helmet.meta.toString()}
+    ${helmet.link.toString()}`;
   const templateHead = dom.window.document.querySelector('head');
   templateHead.insertAdjacentHTML('afterbegin', head);
   return dom;

@@ -105,7 +105,7 @@ export default class Home extends Component<Props, {}> {
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
     return (
-      <main id="react-main" className="app-container homepage">
+      <div className="app-container homepage">
         <Seo
           pageType={SEO_PAGE_TYPE.WEBPAGE}
           title="MathHacks"
@@ -136,7 +136,7 @@ export default class Home extends Component<Props, {}> {
           categories={this.props.categories}
         />
         <Footer colorScheme="pink" />
-      </main>
+      </div>
     );
   }
 }

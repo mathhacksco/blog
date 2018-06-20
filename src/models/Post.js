@@ -38,6 +38,9 @@ export default class Post extends Model {
   get slug(): string {
     return this.get('slug');
   }
+  get featuredMedia(): Id {
+    return this.get('featured_media');
+  }
   getId(): Id {
     return this.id;
   }
