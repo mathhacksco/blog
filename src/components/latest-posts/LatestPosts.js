@@ -13,14 +13,21 @@ import './LatestPosts.scss';
 
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 
 type Props = {
   className?: ?string,
   posts: PostCollection,
   categories: CategoryCollection,
+  media: MediaCollection,
 };
 
-export default function LatestPosts({ className, posts, categories }: Props) {
+export default function LatestPosts({
+  className,
+  posts,
+  categories,
+  media,
+}: Props) {
   return (
     <HorizontallyCentered
       className={classnames('latest-posts-container', className)}
@@ -43,6 +50,7 @@ export default function LatestPosts({ className, posts, categories }: Props) {
                   key={post.id}
                   post={post}
                   categories={categories}
+                  media={media}
                 />
               )}
             />

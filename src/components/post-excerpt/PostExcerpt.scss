@@ -17,6 +17,13 @@
     height: 416px;
     width: 100%;
     background-color: $theme-medium-light-gray;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      width: 100%;
+    }
   }
 
   .category {

@@ -13,6 +13,7 @@ export type PostObject = {
     rendered: string,
   },
   date_gmt: string,
+  featured_media: Id,
 };
 
 export type PageObject = {
@@ -32,4 +33,33 @@ export type CategoryObject = {
   slug: string,
   name: string,
   date_gmt: string,
+};
+
+export type MediaSizeObject = {
+  width: number,
+  height: number,
+  file: string,
+  mime_type: string,
+  source_url: string,
+};
+
+export type MediaObject = {
+  id: Id,
+  slug: string,
+  name: string,
+  date_gmt: string,
+  media_details: {
+    width: number,
+    height: number,
+    file: string,
+    sizes: {
+      thumbnail: MediaSizeObject,
+      medium: MediaSizeObject,
+      medium_large: MediaSizeObject,
+      large: MediaSizeObject,
+      full: MediaSizeObject,
+    },
+  },
+  post: Id,
+  source_url: string,
 };

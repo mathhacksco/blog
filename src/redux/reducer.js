@@ -6,6 +6,7 @@ import {
   POST_ACTION_TYPES,
   PAGE_ACTION_TYPES,
   CATEGORY_ACTION_TYPES,
+  MEDIA_ACTION_TYPES,
 } from './constants';
 
 import type { Action } from '../types/redux';
@@ -14,6 +15,8 @@ import type {
   ReceivePostPayload,
   ReceivePagesPayload,
   ReceiveCategoriesPayload,
+  ReceiveMediaPayload,
+  ReceiveMultipleMediaPayload,
 } from '../types/actions';
 
 const initialState = new State();
@@ -23,6 +26,8 @@ const actions = {
   [POST_ACTION_TYPES.RECEIVE_POST]: receivePost,
   [PAGE_ACTION_TYPES.RECEIVE_PAGES]: receivePages,
   [CATEGORY_ACTION_TYPES.RECEIVE_CATEGORIES]: receiveCategories,
+  [MEDIA_ACTION_TYPES.RECEIVE_MEDIA]: receiveMedia,
+  [MEDIA_ACTION_TYPES.RECEIVE_MEDIA_BY_IDS]: receveMultipleMedia,
 };
 
 // eslint-disable-next-line object-curly-spacing
@@ -78,6 +83,28 @@ function receiveCategories(
     return state;
   }
   return state.setCategories(payload.categories);
+}
+
+// eslint-disable-next-line object-curly-spacing
+function receiveMedia(
+  state: State,
+  { payload }: Action<ReceiveMediaPayload>
+): State {
+  if (!payload) {
+    return state;
+  }
+  return state.addMedia(payload.media);
+}
+
+// eslint-disable-next-line object-curly-spacing
+function receveMultipleMedia(
+  state: State,
+  { payload }: Action<ReceiveMultipleMediaPayload>
+): State {
+  if (!payload) {
+    return state;
+  }
+  return state.setMedia(payload.media);
 }
 
 export default handleActions(actions, initialState);

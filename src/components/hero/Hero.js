@@ -12,11 +12,13 @@ import './Hero.scss';
 
 import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 
 type Props = {
   className?: ?string,
-  post: Post,
+  post: ?Post,
   categories: CategoryCollection,
+  media: MediaCollection,
   colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
@@ -25,23 +27,33 @@ export default function Hero({
   colorScheme,
   post,
   categories,
+  media,
 }: Props) {
+  const image = post && media.findById(post.featuredMedia);
   return (
     <section className={classnames('hero', colorScheme || 'pink', className)}>
       <div className="hero-background">
         <div className="top-gradient" />
         <div className="bottom-gradient" />
+        {image && (
+          <div
+            style={{ backgroundImage: `url(${image.fullSourceUrl})` }}
+            className="hero-background-image"
+          />
+        )}
       </div>
       <HorizontallyCentered className="hero-container">
         <ContentMaxWidth>
           <Navigation colorScheme={colorScheme} />
-          <HeroPostExcerpt
-            key={post.id}
-            id={post.id}
-            post={post}
-            categories={categories}
-            colorScheme={colorScheme}
-          />
+          {post && (
+            <HeroPostExcerpt
+              key={post.id}
+              id={post.id}
+              post={post}
+              categories={categories}
+              colorScheme={colorScheme}
+            />
+          )}
         </ContentMaxWidth>
       </HorizontallyCentered>
     </section>
