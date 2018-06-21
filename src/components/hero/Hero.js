@@ -31,7 +31,7 @@ export default function Hero({
 }: Props) {
   const image = post && media.findById(post.featuredMedia);
   return (
-    <section className={classnames('hero', colorScheme || 'pink', className)}>
+    <header className={classnames('hero', colorScheme || 'pink', className)}>
       <div className="hero-background">
         <div className="top-gradient" />
         <div className="bottom-gradient" />
@@ -56,6 +56,6 @@ export default function Hero({
           )}
         </ContentMaxWidth>
       </HorizontallyCentered>
-    </section>
+    </header>
   );
 }
