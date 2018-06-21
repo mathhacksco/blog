@@ -16,12 +16,13 @@ const nodeExternals = require('webpack-node-externals');
 const packageData = require('./package.json');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const isDev = !isProduction;
+const isStaging = process.env.NODE_ENV === 'staging';
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const yamlPath = path.resolve('app.yml');
 const yamlConfig = yaml.load(fs.readFileSync(yamlPath, 'utf8'));
 
 const plugins = _.compact([
-    isProduction && new CleanWebpackPlugin(['public']),
+    (isProduction || isStaging) && new CleanWebpackPlugin(['public']),
     new MiniCssExtractPlugin({
         filename: '[name].css',
         chunkFilename: '[id].css'
@@ -37,23 +38,27 @@ const plugins = _.compact([
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         PROJECT_ROOT: path.join('"', __dirname, '"'),
         CONFIG: JSON.stringify(yamlConfig),
-        VERSION: JSON.stringify(packageData.version)
+        VERSION: JSON.stringify(packageData.version),
     }),
     new DotenvPlugin({
-        sample: './.env',
-        path: './.env'
+        sample: './.env.example',
+        path: _.findKey({
+            './.env.development': isDev,
+            './.env.production': isProduction,
+            './.env.staging': isStaging
+        })
     }),
-    isProduction && new UglifyJSPlugin({
+    (isProduction || isStaging) && new UglifyJSPlugin({
         sourceMap: true
     }),
     isDev && new webpack.HotModuleReplacementPlugin()
 ]);
 
 const optimization = {
-    minimize: isProduction
+    minimize: isProduction || isStaging
 };
 
-const webpackMode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const webpackMode = (isProduction || isStaging) ? 'production' : 'development';
 
 const aliases = {
     '~': path.resolve(__dirname, 'src'),
@@ -69,6 +74,12 @@ const resolve = {
     alias: aliases
 };
 
+const output = {
+    publicPath: (isProduction || isStaging) ? '/' : '/public/',
+    path: path.resolve('public'),
+    filename: '[name].js',
+};
+
 const clientRules = [
     {
         test: /\.jsx?$/,
@@ -82,7 +93,6 @@ const clientRules = [
     {
         test: /\.css$/,
         use: [
-            // isDev ? 'style-loader' :
             MiniCssExtractPlugin.loader,
             {
                 loader: 'css-loader',
@@ -111,7 +121,6 @@ const clientRules = [
     {
         test: /\.s?[ac]ss$/,
         use: [
-            // isDev ? 'style-loader' :
             MiniCssExtractPlugin.loader,
             {
                 loader: 'css-loader',
@@ -156,12 +165,8 @@ const client = {
         __dirname: true,
         fs: 'empty'
     },
-    output: {
-        publicPath: isProduction ? '/' : '/public/',
-        path: path.resolve('public'),
-        filename: '[name].js',
-    },
-    resolve: resolve,
+    output,
+    resolve,
     module: {
         rules: clientRules
     },
@@ -181,12 +186,8 @@ const server = {
     externals: nodeExternals(),
     context: __dirname,
     devtool: 'source-map',
-    output: {
-        publicPath: isProduction ? '/' : '/public/',
-        path: path.resolve('public'),
-        filename: '[name].js',
-    },
-    resolve: resolve,
+    output,
+    resolve,
     module: {
         rules: serverRules
     },

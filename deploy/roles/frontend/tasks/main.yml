@@ -50,6 +50,13 @@
   command: npm run build:production
   args:
     chdir: "{{ remote_home_directory }}/frontend"
+  when: env is "production"
+
+- name: build staging javascript/html/css bundles
+  command: npm run build:staging
+  args:
+    chdir: "{{ remote_home_directory }}/frontend"
+  when: env is "staging"
 
 - name: sync backup to s3
   command: aws s3 cp {{ remote_home_directory }}/frontend/public s3://{{ aws_public_bucket }} --force --acl public-read --recursive

@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build:production": "NODE_ENV=production webpack && node ./public/server.js",
+    "build:staging": "NODE_ENV=staging webpack && node ./public/server.js",
     "build": "webpack && node ./public/server.js",
     "start": "node dev-server.js",
     "test": "karma start --single-run --browsers PhantomJS",
