@@ -27,17 +27,42 @@ export default function Footer({ colorScheme, className }: Props) {
         className="math-symbols"
         dangerouslySetInnerHTML={{ __html: FooterMathSymbols }}
       />
-      <div className="copyright-container">
-        <div className="logo-container">
-          <Logo />
+      <div className="footer-container">
+        <div className="copyright-container">
+          <div className="logo-container">
+            <Logo />
+          </div>
+          <p className="copyright-text">
+            <span>Copyright {COPYRIGHT_YEAR}, </span>
+            <Link to="/about" className="author-link">
+              {COPYRIGHT_HOLDER}
+            </Link>
+            <span>, All Rights Reserved</span>
+          </p>
         </div>
-        <p className="copyright-text">
-          <span>Copyright {COPYRIGHT_YEAR}, </span>
-          <Link to="/about" className="author-link">
-            {COPYRIGHT_HOLDER}
-          </Link>
-          <span>, All Rights Reserved</span>
-        </p>
+        <div className="footer-attribution-text">
+          <span>
+            MathHacks is open source on{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/mathhacksco/blog"
+            >
+              Github
+            </a>
+          </span>
+          <span className="seperator">|</span>
+          <span>
+            Made with <em>❤</em> by{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="mailto:jpbrennecke@gmail.com"
+            >
+              Jon Brennecke
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );
