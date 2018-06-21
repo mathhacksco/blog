@@ -1,9 +1,15 @@
-if [ -z "$ANSIBLE_VAULT_PASSWORD" ]; then
-  echo "You must set the environment variable ANSIBLE_VAULT_PASSWORD."
-  exit 1
-fi
+#!/bin/bash
+set -e
+
+required_vars=('ANSIBLE_VAULT_PASSWORD' 'ANSIBLE_ENV')
+for var in "${required_vars[@]}"; do
+  if [ -z ${!var} ]; then
+    echo "Error: missing required variable \"$var\"." >&2
+    exit 1
+  fi
+done
 
 ansible-playbook \
     -M command \
-    -i ./inventory/digitalocean \
+    -i ./inventory/$ANSIBLE_ENV \
     ./plays/backup.yml

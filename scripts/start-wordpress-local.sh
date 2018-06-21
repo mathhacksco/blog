@@ -19,7 +19,7 @@ source ./.env
 
 if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
   echo "MYSQL_ROOT_PASSWORD must be set"
-  exit
+  exit 1
 fi
 
 docker-machine create mathhacks-wordpress-machine --driver $DOCKER_DEV_DRIVER
