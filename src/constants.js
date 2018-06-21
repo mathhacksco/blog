@@ -5,6 +5,7 @@ export const FAVICON_DIRECTORY = '';
 
 // $FlowFixMe
 export const APP_VERSION = VERSION;
+export const APP_ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 // NOTE: IOS 8601 is already moment's default format
 export const MOMENT_DEFAULT_TIMESTAMP_FORMAT: ?string = null;

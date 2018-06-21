@@ -19,6 +19,12 @@ notifications:
 
 deploy:
   provider: script
-  script: ./scripts/deploy-prod.sh
+  script: ./scripts/deploy.sh staging
   on:
     branch: master
+
+deploy:
+  provider: script
+  script: ./scripts/deploy.sh production
+  on:
+    branch: release

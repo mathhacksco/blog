@@ -2,7 +2,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { APP_VERSION, FAVICON_DIRECTORY } from '../../constants';
+import { APP_VERSION, APP_ENVIRONMENT, FAVICON_DIRECTORY } from '../../constants';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 import 'assets/favicon/dist/apple-touch-icon-57x57.png';
@@ -57,6 +57,14 @@ export default function Head({ schema, title, description, url }: Props) {
       />
       <meta name="application-name" content={title} />
       <meta name="description" content={description} />
+      
+      {/* Custom version tag for debug purposes */}
+      <meta name="version" content={APP_VERSION} />
+      <meta name="environment" content={APP_ENVIRONMENT} />
+
+      {/* TODO: change canonical link if on an article page */}
+      <link rel="canonical" href={url} />
+      <title>MathHacks</title>
 
       {/* TODO: add header color for chrome: <meta name="theme-color" content="#4285f4"> */}
 
@@ -111,13 +119,6 @@ export default function Head({ schema, title, description, url }: Props) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="/image.jpg" />
-
-      {/* Custom version tag for debug purposes */}
-      <meta name="version" content={APP_VERSION} />
-
-      {/* TODO: change canonical link if on an article page */}
-      <link rel="canonical" href={url} />
-      <title>MathHacks</title>
 
       {/* Google Analytics tracking script */}
       <script
