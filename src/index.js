@@ -17,6 +17,8 @@ Promise.config({
   },
 });
 
+console.log('here');
+
 const element = document.getElementById('react-main');
 if (!element) {
   Debug.logErrorMessage('Failed to find `#react-main` component.');
