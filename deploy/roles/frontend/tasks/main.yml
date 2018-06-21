@@ -46,6 +46,11 @@
   args:
     chdir: "{{ remote_home_directory }}/frontend"
 
+- name: clean javascript/html/css bundles
+  command: npm run clean
+  args:
+    chdir: "{{ remote_home_directory }}/frontend"
+
 - name: build production javascript/html/css bundles
   command: npm run build:production
   args:
