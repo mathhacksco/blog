@@ -57,6 +57,7 @@ export const trackEvent = async (event: TrackingEvent) => {
       uid: Tracking.getBrowserFingerprint(),
       av: APP_VERSION,
       cd: event.category,
+      dr: document.referrer,
       cd1: window.location.hostname,
       cd2: APP_VERSION,
     },
