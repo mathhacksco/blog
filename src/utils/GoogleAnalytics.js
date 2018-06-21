@@ -4,11 +4,8 @@ import _ from 'lodash';
 import { postRequest } from './requests';
 import * as Debug from './DebugUtil';
 import * as Tracking from './Tracking';
-import { APP_VERSION } from '../constants';
+import { APP_VERSION, GOOGLE_ANALYTICS_TRACKING_ID } from '../constants';
 
-// $FlowFixMe
-export const GOOGLE_ANALYTICS_TRACKING_ID: string =
-  process.env.GOOGLE_ANALYTICS_TRACKING_ID;
 export const GOOGLE_ANALYTICS_PARAMS = {
   HOST: 'https://www.google-analytics.com',
   API_VERSION: '1',

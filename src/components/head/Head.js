@@ -2,7 +2,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { APP_VERSION, APP_ENVIRONMENT, FAVICON_DIRECTORY } from '../../constants';
+import { APP_VERSION, APP_ENVIRONMENT, FAVICON_DIRECTORY, GOOGLE_ADSENSE_PUBLISHER_ID } from '../../constants';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 import 'assets/favicon/dist/apple-touch-icon-57x57.png';
@@ -135,6 +135,17 @@ export default function Head({ schema, title, description, url }: Props) {
         gtag('config', '${
           GoogleAnalytics.GOOGLE_ANALYTICS_PARAMS.TRACKING_ID
         }');
+      `}
+      </script>
+
+      {/* <AdSense/> */}
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+      {`
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "${GOOGLE_ADSENSE_PUBLISHER_ID}",
+          enable_page_level_ads: true
+        });
       `}
       </script>
 
