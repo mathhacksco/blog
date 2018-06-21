@@ -24,12 +24,18 @@ export const CategoryEnum = {
 };
 
 export const ActionEnum = {
-  PageView: 'PageView',
+  PageView: 'pageview',
+  Event: 'event',
+  Transaction: 'transaction',
+  Exception: 'exception',
+  Item: 'item',
+  Social: 'social',
+  Timing: 'timing',
 };
 
 export type TrackingEvent = {
-  category: string,
-  action: string,
+  category: typeof CategoryEnum,
+  action: typeof ActionEnum,
   label: ?string,
 
   // Optional fields
@@ -45,7 +51,7 @@ export const trackEvent = async (event: TrackingEvent) => {
     {
       v: GOOGLE_ANALYTICS_PARAMS.API_VERSION,
       tid: GOOGLE_ANALYTICS_PARAMS.TRACKING_ID,
-      t: 'event',
+      t: event.action,
       ec: event.category,
       ea: event.action,
       el: event.label,
