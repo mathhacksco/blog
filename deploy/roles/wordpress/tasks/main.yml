@@ -16,5 +16,6 @@
       -d \
       --name=mathhacks-wordpress \
       --link mathhacks-wordpress-db:mysql \
+      -v /var/www/html:/var/www/html \
       -p 8080:80 \
       wordpress
