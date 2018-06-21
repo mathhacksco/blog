@@ -2,7 +2,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { APP_VERSION, APP_ENVIRONMENT, FAVICON_DIRECTORY, GOOGLE_ADSENSE_PUBLISHER_ID } from '../../constants';
+import {
+  APP_VERSION,
+  APP_ENVIRONMENT,
+  FAVICON_DIRECTORY,
+  GOOGLE_ADSENSE_PUBLISHER_ID,
+} from '../../constants';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 import 'assets/favicon/dist/apple-touch-icon-57x57.png';
@@ -57,7 +62,7 @@ export default function Head({ schema, title, description, url }: Props) {
       />
       <meta name="application-name" content={title} />
       <meta name="description" content={description} />
-      
+
       {/* Custom version tag for debug purposes */}
       <meta name="version" content={APP_VERSION} />
       <meta name="environment" content={APP_ENVIRONMENT} />
@@ -139,9 +144,12 @@ export default function Head({ schema, title, description, url }: Props) {
       </script>
 
       {/* <AdSense/> */}
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script
+        async
+        src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
       <script>
-      {`
+        {`
         (adsbygoogle = window.adsbygoogle || []).push({
           google_ad_client: "${GOOGLE_ADSENSE_PUBLISHER_ID}",
           enable_page_level_ads: true

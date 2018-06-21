@@ -35,12 +35,18 @@
     }
   }
 
+  .footer-container {
+    display: flex;
+    flex: 1;
+    background-color: $theme-dark-gray;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .copyright-container {
     display: flex;
     flex: 1;
     justify-content: center;
-    background-color: $theme-dark-gray;
-    height: 160px;
     flex-direction: column;
     align-items: center;
   }
@@ -52,7 +58,36 @@
     color: $theme-light-gray;
 
     a {
+      font-weight: bold;
       color: $theme-light-gray;
+    }
+  }
+
+  .footer-attribution-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $tajawalLightFontFamily;
+    font-weight: 100;
+    font-size: 13pt * $sketchFontMulitplier;
+    color: $theme-medium-gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 1.5em;
+
+    a {
+      font-weight: bold;
+      color: $theme-medium-gray;
+    }
+
+    em {
+      color: $theme-pink;
+      margin-right: 5px;
+    }
+
+    .seperator {
+      margin-right: 5px;
+      margin-left: 5px;
     }
   }
 }
