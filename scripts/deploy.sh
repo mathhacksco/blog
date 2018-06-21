@@ -9,11 +9,10 @@ for var in "${required_vars[@]}"; do
   fi
 done
 
-if [ "$1" != "production" -o "$1" != "staging" ]; then
+if [ "$1" != "production" ] && [ "$1" != "staging" ]; then
   echo "Error: The first argument must either 'production' or 'staging'."
   exit 1
 fi
-
 
 docker build \
   -t mathhacksco/blog \
