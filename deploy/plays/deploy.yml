@@ -4,6 +4,8 @@
   pre_tasks:
     - name: 'install python2'
       raw: sudo apt-get -y install python-simplejson
+  vars_files:
+    - '../vars/{{ env }}.yml'
   roles:
     - { role: './roles/install-docker' }
     - { role: './roles/mysql' }
