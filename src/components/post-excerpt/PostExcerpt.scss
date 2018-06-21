@@ -8,6 +8,11 @@
   align-items: flex-start;
   box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.07);
   background-color: #fff;
+  transition: box-shadow 0.1s;
+
+  &:hover {
+    box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.17);
+  }
 
   .content-container {
     padding: 15px;
