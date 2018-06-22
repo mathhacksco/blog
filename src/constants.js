@@ -1,10 +1,8 @@
 // @flow
-/* global VERSION */
-
 export const FAVICON_DIRECTORY = '';
 
 // $FlowFixMe
-export const APP_VERSION = VERSION;
+export const APP_VERSION = process.env.VERSION;
 export const APP_ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 // NOTE: IOS 8601 is already moment's default format
@@ -34,3 +32,5 @@ export const GOOGLE_ADSENSE_PUBLISHER_ID: string =
 // $FlowFixMe
 export const GOOGLE_ANALYTICS_TRACKING_ID: string =
   process.env.GOOGLE_ANALYTICS_TRACKING_ID;
+
+export const ADS_ENABLED: boolean = !!JSON.parse(process.env.ADS_ENABLED || "false");

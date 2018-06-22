@@ -133,8 +133,8 @@ export default class Home extends Component<Props, {}> {
           media={this.props.media}
         />
         <HorizontallyCentered className="ad-container-1" container="section">
-          <ContentMaxWidth>
-            <Ad />
+          <ContentMaxWidth className="ad-container-inner">
+            <Ad/>
           </ContentMaxWidth>
         </HorizontallyCentered>
         <CallToActionButtons className="call-to-action-container" />

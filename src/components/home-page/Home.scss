@@ -2,6 +2,10 @@
 
 .ad-container-1 {
   background-color: #fff;
+
+  .ad-container-inner:empty {
+    margin-bottom: 35px;
+  }
 }
 
 .ad-container-2 {
