@@ -20,6 +20,15 @@ export const MOMENT_DAY_MONTH_CALENDAR_FORMAT = {
   sameElse: 'dddd, MMM D',
 };
 
+export const MOMENT_DAY_MONTH_YEAR_CALENDAR_FORMAT = {
+  sameDay: '[Today] MMM D, YYYY',
+  nextDay: '[Tomorrow] MMM D, YYYY',
+  lastDay: '[Yesterday] MMM D, YYYY',
+  lastWeek: 'dddd MMM D, YYYY',
+  nextWeek: 'dddd MMM D, YYYY',
+  sameElse: 'dddd MMM D, YYYY',
+};
+
 export const SEO_PAGE_TYPE = {
   ARTICLE: 'article',
   WEBPAGE: 'webpage',

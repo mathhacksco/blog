@@ -43,18 +43,20 @@
     align-items: flex-start;
   }
 
-  .featured {
-    margin-bottom: 45px;
+  .timestamp {
+    margin-bottom: 15px;
     font-family: $crimsonTextFontFamily;
     font-weight: 100;
-    font-size: 24pt * $sketchFontMulitplier;
+    font-size: 13pt * $sketchFontMulitplier;
     color: #fff;
+    text-transform: uppercase;
   }
 
   .category {
+    margin-top: 0px;
     margin-bottom: 1px;
     font-family: $tajawalLightFontFamily;
-    font-weight: 100;
+    font-weight: bold;
     font-size: 20pt * $sketchFontMulitplier;
     color: #fff;
   }
@@ -83,8 +85,8 @@
   .author {
     margin-top: 15px;
     font-family: $tajawalLightFontFamily;
-    font-weight: 100;
-    font-size: 20pt * $sketchFontMulitplier;
+    font-weight: bold;
+    font-size: 13pt * $sketchFontMulitplier;
     color: #fff;
   }
 }
