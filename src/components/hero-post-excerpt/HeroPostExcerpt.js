@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import first from 'lodash/first';
 import classnames from 'classnames';
 
+import { formatCalendarDateWithYear } from '../../utils/DateTimeUtil';
 import ColumnLayout from '../layout/column-layout/ColumnLayout';
 
 // $FlowFixMe
@@ -36,7 +37,7 @@ export default function HeroPostExcerpt({
         className
       )}
     >
-      <p className="featured">Featured Article</p>
+      <p className="timestamp">{formatCalendarDateWithYear(post.dateGMT, true)}</p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.slug}`} className="title-link">
         <p
