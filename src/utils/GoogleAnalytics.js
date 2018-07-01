@@ -31,8 +31,8 @@ export const ActionEnum = {
 };
 
 export type TrackingEvent = {
-  category: typeof CategoryEnum,
-  action: typeof ActionEnum,
+  category: $Values<typeof CategoryEnum>,
+  action: $Values<typeof ActionEnum>,
   label: ?string,
 
   // Optional fields

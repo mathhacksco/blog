@@ -22,19 +22,23 @@ export default function CallToActionButtons({ className }: Props) {
         <div className="call-to-action-button">
           <div className="background" />
           <div className="content">
-            <h2>Subscribe Now</h2>
+            <span className="call-to-action-text-secondary">MathHacks on Youtube</span>
+            <h2 className="call-to-action-text-primary">Watch Now</h2>
+          </div>
+        </div>
+        <div className="call-to-action-button">
+          {/* TODO: follow in Instagram */}
+          <div className="background" />
+          <div className="content">
+            <span className="call-to-action-text-secondary">{'Don\'t be left out'}</span>
+            <h2 className="call-to-action-text-primary">Get the Study Guide</h2>
           </div>
         </div>
         <div className="call-to-action-button">
           <div className="background" />
           <div className="content">
-            <h2>Subscribe Now</h2>
-          </div>
-        </div>
-        <div className="call-to-action-button">
-          <div className="background" />
-          <div className="content">
-            <h2>Subscribe Now</h2>
+            <span className="call-to-action-text-secondary">MathHacks on Youtube</span>
+            <h2 className="call-to-action-text-primary">Subscribe Now</h2>
           </div>
         </div>
       </ContentMaxWidth>
