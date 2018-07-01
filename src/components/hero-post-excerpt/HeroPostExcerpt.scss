@@ -5,8 +5,6 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-bottom: 45px;
 
   &.violet {
@@ -48,6 +46,7 @@
     font-family: $crimsonTextFontFamily;
     font-weight: 100;
     font-size: 13pt * $sketchFontMulitplier;
+    letter-spacing: 2.5px;
     color: #fff;
     text-transform: uppercase;
   }
