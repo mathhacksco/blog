@@ -1,4 +1,4 @@
-FROM python:3.6.6-alpine
+FROM python:3.5.6
 
 RUN mkdir -p /usr/src/playbook
 WORKDIR /usr/src/playbook
