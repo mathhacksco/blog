@@ -4,8 +4,8 @@
   "description": "Mathhacks.co blog",
   "main": "lib/index.js",
   "scripts": {
-    "build:production": "NODE_ENV=production webpack && node ./public/server.js",
-    "build:staging": "NODE_ENV=staging webpack && node ./public/server.js",
+    "build:production": "NODE_ENV=production npm run clean && webpack && node ./public/server.js",
+    "build:staging": "NODE_ENV=staging npm run clean && webpack && node ./public/server.js",
     "build": "npm run clean && webpack && node ./public/server.js",
     "start": "node dev-server.js",
     "test": "karma start --single-run --browsers PhantomJS",
