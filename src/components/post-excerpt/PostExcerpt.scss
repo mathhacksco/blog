@@ -19,7 +19,7 @@
   }
 
   .image-container {
-    height: 416px;
+    padding-top: 125%;
     width: 100%;
     background-color: $theme-medium-light-gray;
     position: relative;
@@ -28,6 +28,8 @@
     img {
       position: absolute;
       width: 100%;
+      height: 100%;
+      top: 0;
     }
   }
 
