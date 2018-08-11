@@ -4,7 +4,7 @@ import moment from 'moment';
 import {
   MOMENT_DEFAULT_TIMESTAMP_FORMAT,
   MOMENT_DAY_MONTH_CALENDAR_FORMAT,
-  MOMENT_DAY_MONTH_YEAR_CALENDAR_FORMAT
+  MOMENT_DAY_MONTH_YEAR_CALENDAR_FORMAT,
 } from '../constants';
 
 export function timestamp(): string {

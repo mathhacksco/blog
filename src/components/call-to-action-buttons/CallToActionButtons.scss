@@ -5,6 +5,8 @@
   width: 100vw;
   height: 160px;
   position: relative;
+  background-color: $theme-pink;
+  cursor: pointer;
 
   .call-to-action-inner {
     flex-direction: row;
@@ -15,87 +17,41 @@
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  justify-content: flex-start;
 
   .background {
     position: absolute;
     top: 0;
     bottom: 0;
-  }
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    overflow: hidden;
+    background-color: $theme-pink;
 
-  &:first-child {
-    justify-content: flex-start;
-    
-    .background {
-      background-color: $theme-pink;
+    img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      left: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
       right: 0;
-      display: flex;
-      justify-content: flex-end;
-      width: 660px;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba($theme-pink, 0.5);
-        content: '';
-      }
+      bottom: 0;
+      background-color: rgba($theme-pink, 0.5);
+      content: '';
+      transition: 300ms background-color;
     }
 
-    .call-to-action-text-primary, .call-to-action-text-secondary {
-      color: $theme-pink;
-
-      span {
-        background-color: #fff;
-      }
-    }
-  }
-
-  &:nth-child(2) {
-    .background {
-      background-color: $theme-teal;
-      left: 0;
-      right: 0; 
-    }
-
-    .call-to-action-text-primary, .call-to-action-text-secondary {
-      color: $theme-teal;
-
-      span {
-        background-color: #fff;
-      }
-    }
-  }
-
-  &:last-child {
-    justify-content: flex-end;
-
-    .background {
-      background-color: $theme-violet;
-      left: 0;
-      display: flex;
-      justify-content: flex-start;
-      width: 660px;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba($theme-violet, 0.5);
-        content: '';
-      }
-    }
-
-    .call-to-action-text-primary, .call-to-action-text-secondary {
-      color: $theme-violet;
-
-      span {
-        background-color: #fff;
+    &:hover, &:focus {
+      &:after {
+        background-color: rgba($theme-pink, 0.75);
       }
     }
   }
@@ -113,15 +69,20 @@
     font-size: 32pt * $sketchFontMulitplier;
     font-weight: 100;
     margin: 0;
+    text-align: left;
+    color: $theme-pink;
     
     span {
+      padding-left: 5px;
+      padding-right: 5px;
       display: inline;
+      background-color: #fff;
     }
   }
 
   .call-to-action-text-secondary {
     background-color: #fff;
-    color: $theme-violet;
+    color: $theme-pink;
     font-family: $crimsonTextFontFamily;
     font-size: 13pt * $sketchFontMulitplier;
     font-weight: 100;

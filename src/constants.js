@@ -42,10 +42,13 @@ export const GOOGLE_ADSENSE_PUBLISHER_ID: string =
 export const GOOGLE_ANALYTICS_TRACKING_ID: string =
   process.env.GOOGLE_ANALYTICS_TRACKING_ID;
 
-export const ADS_ENABLED: boolean = !!JSON.parse(process.env.ADS_ENABLED || "false");
+export const ADS_ENABLED: boolean = !!JSON.parse(
+  process.env.ADS_ENABLED || 'false'
+);
 
 export const SOCIAL_LINKS = {
   TWITTER: 'https://twitter.com/mathhacksco',
   INSTAGRAM: 'https://www.instagram.com/mathhacksco/',
-  YOUTUBE: 'https://www.youtube.com/channel/UC1IUdHJjVZfXIkpSXB6iRXw?view_as=subscriber',
+  YOUTUBE:
+    'https://www.youtube.com/channel/UC1IUdHJjVZfXIkpSXB6iRXw?view_as=subscriber',
 };

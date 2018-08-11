@@ -37,7 +37,9 @@ export default function HeroPostExcerpt({
         className
       )}
     >
-      <p className="timestamp">{formatCalendarDateWithYear(post.dateGMT, true)}</p>
+      <p className="timestamp">
+        {formatCalendarDateWithYear(post.dateGMT, true)}
+      </p>
       <p className="category">{formatCategoryName(categoryName)}</p>
       <Link to={`posts/${post.slug}`} className="title-link">
         <p
