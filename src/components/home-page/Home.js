@@ -134,7 +134,7 @@ export default class Home extends Component<Props, {}> {
         />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth className="ad-container-inner">
-            <Ad/>
+            <Ad />
           </ContentMaxWidth>
         </HorizontallyCentered>
         <CallToActionButtons className="call-to-action-container" />

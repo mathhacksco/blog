@@ -9,6 +9,10 @@
   border-bottom-color: $theme-violet;
   background-color: #fff;
 
+  &.empty, &:empty {
+    padding-top: 0;
+  }
+
   .featured-posts-inner {
     flex-direction: row;
   }

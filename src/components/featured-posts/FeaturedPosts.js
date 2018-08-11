@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import { Map, Slice } from 'react-iterators';
+import classnames from 'classnames';
 
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
@@ -19,11 +20,13 @@ type Props = {
 };
 
 export default function FeaturedPosts({ featuredPosts, categories }: Props) {
-  return (
-    <HorizontallyCentered
-      className="featured-posts-container"
-      container="section"
-    >
+  const hasPosts = featuredPosts.length > 1;
+  const containerClassNames = classnames(
+    'featured-posts-container',
+    !hasPosts && 'empty'
+  );
+  return hasPosts ? (
+    <HorizontallyCentered className={containerClassNames} container="section">
       <Slice
         container={({ children }) => (
           <ContentMaxWidth className="featured-posts-inner">
@@ -51,5 +54,7 @@ export default function FeaturedPosts({ featuredPosts, categories }: Props) {
         )}
       />
     </HorizontallyCentered>
+  ) : (
+    <section className={containerClassNames} />
   );
 }
