@@ -23,6 +23,11 @@
     refspec: "refs/heads/{{ git_repo_branch }}"
     version: "{{ git_repo_sha }}"
 
+- name: reset git repo
+  command: git reset --hard HEAD
+  args:
+    chdir: "{{ remote_home_directory }}/frontend"
+
 - name: check if swapfile exists
   stat:
     path: /swapfile
@@ -43,11 +48,6 @@
 
 - name: install node modules
   command: npm install
-  args:
-    chdir: "{{ remote_home_directory }}/frontend"
-
-- name: clean javascript/html/css bundles
-  command: npm run clean
   args:
     chdir: "{{ remote_home_directory }}/frontend"
 
