@@ -124,7 +124,7 @@ export default class Home extends Component<Props, {}> {
         <Seo
           pageType={SEO_PAGE_TYPE.WEBPAGE}
           title="MathHacks"
-          description="MathHacks is the modern person's destination for math writing, videos and tutorials."
+          description="MathHacks is the modern woman's resource for math tutorials, writing and educational videos."
           url="http://mathhacks.co"
         />
         <Hero
