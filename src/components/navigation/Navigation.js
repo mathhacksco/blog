@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import Logo from '../logo/Logo';
+import { SOCIAL_LINKS } from '../../constants';
 
 // $FlowFixMe
 import './Navigation.styles.scss';
@@ -20,24 +21,34 @@ export default function Navigation({ className, colorScheme }: Props) {
       <Link to="/tutorials" className="nav-link">
         Tutorials
       </Link>
-      <Link to="/youtube" className="nav-link">
+      <a
+        href={SOCIAL_LINKS.YOUTUBE}
+        className="nav-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         YouTube
-      </Link>
-      <Link to="/blog" className="nav-link">
+      </a>
+      {/* <Link to="/blog" className="nav-link">
         Blog
-      </Link>
+      </Link> */}
       <Link to="/" className="nav-link nav-link-logo">
         <Logo />
       </Link>
       <Link to="/about" className="nav-link">
         About
       </Link>
-      <Link to="/contact" className="nav-link">
+      <a
+        to={`mailto:${SOCIAL_LINKS.EMAIL}`}
+        className="nav-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Contact
-      </Link>
-      <Link to="/" className="nav-link">
+      </a>
+      {/* <Link to="/" className="nav-link">
         Get Started
-      </Link>
+      </Link> */}
     </nav>
   );
 }
