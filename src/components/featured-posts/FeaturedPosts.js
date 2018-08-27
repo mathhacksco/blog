@@ -13,13 +13,15 @@ import './FeaturedPosts.scss';
 
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
+import type MediaCollection from '../../models/MediaCollection';
 
 type Props = {
   featuredPosts: PostCollection,
   categories: CategoryCollection,
+  media: MediaCollection,
 };
 
-export default function FeaturedPosts({ featuredPosts, categories }: Props) {
+export default function FeaturedPosts({ featuredPosts, categories, media }: Props) {
   const hasPosts = featuredPosts.length > 1;
   const containerClassNames = classnames(
     'featured-posts-container',
@@ -48,6 +50,7 @@ export default function FeaturedPosts({ featuredPosts, categories }: Props) {
                 key={post.id}
                 post={post}
                 categories={categories}
+                media={media}
               />
             )}
           />
