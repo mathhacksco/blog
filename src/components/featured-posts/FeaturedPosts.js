@@ -21,7 +21,11 @@ type Props = {
   media: MediaCollection,
 };
 
-export default function FeaturedPosts({ featuredPosts, categories, media }: Props) {
+export default function FeaturedPosts({
+  featuredPosts,
+  categories,
+  media,
+}: Props) {
   const hasPosts = featuredPosts.length > 1;
   const containerClassNames = classnames(
     'featured-posts-container',
