@@ -13,11 +13,28 @@
 }
 
 @font-face {
+  font-family: 'Tajawal Medium';
+  src: url('assets/fonts/Tajawal/Tajawal-Medium.ttf') format('truetype');
+  font-style: normal;
+  // font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Tajawal Extra Bold';
+  src: url('assets/fonts/Tajawal/Tajawal-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  // font-weight: 100;
+}
+
+@font-face {
   font-family: 'IM FELL French Canon SC';
   src: url('assets/fonts/IMFellFrenchCanonSC/IMFeFCsc28P.ttf') format('truetype');
   font-style: normal;
 }
 
+// TODO convert from camelCase to hyphen-case
 $imFellFrenchCanonFontFamily: 'IM FELL French Canon SC', serif;
 $crimsonTextFontFamily: 'Crimson Text', serif;
 $tajawalLightFontFamily: 'Tajawal Light', sans-serif;
+$tajawalMediumFontFamily: 'Tajawal Medium', sans-serif;
+$tajawalExtrBoldFontFamily: 'Tajawal Extra Bold', sans-serif;

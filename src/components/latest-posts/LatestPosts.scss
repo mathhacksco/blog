@@ -33,11 +33,51 @@
       margin-left: 15px;
     }
 
+    // if there are four children, the fourth post should fill the entire width
+    // with no padding on either side
     &:nth-child(n + 4) {
       margin-top: 52px;
       margin-bottom: 52px;
       margin-right: 0px;
       margin-left: 0px;
+    }
+
+    &:nth-child(n + 5) {
+      margin-left: 15px;
+    }
+
+    // special cases: only one child, only 4 children
+    &:nth-child(4):last-child, &:only-child {
+      flex-direction: row;
+
+      .image-container {
+        padding-top: 62.5%;
+        display: flex;
+        flex: 1;
+        max-width: 50%;
+      }
+
+      .content-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        height: 100%;
+        max-width: 50%;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        text-align: center;
+        background-color: $theme-extra-light-violet;
+      }
+
+      .category-container, .excerpt-container {
+        display: flex;
+        flex: 1;
+      }
+
+      .excerpt-container {
+        margin-bottom: 50px;
+      }
     }
   }
 }
