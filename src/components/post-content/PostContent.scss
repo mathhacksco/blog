@@ -53,13 +53,7 @@
       line-height: 1.4em;
     }
 
-    & > p:first-child {
-      @include dropcap;
-    }
-
-    // FIXME: find a better way to clean this up
-    & > section:first-child > div:first-child > div:first-child > p:first-child,
-    & > section:first-child > div:first-child > p:first-child {
+    p:first-of-type {
       @include dropcap;
     }
 
