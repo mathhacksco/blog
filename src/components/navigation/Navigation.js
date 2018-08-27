@@ -35,7 +35,7 @@ export default function Navigation({ className, colorScheme }: Props) {
       <Link to="/" className="nav-link nav-link-logo">
         <Logo />
       </Link>
-      <Link to="/about" className="nav-link">
+      <Link to="/" className="nav-link">
         About
       </Link>
       <a
