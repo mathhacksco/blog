@@ -141,6 +141,7 @@ export default class Home extends Component<Props, {}> {
         <FeaturedPosts
           featuredPosts={featuredPosts}
           categories={this.props.categories}
+          media={this.props.media}
         />
         <HorizontallyCentered className="ad-container-2" container="section">
           <ContentMaxWidth>
