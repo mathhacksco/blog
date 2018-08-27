@@ -18,7 +18,7 @@ export default function Navigation({ className, colorScheme }: Props) {
   return (
     <nav className={classnames('navigation', colorScheme || 'pink', className)}>
       <div className="navigation-top-bar" />
-      <Link to="/tutorials" className="nav-link">
+      <Link to="/" className="nav-link">
         Tutorials
       </Link>
       <a
