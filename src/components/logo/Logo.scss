@@ -5,6 +5,8 @@
   min-width: 200px;
   max-width: 325px;
   padding: 0 45px;
+  align-items: center;
+  justify-content: center;
 
   .logo {
     display: flex;
@@ -14,6 +16,10 @@
       display: flex;
       flex: 1;
     }
+  }
+
+  .logo-text {
+    max-width: 150px;
   }
 
   .logo-icon {
