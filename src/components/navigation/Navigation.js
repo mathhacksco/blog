@@ -39,7 +39,7 @@ export default function Navigation({ className, colorScheme }: Props) {
         About
       </Link>
       <a
-        to={`mailto:${SOCIAL_LINKS.EMAIL}`}
+        href={`mailto:${SOCIAL_LINKS.EMAIL}`}
         className="nav-link"
         target="_blank"
         rel="noopener noreferrer"
