@@ -6,13 +6,8 @@
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.07);
   background-color: #fff;
   transition: box-shadow 0.1s;
-
-  &:hover {
-    box-shadow: 1px 5px 25px 0px rgba(#8B8CDE, 0.17);
-  }
 
   .content-container {
     padding: 15px;
@@ -21,7 +16,7 @@
   .image-container {
     padding-top: 125%;
     width: 100%;
-    background-color: $theme-medium-light-gray;
+    background-color: $theme-extra-light-violet;
     position: relative;
     overflow: hidden;
 
@@ -33,34 +28,49 @@
     }
   }
 
+  *::selection {
+    background-color: $theme-extra-light-violet;
+    color: $theme-violet;
+  }
+
   .category {
     margin-bottom: 1px;
     margin-top: 0px;
-    font-family: $tajawalLightFontFamily;
+    font-family: $tajawalExtrBoldFontFamily;
     font-weight: 100;
     font-size: 13pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 
   .title-link {
     text-decoration: none;
     max-width: 300px;
-    display: inline-block;
+    display: inline;
+    font-family: $tajawalExtrBoldFontFamily;
+    font-size: 30pt * $sketchFontMulitplier;
+    font-weight: 100;
+    line-height: 33.5pt;
+    vertical-align: middle;
+    padding-top: 9px;
     
     .title {
-      color: $theme-dark-gray;
+      color: $theme-dark-violet;
       display: inline;
       margin: 0;
-      font-family: $crimsonTextFontFamily;
-      font-size: 30pt * $sketchFontMulitplier;
-      font-weight: 100;
-      line-height: 1.37em;
+      font-size: inherit;
+      line-height: inherit;
+      vertical-align: middle;
+      padding-top: 9px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-left: -5px;
+      margin-right: -5px;
     }
 
     &:hover, &:active, &:focus {
       .title {
-        background-color: $theme-dark-gray;
-        color: #fff;
+        background-color: $theme-dark-violet;
+        color: $theme-extra-light-violet;
       }
     }
   }
@@ -70,7 +80,7 @@
     font-family: $tajawalLightFontFamily;
     font-weight: 100;
     font-size: 13pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 
   .excerpt {
@@ -79,6 +89,6 @@
     font-family: $crimsonTextFontFamily;
     font-weight: 100;
     font-size: 17pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 }

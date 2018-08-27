@@ -47,8 +47,8 @@ export const ADS_ENABLED: boolean = !!JSON.parse(
 );
 
 export const SOCIAL_LINKS = {
+  EMAIL: 'brett@mathhacks.co',
   TWITTER: 'https://twitter.com/mathhacksco',
   INSTAGRAM: 'https://www.instagram.com/mathhacksco/',
-  YOUTUBE:
-    'https://www.youtube.com/channel/UC1IUdHJjVZfXIkpSXB6iRXw?view_as=subscriber',
+  YOUTUBE: 'https://www.youtube.com/channel/UC1IUdHJjVZfXIkpSXB6iRXw',
 };
