@@ -1,6 +1,6 @@
 {
   "name": "mathhacksco-blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mathhacks.co blog",
   "main": "lib/index.js",
   "scripts": {
