@@ -21,7 +21,7 @@
   .image-container {
     padding-top: 125%;
     width: 100%;
-    background-color: $theme-medium-light-gray;
+    background-color: $theme-extra-light-violet;
     position: relative;
     overflow: hidden;
 
@@ -36,31 +36,39 @@
   .category {
     margin-bottom: 1px;
     margin-top: 0px;
-    font-family: $tajawalLightFontFamily;
+    font-family: $tajawalExtrBoldFontFamily;
     font-weight: 100;
     font-size: 13pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 
   .title-link {
     text-decoration: none;
     max-width: 300px;
-    display: inline-block;
+    display: inline;
+    font-family: $tajawalExtrBoldFontFamily;
+    font-size: 30pt * $sketchFontMulitplier;
+    font-weight: 100;
+    line-height: 33.5pt;
+    vertical-align: middle;
+    padding-top: 9px;
     
     .title {
-      color: $theme-dark-gray;
+      color: $theme-dark-violet;
       display: inline;
       margin: 0;
-      font-family: $crimsonTextFontFamily;
-      font-size: 30pt * $sketchFontMulitplier;
-      font-weight: 100;
-      line-height: 1.37em;
+      font-size: inherit;
+      line-height: inherit;
+      vertical-align: middle;
+      padding-top: 9px;
+      padding-left: 5px;
+      padding-right: 5px;
     }
 
     &:hover, &:active, &:focus {
       .title {
-        background-color: $theme-dark-gray;
-        color: #fff;
+        background-color: $theme-dark-violet;
+        color: $theme-extra-light-violet;
       }
     }
   }
@@ -70,7 +78,7 @@
     font-family: $tajawalLightFontFamily;
     font-weight: 100;
     font-size: 13pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 
   .excerpt {
@@ -79,6 +87,6 @@
     font-family: $crimsonTextFontFamily;
     font-weight: 100;
     font-size: 17pt * $sketchFontMulitplier;
-    color: $theme-dark-gray;
+    color: $theme-dark-violet;
   }
 }
