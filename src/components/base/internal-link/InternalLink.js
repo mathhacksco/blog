@@ -1,49 +1,45 @@
 /* @flow */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import * as GoogleAnalytics from '../../../utils/GoogleAnalytics';
 
 import type { Children } from '../../../types/react';
 
 type Props = {
-  href: string,
+  path: string,
   label: string,
   className?: ?string,
   children?: Children,
   category: $Values<typeof GoogleAnalytics.CategoryEnum>,
 };
 
-export default function ExternalLink({
-  href,
+export default function InternalLink({
+  path,
   className,
   children,
   label,
   category,
 }: Props) {
   return (
-    <a
-      href={href}
+    <Link
+      to={path}
       className={className}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={e => track(e, href, label, category)}
+      onClick={() => track(path, label, category)}
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
 const track = async (
-  e: Event,
-  href: string,
+  path: string,
   label: string,
   category: $Values<typeof GoogleAnalytics.CategoryEnum>
 ) => {
-  e.preventDefault();
   await GoogleAnalytics.trackEvent({
     category,
     action: GoogleAnalytics.ActionEnum.Event,
-    label: `External Link: ${label}`,
+    label: `Internal Link: ${label}`,
   });
-  window.open(href, '_blank');
 };
