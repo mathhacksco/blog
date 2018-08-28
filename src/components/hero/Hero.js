@@ -13,12 +13,14 @@ import './Hero.scss';
 import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
 import type MediaCollection from '../../models/MediaCollection';
+import type { TrackingContext } from '../../utils/GoogleAnalytics';
 
 type Props = {
   className?: ?string,
   post: ?Post,
   categories: CategoryCollection,
   media: MediaCollection,
+  tracking: TrackingContext,
   colorScheme?: 'violet' | 'teal' | 'pink',
 };
 
@@ -28,6 +30,7 @@ export default function Hero({
   post,
   categories,
   media,
+  tracking,
 }: Props) {
   const image = post && media.findById(post.featuredMedia);
   return (
@@ -44,7 +47,7 @@ export default function Hero({
       </div>
       <HorizontallyCentered className="hero-container">
         <ContentMaxWidth>
-          <Navigation colorScheme={colorScheme} />
+          <Navigation colorScheme={colorScheme} tracking={tracking} />
           {post && (
             <HeroPostExcerpt
               key={post.id}

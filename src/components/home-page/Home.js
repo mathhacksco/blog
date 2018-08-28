@@ -131,6 +131,9 @@ export default class Home extends Component<Props, {}> {
           post={featuredPost}
           categories={this.props.categories}
           media={this.props.media}
+          tracking={{
+            category: GoogleAnalytics.CategoryEnum.HomePage,
+          }}
         />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth className="ad-container-inner">

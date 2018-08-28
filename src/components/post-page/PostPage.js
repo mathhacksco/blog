@@ -102,6 +102,9 @@ class PostPage extends Component<Props, State> {
           categories={this.props.categories}
           colorScheme="violet"
           media={this.props.media}
+          tracking={{
+            category: GoogleAnalytics.CategoryEnum.PostPage,
+          }}
         />
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
