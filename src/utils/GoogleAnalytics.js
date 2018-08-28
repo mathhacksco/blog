@@ -39,6 +39,10 @@ export type TrackingEvent = {
   value?: ?number,
 };
 
+export type TrackingContext = {
+  category: $Values<typeof CategoryEnum>,
+};
+
 export function getUserAgent(): string {
   return window.navigator.userAgent;
 }
