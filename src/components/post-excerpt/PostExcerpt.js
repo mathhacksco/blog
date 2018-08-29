@@ -1,9 +1,10 @@
 /* @flow */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classnames from 'classnames';
 import first from 'lodash/first';
+
+import InternalLink from '../base/internal-link/InternalLink';
 
 // $FlowFixMe
 import './PostExcerpt.scss';
@@ -11,12 +12,14 @@ import './PostExcerpt.scss';
 import type Post from '../../models/Post';
 import type CategoryCollection from '../../models/CategoryCollection';
 import type MediaCollection from '../../models/MediaCollection';
+import type { TrackingContext } from '../../utils/GoogleAnalytics';
 
 type Props = {
   post: Post,
   categories: CategoryCollection,
   media: MediaCollection,
   className?: ?string,
+  tracking: TrackingContext,
 };
 
 // $FlowFixMe
@@ -25,6 +28,7 @@ export default function PostExcerpt({
   categories,
   className,
   media,
+  tracking,
 }: Props) {
   const categoryId = first(post.categories);
   const category = categories.findById(categoryId);
@@ -40,12 +44,17 @@ export default function PostExcerpt({
           <p className="category">{formatCategoryName(categoryName)}</p>
         </div>
         <div className="title-container">
-          <Link to={`posts/${post.slug}`} className="title-link">
+          <InternalLink
+            path={`posts/${post.slug}`}
+            className="title-link"
+            label={`Link to /posts/${post.slug}`}
+            category={tracking.category}
+          >
             <h2
               className="title"
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             />
-          </Link>
+          </InternalLink>
           <p className="timestamp">{moment.utc(post.dateGMT).fromNow()}</p>
         </div>
         <div className="excerpt-container">

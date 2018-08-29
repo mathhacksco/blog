@@ -14,17 +14,20 @@ import './FeaturedPosts.scss';
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
 import type MediaCollection from '../../models/MediaCollection';
+import type { TrackingContext } from '../../utils/GoogleAnalytics';
 
 type Props = {
   featuredPosts: PostCollection,
   categories: CategoryCollection,
   media: MediaCollection,
+  tracking: TrackingContext,
 };
 
 export default function FeaturedPosts({
   featuredPosts,
   categories,
   media,
+  tracking,
 }: Props) {
   const hasPosts = featuredPosts.length > 1;
   const containerClassNames = classnames(
@@ -55,6 +58,7 @@ export default function FeaturedPosts({
                 post={post}
                 categories={categories}
                 media={media}
+                tracking={tracking}
               />
             )}
           />

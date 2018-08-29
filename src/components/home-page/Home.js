@@ -70,6 +70,10 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   };
 }
 
+const HOME_PAGE_TRACKING_CONTEXT = {
+  category: GoogleAnalytics.CategoryEnum.PostPage,
+};
+
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Home extends Component<Props, {}> {
@@ -119,9 +123,6 @@ export default class Home extends Component<Props, {}> {
     const featuredPosts = this.getFeaturedPosts();
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
-    const tracking = {
-      category: GoogleAnalytics.CategoryEnum.PostPage,
-    };
     return (
       <div className="app-container homepage">
         <Seo
@@ -134,7 +135,7 @@ export default class Home extends Component<Props, {}> {
           post={featuredPost}
           categories={this.props.categories}
           media={this.props.media}
-          tracking={tracking}
+          tracking={HOME_PAGE_TRACKING_CONTEXT}
         />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth className="ad-container-inner">
@@ -146,6 +147,7 @@ export default class Home extends Component<Props, {}> {
           featuredPosts={featuredPosts}
           categories={this.props.categories}
           media={this.props.media}
+          tracking={HOME_PAGE_TRACKING_CONTEXT}
         />
         <HorizontallyCentered className="ad-container-2" container="section">
           <ContentMaxWidth>
@@ -157,8 +159,9 @@ export default class Home extends Component<Props, {}> {
           posts={latestPosts}
           categories={this.props.categories}
           media={this.props.media}
+          tracking={HOME_PAGE_TRACKING_CONTEXT}
         />
-        <Footer colorScheme="pink" tracking={tracking} />
+        <Footer colorScheme="pink" tracking={HOME_PAGE_TRACKING_CONTEXT} />
       </div>
     );
   }
