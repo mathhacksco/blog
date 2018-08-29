@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 // $FlowFixMe
-import './ContentMaxWidth.styles.scss';
+import './ContentMaxWidth.scss';
 
 import type { Children } from '../../../types/react';
 
