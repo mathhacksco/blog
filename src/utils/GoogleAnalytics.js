@@ -66,7 +66,9 @@ export const trackEvent = async (event: TrackingEvent) => {
       cd: event.category,
       dr: document.referrer,
       dp: window.location.pathname,
-      cd1: window.location.hostname,
+      dt: document.title,
+      dl: document.URL,
+      dh: window.location.hostname,
       cd2: APP_VERSION,
     },
     _.isNil
