@@ -1,10 +1,11 @@
 /* @flow */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classnames from 'classnames';
 
 import Logo from '../logo/Logo';
+import InternalLink from '../base/internal-link/InternalLink';
+import ExternalLink from '../base/external-link/ExternalLink';
 
 // $FlowFixMe
 import FooterMathSymbols from './FooterMathSymbols.svg';
@@ -12,15 +13,18 @@ import FooterMathSymbols from './FooterMathSymbols.svg';
 // $FlowFixMe
 import './Footer.scss';
 
+import type { TrackingContext } from '../../utils/GoogleAnalytics';
+
 type Props = {
   className?: ?string,
+  tracking: TrackingContext,
   colorScheme: 'violet' | 'teal' | 'pink',
 };
 
 const COPYRIGHT_HOLDER = 'Brett Berry';
 const COPYRIGHT_YEAR = moment().format('YYYY');
 
-export default function Footer({ colorScheme, className }: Props) {
+export default function Footer({ colorScheme, className, tracking }: Props) {
   return (
     <footer className={classnames('footer', colorScheme || 'pink', className)}>
       <div
@@ -34,33 +38,38 @@ export default function Footer({ colorScheme, className }: Props) {
           </div>
           <p className="copyright-text">
             <span>Copyright {COPYRIGHT_YEAR}, </span>
-            <Link to="/about" className="author-link">
+            <InternalLink
+              path="/about"
+              className="author-link"
+              category={tracking.category}
+              label="about page link"
+            >
               {COPYRIGHT_HOLDER}
-            </Link>
+            </InternalLink>
             <span>, All Rights Reserved</span>
           </p>
         </div>
         <div className="footer-attribution-text">
           <span>
             MathHacks is open source on{' '}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            <ExternalLink
               href="https://github.com/mathhacksco/blog"
+              category={tracking.category}
+              label="mathhacks github"
             >
               Github
-            </a>
+            </ExternalLink>
           </span>
           <span className="seperator">|</span>
           <span>
             Made with <em>❤</em> by{' '}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            <ExternalLink
               href="mailto:jpbrennecke@gmail.com"
+              category={tracking.category}
+              label="mailto jpbrennecke@gmail.com"
             >
               Jon Brennecke
-            </a>
+            </ExternalLink>
           </span>
         </div>
       </div>
