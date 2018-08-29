@@ -12,6 +12,7 @@ import { getCategories } from '../../redux/selectors/categories';
 import { fetchCategories } from '../../redux/actionCreators/categories';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
 import ColumnLayout from '../layout/column-layout/ColumnLayout';
+import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
 // $FlowFixMe
 import './Blog.styles.scss';
@@ -55,6 +56,10 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   };
 }
 
+const BLOG_PAGE_TRACKING_CONTEXT = {
+  category: GoogleAnalytics.CategoryEnum.PostPage,
+};
+
 // $FlowFixMe
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Blog extends Component<Props, {}> {
@@ -64,6 +69,15 @@ export default class Blog extends Component<Props, {}> {
     await this.props.fetchPosts();
     await this.props.fetchCategories();
     await this.fetchMedia();
+    await this.trackPageView();
+  }
+
+  async trackPageView() {
+    await GoogleAnalytics.trackEvent({
+      category: GoogleAnalytics.CategoryEnum.BlogPage,
+      action: GoogleAnalytics.ActionEnum.PageView,
+      label: 'Blog Page View',
+    });
   }
 
   async fetchMedia() {
@@ -93,6 +107,7 @@ export default class Blog extends Component<Props, {}> {
                 className="post"
                 categories={this.props.categories}
                 media={this.props.media}
+                tracking={BLOG_PAGE_TRACKING_CONTEXT}
               />
             )}
           />
