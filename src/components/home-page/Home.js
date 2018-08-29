@@ -119,6 +119,9 @@ export default class Home extends Component<Props, {}> {
     const featuredPosts = this.getFeaturedPosts();
     const latestPosts = this.props.posts.exclude(featuredPosts);
     const featuredPost = first(featuredPosts.toArray());
+    const tracking = {
+      category: GoogleAnalytics.CategoryEnum.PostPage,
+    };
     return (
       <div className="app-container homepage">
         <Seo
@@ -131,9 +134,7 @@ export default class Home extends Component<Props, {}> {
           post={featuredPost}
           categories={this.props.categories}
           media={this.props.media}
-          tracking={{
-            category: GoogleAnalytics.CategoryEnum.HomePage,
-          }}
+          tracking={tracking}
         />
         <HorizontallyCentered className="ad-container-1" container="section">
           <ContentMaxWidth className="ad-container-inner">
@@ -157,7 +158,7 @@ export default class Home extends Component<Props, {}> {
           categories={this.props.categories}
           media={this.props.media}
         />
-        <Footer colorScheme="pink" />
+        <Footer colorScheme="pink" tracking={tracking} />
       </div>
     );
   }
