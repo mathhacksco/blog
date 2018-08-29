@@ -95,6 +95,9 @@ class PostPage extends Component<Props, State> {
   render() {
     const slug = this.props.match.params.slug;
     const post = this.props.posts.findBySlug(slug);
+    const tracking = {
+      category: GoogleAnalytics.CategoryEnum.PostPage,
+    };
     return (
       <div className="post-page">
         <Hero
@@ -102,9 +105,7 @@ class PostPage extends Component<Props, State> {
           categories={this.props.categories}
           colorScheme="violet"
           media={this.props.media}
-          tracking={{
-            category: GoogleAnalytics.CategoryEnum.PostPage,
-          }}
+          tracking={tracking}
         />
         <HorizontallyCentered className="ad-container-1">
           <ContentMaxWidth>
@@ -113,7 +114,7 @@ class PostPage extends Component<Props, State> {
             <Ad />
           </ContentMaxWidth>
         </HorizontallyCentered>
-        <Footer colorScheme="violet" />
+        <Footer colorScheme="violet" tracking={tracking} />
       </div>
     );
   }
