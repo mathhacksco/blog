@@ -14,12 +14,14 @@ import './LatestPosts.scss';
 import type PostCollection from '../../models/PostCollection';
 import type CategoryCollection from '../../models/CategoryCollection';
 import type MediaCollection from '../../models/MediaCollection';
+import type { TrackingContext } from '../../utils/GoogleAnalytics';
 
 type Props = {
   className?: ?string,
   posts: PostCollection,
   categories: CategoryCollection,
   media: MediaCollection,
+  tracking: TrackingContext,
 };
 
 export default function LatestPosts({
@@ -27,6 +29,7 @@ export default function LatestPosts({
   posts,
   categories,
   media,
+  tracking,
 }: Props) {
   return (
     <HorizontallyCentered
@@ -51,6 +54,7 @@ export default function LatestPosts({
                   post={post}
                   categories={categories}
                   media={media}
+                  tracking={tracking}
                 />
               )}
             />
