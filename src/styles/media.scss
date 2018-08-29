@@ -1,0 +1,98 @@
+$DEVICES: (
+  ipad: (
+    sizes: (
+      min: 768px,
+      max: 1024px,
+    ),
+  ),
+  iphone: (
+    sizes: (
+      min: 375px,
+      max: 667px,
+    ),
+  ),
+);
+
+// equation: eq, lte, gte, gt, lt
+@mixin respond-to($device-name, $orientation, $equation: 'eq') {
+  $device: map-get($DEVICES, $device-name);
+  $sizes: map-get($device, 'sizes');
+  $min: map-get($sizes, 'min');
+  $max: map-get($sizes, 'max');
+  @if $equation == 'eq' {
+    @include media($min, $max, $orientation) {
+      @content;
+    }
+  }
+  @else if $equation == 'gt' {
+    @include media($max, null, $orientation) {
+      @content;
+    }
+  }
+  @else if $equation == 'gte' {
+    @include media($min, null, $orientation) {
+      @content;
+    }
+  }
+  @else if $equation == 'lt' {
+    @include media(null, $min, $orientation) {
+      @content;
+    }
+  }
+  @else if $equation == 'lte' {
+    @include media(null, $max, $orientation) {
+      @content;
+    }
+  }
+  @else {
+    @warn "WARNING: invalid parameters passed to 'respond-to(#{$device-name}, #{$orientation}, #{$equation})'";
+  }
+}
+
+@mixin media($min, $max, $orientation) {
+  @if $min and $max {
+    @media only screen 
+      and (min-device-width: #{$min})
+      and (max-device-width: #{$max})
+      and (orientation: $orientation) {
+        @content;
+      }
+  }
+  @else if $min and not $max {
+    @media only screen 
+      and (min-device-width: #{$min})
+      and (orientation: $orientation) {
+        @content;
+      }
+  }
+  @else if $max and not $min {
+    @media only screen 
+      and (max-device-width: #{$max})
+      and (orientation: $orientation) {
+        @content;
+      }
+  }
+  @else {
+    @warn "WARNING: invalid parameters passed to 'media(#{$min}, #{$max}, #{$orientation})'";
+  }
+}
+
+@mixin iphone-x-portrait {
+  @media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation: portrait) {
+      @content;
+    }
+}
+
+@mixin iphone-x-landscape {
+  @media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation: landscape) {
+      @content;
+    }
+}
