@@ -55,6 +55,7 @@ export default function Hero({
               post={post}
               categories={categories}
               colorScheme={colorScheme}
+              tracking={tracking}
             />
           )}
         </ContentMaxWidth>
