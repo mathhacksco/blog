@@ -1,5 +1,6 @@
 @import "../../styles/constants";
 @import "../../styles/fonts";
+@import "../../styles/media";
 
 .navigation {
   display: flex;
@@ -71,5 +72,11 @@
     flex: 1;
     align-items: center;
     justify-content: center;
+  }
+
+  @include respond-to('iphone-x', 'portrait', 'lte') {
+    .nav-link:not(.nav-link-logo) {
+      display: none;
+    }
   }
 }
