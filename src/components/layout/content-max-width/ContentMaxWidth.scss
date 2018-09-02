@@ -13,4 +13,8 @@
   @include respond-to('ipad', 'landscape', 'lte') {
     max-width: 768px;
   }
+
+  @include respond-to('iphone-x', 'portrait', 'lte') {
+    max-width: 256px;
+  }
 }
