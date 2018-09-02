@@ -11,6 +11,12 @@ $DEVICES: (
       max: 667px,
     ),
   ),
+  iphone-x: (
+    sizes: (
+      min: 375px,
+      max: 812px,
+    ),
+  ),
 );
 
 // equation: eq, lte, gte, gt, lt
