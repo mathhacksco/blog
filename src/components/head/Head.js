@@ -7,6 +7,7 @@ import {
   APP_ENVIRONMENT,
   FAVICON_DIRECTORY,
   GOOGLE_ADSENSE_PUBLISHER_ID,
+  GOOGLE_ANALYTICS_OPTIMIZE_CONTAINER_ID,
 } from '../../constants';
 import * as GoogleAnalytics from '../../utils/GoogleAnalytics';
 
@@ -139,11 +140,11 @@ export default function Head({ schema, title, description, url }: Props) {
         gtag('js', new Date());
         gtag('config', '${
           GoogleAnalytics.GOOGLE_ANALYTICS_PARAMS.TRACKING_ID
-        }');
+        }', { 'optimize_id': '${GOOGLE_ANALYTICS_OPTIMIZE_CONTAINER_ID}' });
       `}
       </script>
 
-      {/* <AdSense/> */}
+      {/* Google AdSense */}
       <script
         async
         src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"

@@ -35,6 +35,7 @@ const clientPlugins = _.compact([
         chunksSortMode: 'dependency'
     }),
     new webpack.DefinePlugin({
+        'process.env.BROWSER': JSON.stringify(true),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         'process.env.VERSION': JSON.stringify(packageData.version),
         PROJECT_ROOT: path.join('"', __dirname, '"'),
@@ -61,6 +62,7 @@ const serverPlugins = _.compact([
         chunkFilename: '[id]_[contenthash].css'
     }),
     new webpack.DefinePlugin({
+        'process.env.BROWSER': JSON.stringify(false),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         'process.env.VERSION': JSON.stringify(packageData.version),
         PROJECT_ROOT: path.join('"', __dirname, '"'),

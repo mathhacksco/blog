@@ -4,6 +4,7 @@ export const FAVICON_DIRECTORY = '';
 // $FlowFixMe
 export const APP_VERSION = process.env.VERSION;
 export const APP_ENVIRONMENT = process.env.NODE_ENV || 'development';
+export const BROWSER: boolean = !!process.env.BROWSER;
 
 // NOTE: IOS 8601 is already moment's default format
 export const MOMENT_DEFAULT_TIMESTAMP_FORMAT: ?string = null;
@@ -42,6 +43,14 @@ export const GOOGLE_ADSENSE_PUBLISHER_ID: string =
 export const GOOGLE_ANALYTICS_TRACKING_ID: string =
   process.env.GOOGLE_ANALYTICS_TRACKING_ID;
 
+// $FlowFixMe
+export const GOOGLE_ANALYTICS_EXPERIMENT_ID: string =
+  process.env.GOOGLE_ANALYTICS_EXPERIMENT_ID;
+
+// $FlowFixMe
+export const GOOGLE_ANALYTICS_OPTIMIZE_CONTAINER_ID: string =
+  process.env.GOOGLE_ANALYTICS_OPTIMIZE_CONTAINER_ID;
+
 export const ADS_ENABLED: boolean = !!JSON.parse(
   process.env.ADS_ENABLED || 'false'
 );
@@ -52,3 +61,7 @@ export const SOCIAL_LINKS = {
   INSTAGRAM: 'https://www.instagram.com/mathhacksco/',
   YOUTUBE: 'https://www.youtube.com/channel/UC1IUdHJjVZfXIkpSXB6iRXw',
 };
+
+// $FlowFixMe
+export const MEDIUM_PUBLICATION_NAME: string =
+  process.env.MEDIUM_PUBLICATION_NAME;
