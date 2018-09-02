@@ -9,4 +9,8 @@
   @include respond-to('ipad', 'portrait', 'lte') {
     max-width: 640px;
   }
+
+  @include respond-to('ipad', 'landscape', 'lte') {
+    max-width: 768px;
+  }
 }
