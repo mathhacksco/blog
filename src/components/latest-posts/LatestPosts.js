@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 import PostExcerpt from '../post-excerpt/PostExcerpt';
-import RowLayout from '../layout/row-layout/RowLayout';
 
 // $FlowFixMe
 import './LatestPosts.scss';
@@ -45,7 +44,7 @@ export default function LatestPosts({
           render={sliced => (
             <Map
               container={({ children }) => (
-                <RowLayout className="latest-posts">{children}</RowLayout>
+                <div className="latest-posts">{children}</div>
               )}
               array={sliced}
               render={post => (
