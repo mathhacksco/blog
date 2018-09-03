@@ -72,20 +72,31 @@
       }
 
       .content-inner {
-        @include respond-to('ipad', 'landscape', 'lte') {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 50px;
-          text-align: center;
-          background-color: $theme-extra-light-violet;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        text-align: center;
+        background-color: $theme-extra-light-violet;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        @include respond-to('ipad', 'portrait', 'lte') {
+          padding: 25px;
+
+          .title {
+            font-size: 20pt * $sketchFontMulitplier;
+            line-height: 23.5pt;
+          }
+
+          .excerpt p {
+            margin-top: 0;
+          }
         }
       }
 
