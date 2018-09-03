@@ -62,8 +62,17 @@
     }
   }
 
-  &:nth-child(2) .featured-post-background {
-    background-color: $theme-teal;
+  &:nth-child(2) {
+    .featured-post-background {
+      background-color: $theme-teal;
+    }
+
+    .featured-post-background, .content-background {
+      @include respond-to('iphone-x', 'portrait', 'lte') {
+        left: -500px;
+        right: -500px;
+      }
+    }
   }
 
   &:last-child {
