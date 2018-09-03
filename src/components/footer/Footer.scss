@@ -1,5 +1,6 @@
 @import "../../styles/constants";
 @import "../../styles/fonts";
+@import "../../styles/media";
 
 .footer {
   display: flex;
@@ -28,10 +29,16 @@
     display: flex;
     flex: 1;
     height: 275px;
-  
+    overflow: hidden;
+
     svg {
       display: flex;
       flex: 1;
+      
+      @include respond-to('ipad', 'portrait', 'lte') {
+        position: relative;
+        transform: scale(1.25) translateY(-15px);
+      }
     }
   }
 
