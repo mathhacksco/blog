@@ -35,12 +35,17 @@ export default function FeaturedPostExcerpt({
   const image = media.findById(post.featuredMedia);
   return (
     <ColumnLayout className={classnames('featured-post-excerpt', className)}>
-      <div className="featured-post-background"/>
+      <div className="featured-post-background" />
       <div className="image-container">
-        {image && <div className="image" style={{ backgroundImage: `url(${image.fullSourceUrl})` }} />}
+        {image && (
+          <div
+            className="image"
+            style={{ backgroundImage: `url(${image.fullSourceUrl})` }}
+          />
+        )}
       </div>
       <div className="content">
-        <div className="content-background"/>
+        <div className="content-background" />
         <div className="content-inner">
           <p className="category">{formatCategoryName(categoryName)}</p>
           <InternalLink

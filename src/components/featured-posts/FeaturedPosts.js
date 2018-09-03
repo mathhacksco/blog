@@ -46,9 +46,7 @@ export default function FeaturedPosts({
         array={featuredPosts.toArray()}
         render={sliced => (
           <Map
-            container={({ children }) => (
-              <Fragment>{children}</Fragment>
-            )}
+            container={({ children }) => <Fragment>{children}</Fragment>}
             array={sliced}
             render={post => (
               <FeaturedPostExcerpt
