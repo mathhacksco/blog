@@ -1,5 +1,6 @@
 @import "../../styles/constants";
 @import "../../styles/fonts";
+@import "../../styles/media";
 
 .post-excerpt {
   display: flex;
@@ -12,6 +13,16 @@
   .content-container {
     padding: 15px;
   }
+
+  // .content-inner {
+    // @include respond-to('ipad', 'landscape', 'lte') {
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
+    // }
+  // }
 
   .image-container {
     padding-top: 125%;

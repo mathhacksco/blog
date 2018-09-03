@@ -1,5 +1,6 @@
 @import "../../styles/constants";
 @import "../../styles/fonts";
+@import "../../styles/media";
 
 .latest-posts-container .section-header {
   font-family: $imFellFrenchCanonFontFamily;
@@ -13,6 +14,10 @@
   flex: 1;
   flex-wrap: wrap;
   padding-bottom: 45px;
+
+  @include respond-to('iphone-x', 'portrait', 'lte') {
+    flex-direction: column;
+  }
 
   .post-excerpt {
     display: flex;
@@ -46,6 +51,7 @@
       margin-left: 15px;
     }
 
+
     // special cases: only one child, only 4 children
     &:nth-child(4):last-child, &:only-child {
       flex-direction: row;
@@ -58,16 +64,29 @@
       }
 
       .content-container {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
+        position: relative;
         height: 100%;
         max-width: 50%;
-        align-items: center;
-        justify-content: center;
-        padding: 50px;
-        text-align: center;
-        background-color: $theme-extra-light-violet;
+        display: flex;
+        flex: 1;
+      }
+
+      .content-inner {
+        @include respond-to('ipad', 'landscape', 'lte') {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 50px;
+          text-align: center;
+          background-color: $theme-extra-light-violet;
+        }
       }
 
       .category-container, .excerpt-container {
@@ -78,6 +97,11 @@
       .excerpt-container {
         margin-bottom: 50px;
       }
+    }
+
+    @include respond-to('iphone-x', 'portrait', 'lte') {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
   }
 }
