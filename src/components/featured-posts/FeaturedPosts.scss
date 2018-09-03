@@ -1,5 +1,6 @@
 @import "../../styles/fonts";
 @import "../../styles/constants";
+@import "../../styles/media";
 
 .featured-posts-container {
   padding-top: 35px;
@@ -7,7 +8,6 @@
   border-bottom-width: 28px;
   border-bottom-style: solid;
   border-bottom-color: $theme-violet;
-  background-color: #fff;
 
   &.empty, &:empty {
     padding-top: 0;
@@ -23,7 +23,7 @@
   flex: 1;
   position: relative;
 
-  .background {
+  .featured-post-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,22 +31,41 @@
     bottom: 0;
   }
 
-  .content {
-    position: relative;
+  .content-background {
+    background-color: $theme-extra-light-gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
-  &:first-child .background {
-    background-color: $theme-pink;
-    left: -500px;
+  .content-inner {
+    z-index: 1;
   }
 
-  &:nth-child(2) .background {
+  &:first-child {
+    .featured-post-background {
+      background-color: $theme-pink;
+    }
+
+    .featured-post-background, .content-background {
+      left: -500px;
+    }
+  }
+
+  &:nth-child(2) .featured-post-background {
     background-color: $theme-teal;
   }
 
-  &:last-child .background {
-    background-color: $theme-violet;
-    right: -500px;
+  &:last-child {
+    .featured-post-background {
+      background-color: $theme-violet;
+    }
+
+    .featured-post-background, .content-background {
+      right: -500px;
+    }
   }
 
   h2 {

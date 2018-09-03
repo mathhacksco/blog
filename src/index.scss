@@ -7,8 +7,7 @@ html, body, main {
 }
 
 body {
-  // TODO: should match page color scheme
-  background-color: $theme-pink;
+  background-color: $theme-extra-light-gray;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
 }
