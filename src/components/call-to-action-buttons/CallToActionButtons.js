@@ -38,7 +38,10 @@ export default function CallToActionButtons({ className }: Props) {
       <ContentMaxWidth className="call-to-action-inner">
         <div className="call-to-action-button">
           <div className="background">
-            <img src={CallToActionBackgroundImage} />
+            <div
+              className="background-image"
+              style={{ backgroundImage: `url(${CallToActionBackgroundImage})` }}
+            />
           </div>
           <div className="content">
             <a href={SOCIAL_LINKS.YOUTUBE}>
