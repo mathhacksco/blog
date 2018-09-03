@@ -40,28 +40,30 @@ export default function PostExcerpt({
         {image && <img src={image.fullSourceUrl} />}
       </div>
       <div className="content-container">
-        <div className="category-container">
-          <p className="category">{formatCategoryName(categoryName)}</p>
-        </div>
-        <div className="title-container">
-          <InternalLink
-            path={`posts/${post.slug}`}
-            className="title-link"
-            label={`Link to /posts/${post.slug}`}
-            category={tracking.category}
-          >
-            <h2
-              className="title"
-              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+        <div className="content-inner">
+          <div className="category-container">
+            <p className="category">{formatCategoryName(categoryName)}</p>
+          </div>
+          <div className="title-container">
+            <InternalLink
+              path={`posts/${post.slug}`}
+              className="title-link"
+              label={`Link to /posts/${post.slug}`}
+              category={tracking.category}
+            >
+              <h2
+                className="title"
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              />
+            </InternalLink>
+            <p className="timestamp">{moment.utc(post.dateGMT).fromNow()}</p>
+          </div>
+          <div className="excerpt-container">
+            <div
+              className="excerpt"
+              dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
             />
-          </InternalLink>
-          <p className="timestamp">{moment.utc(post.dateGMT).fromNow()}</p>
-        </div>
-        <div className="excerpt-container">
-          <div
-            className="excerpt"
-            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-          />
+          </div>
         </div>
       </div>
     </div>
