@@ -52,61 +52,63 @@
     }
 
 
-    // special cases: only one child, only 4 children
-    &:nth-child(4):last-child, &:only-child {
-      flex-direction: row;
+    @include respond-to('ipad', null, 'gte') {
+      // special cases: only one child, only 4 children
+      &:nth-child(4):last-child, &:only-child {
+        flex-direction: row;
 
-      .image-container {
-        padding-top: 62.5%;
-        display: flex;
-        flex: 1;
-        max-width: 50%;
-      }
+        .image-container {
+          padding-top: 62.5%;
+          display: flex;
+          flex: 1;
+          max-width: 50%;
+        }
 
-      .content-container {
-        position: relative;
-        height: 100%;
-        max-width: 50%;
-        display: flex;
-        flex: 1;
-      }
+        .content-container {
+          position: relative;
+          height: 100%;
+          max-width: 50%;
+          display: flex;
+          flex: 1;
+        }
 
-      .content-inner {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 50px;
-        text-align: center;
-        background-color: $theme-extra-light-violet;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        .content-inner {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 50px;
+          text-align: center;
+          background-color: $theme-extra-light-violet;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
 
-        @include respond-to('ipad', 'portrait', 'lte') {
-          padding: 25px;
+          @include respond-to('ipad', 'portrait', 'lte') {
+            padding: 25px;
 
-          .title {
-            font-size: 20pt * $sketchFontMulitplier;
-            line-height: 23.5pt;
-          }
+            .title {
+              font-size: 20pt * $sketchFontMulitplier;
+              line-height: 23.5pt;
+            }
 
-          .excerpt p {
-            margin-top: 0;
+            .excerpt p {
+              margin-top: 0;
+            }
           }
         }
-      }
 
-      .category-container, .excerpt-container {
-        display: flex;
-        flex: 1;
-      }
+        .category-container, .excerpt-container {
+          display: flex;
+          flex: 1;
+        }
 
-      .excerpt-container {
-        margin-bottom: 50px;
+        .excerpt-container {
+          margin-bottom: 50px;
+        }
       }
     }
 
