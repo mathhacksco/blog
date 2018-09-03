@@ -35,23 +35,27 @@ export default function FeaturedPostExcerpt({
   const image = media.findById(post.featuredMedia);
   return (
     <ColumnLayout className={classnames('featured-post-excerpt', className)}>
-      <div className="image-container background">
-        {image && <img src={image.fullSourceUrl} />}
+      <div className="featured-post-background"/>
+      <div className="image-container">
+        {image && <div className="image" style={{ backgroundImage: `url(${image.fullSourceUrl})` }} />}
       </div>
       <div className="content">
-        <p className="category">{formatCategoryName(categoryName)}</p>
-        <InternalLink
-          path={`posts/${post.slug}`}
-          className="title-link"
-          category={tracking.category}
-          label={`Link to /posts/${post.slug}`}
-        >
-          <h2
-            className="title"
-            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-          />
-        </InternalLink>
-        <p className="author">by Brett Berry</p>
+        <div className="content-background"/>
+        <div className="content-inner">
+          <p className="category">{formatCategoryName(categoryName)}</p>
+          <InternalLink
+            path={`posts/${post.slug}`}
+            className="title-link"
+            category={tracking.category}
+            label={`Link to /posts/${post.slug}`}
+          >
+            <h2
+              className="title"
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+            />
+          </InternalLink>
+          <p className="author">by Brett Berry</p>
+        </div>
       </div>
     </ColumnLayout>
   );
