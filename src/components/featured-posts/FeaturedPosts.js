@@ -1,12 +1,11 @@
 /* @flow */
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Map, Slice } from 'react-iterators';
 import classnames from 'classnames';
 
 import ContentMaxWidth from '../layout/content-max-width/ContentMaxWidth';
 import HorizontallyCentered from '../layout/horizontally-centered/HorizontallyCentered';
 import FeaturedPostExcerpt from '../featured-post-excerpt/FeaturedPostExcerpt';
-import RowLayout from '../layout/row-layout/RowLayout';
 
 // $FlowFixMe
 import './FeaturedPosts.scss';
@@ -48,7 +47,7 @@ export default function FeaturedPosts({
         render={sliced => (
           <Map
             container={({ children }) => (
-              <RowLayout className="flex-1">{children}</RowLayout>
+              <Fragment>{children}</Fragment>
             )}
             array={sliced}
             render={post => (

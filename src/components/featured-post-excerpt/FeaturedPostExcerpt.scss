@@ -2,31 +2,34 @@
 @import "../../styles/constants";
 
 .featured-post-excerpt {
-  .background {
-    height: 378px;
-  }
-
   .image-container {
     position: relative;
     overflow: hidden;
+    padding-top: 125%;
+    width: 100%;
 
-    img {
+    .image {
       position: absolute;
       width: 100%;
-      height: auto;
+      height: 100%;
       top: 0;
+      background-size: cover;
     }
   }
 
   .content {
-    margin-top: 378px;
+    position: relative;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 
   .category {
+    margin-top: 0;
     margin-bottom: 1px;
     font-family: $tajawalLightFontFamily;
     font-weight: 100;
