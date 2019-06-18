@@ -19,3 +19,10 @@
       -v /var/www/html:/var/www/html \
       -p 8080:80 \
       wordpress
+
+- name: copy theme from S3
+  command: >
+    aws s3 cp s3://{{ aws_public_bucket }} /var/www/html --force --acl public-read --recursive
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ aws_public_access_key_id }}"
+    AWS_SECRET_ACCESS_KEY: "{{ aws_public_secret_access_key }}"

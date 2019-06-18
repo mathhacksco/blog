@@ -9,7 +9,7 @@
   roles:
     - { role: './roles/install-docker' }
     - { role: './roles/mysql' }
+    - { role: './roles/awscli' }
     - { role: './roles/wordpress' }
     - { role: './roles/nginx' }
-    - { role: './roles/awscli' }
-    - { role: './roles/frontend' }
+    # - { role: './roles/frontend' }

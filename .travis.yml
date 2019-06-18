@@ -21,7 +21,8 @@ deploy:
   - provider: script
     script: bash ./scripts/deploy.sh staging
     on:
-      branch: master
+      branch: jonbrennecke/val-theme
+      # master
   - provider: script
     script: bash ./scripts/deploy.sh production
     on:
