@@ -3,6 +3,7 @@ export const POSTS = 'posts';
 export const PAGES = 'pages';
 export const CATEGORIES = 'categories';
 export const MEDIA = 'media';
+export const MEDIUM = 'medium';
 
 export const POST_ACTION_TYPES = {
   FETCH_POST: `${POSTS}/FETCH_POST`,
@@ -28,4 +29,9 @@ export const MEDIA_ACTION_TYPES = {
   RECEIVE_MEDIA: `${MEDIA}/RECEIVE_MEDIA`,
   FETCH_MEDIA_BY_IDS: `${MEDIA}/FETCH_MEDIA_BY_IDS`,
   RECEIVE_MEDIA_BY_IDS: `${MEDIA}/RECEIVE_MEDIA_BY_IDS`,
+};
+
+export const MEDIUM_ACTION_TYPES = {
+  FETCH_POSTS: `${MEDIUM}/FETCH_POSTS`,
+  RECEIVE_POSTS: `${MEDIUM}/RECEIVE_POSTS`,
 };

@@ -26,6 +26,7 @@ import LatestPosts from '../latest-posts/LatestPosts';
 import Footer from '../footer/Footer';
 import { SEO_PAGE_TYPE } from '../../constants';
 import Seo from '../seo/Seo';
+import * as Experiments from '../../utils/Experiments';
 
 // $FlowFixMe
 import './Home.scss';
